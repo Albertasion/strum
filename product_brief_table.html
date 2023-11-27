@@ -1,0 +1,126 @@
+{strip}
+	{if $product_info ne NULL}
+		{if $product_info.slug}
+			{assign var=_product_url value="?productID=`$product_info.productID`&product_slug=`$product_info.slug`"|set_query_html}
+		{else}
+			{assign var=_product_url value="?productID=`$product_info.productID`"|set_query_html}
+		{/if}
+		<form class="product_brief_table {if $product_info.ordering_available == 0} notavailible {/if}" action='{"?ukey=cart`$_form_action_url`"|set_query_html}' method="post" rel="{$product_info.productID}" {if $widget}target="_blank"{/if}>
+			<input name="action" value="add_product" type="hidden" >
+			<input name="productID" value="{$product_info.productID}" type="hidden" >
+			<input class="product_price" value="{$product_info.PriceWithOutUnit|escape:'html'}" type="hidden" >
+
+			<a class="imgwrp" {$target} href='{$_product_url}'>
+				{if $product_info.sale_sticker_arr} 
+					<div class="pr_stickers_wrp">
+						{foreach from=$product_info.sale_sticker_arr item=_sticker}
+							<div class="pr_sticker_item">
+								<img class="lazyload" data-src="/images_sale/{$_sticker}">
+							</div>
+						{/foreach}
+					</div>
+				{/if}
+				{if $product_info.gift_product && $product_info.gift_product.productID > 0} 
+					<span class="pr_gift_ico" title="+ Подарок {$product_info.gift_product.name|escape:'html'}">
+						<img class="lazyload" data-src="{if $product_info.gift_product.thumbnail}{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.gift_product.thumbnail}{else}/images/noimg.png{/if}" alt="{$product_info.gift_product.name|escape:'html'}">
+					</span>
+				{/if}
+				<img class="lazyload" data-src="{if $product_info.filename}
+							{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.filename}
+						{elseif $product_info.thumbnail} 
+							{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.thumbnail}
+						{else}
+							{$smarty.const.WBS_INSTALL_PATH}images/noimg.png{/if}" width="190" height="190" alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}">
+				{if $product_info.specialoffer}
+					<div class="specialoffer_label{if $product_info.specialoffer_bottom} specialoffer_bottom_label {/if}"><noindex>
+						{if $product_info.specialoffer_text}
+							{$product_info.specialoffer_text}
+						{else}
+							Выгодная цена
+						{/if}
+					</noindex></div>
+				{/if}
+				{if $_show_num && $_show_num > 0}
+					<span class="pb_show_num">{$_show_num}<span>
+				{/if}
+
+				{if $product_info.sale_icons_arr || $product_info.free_shipping} 
+					<div class="pr_icons_wrp">
+						{if $product_info.free_shipping}
+							<div class="pr_freeshipping">{'Free shipping'|t}</div>
+						{/if}
+						{foreach from=$product_info.sale_icons_arr item=_icon}
+							<div class="pr_icon_item">
+								<img class="lazyload" data-src="/images_sale/{$_icon}">
+							</div>
+						{/foreach}
+					</div>
+				{/if}
+			</a>
+			<a class="pb_product_name" href='{$_product_url}'>{$product_info.name}</a>
+		
+
+			{if !$product_info.archive}
+				{if $product_info.minMaxPrice}
+					<div class="pb_price {if $product_info.minMaxPrice.minPrice != $product_info.minMaxPrice.maxPrice} pb_price_di {/if} {if $product_info.list_price > 0} pb_price_action{/if}">
+						
+						{if $product_info.minMaxPrice.minPrice == $product_info.minMaxPrice.maxPrice}
+							{$product_info.minMaxPrice.minPriceWithUnit}
+						{else}
+							{$product_info.minMaxPrice.minPriceNoUnit} - {$product_info.minMaxPrice.maxPriceWithUnit}
+						{/if}
+					</div>
+				{elseif $product_info.Price > 0}
+					<div class="pb_price {if $product_info.list_price > 0} pb_price_action{/if}">
+						{$product_info.PriceWithUnit} ₴
+					</div>
+				{/if}
+				<div class="clr"></div>
+				{if $product_info.minMaxPrice.minPrice > 0}
+					{if $product_info.minMaxPrice.minPrice == $product_info.minMaxPrice.maxPrice && $product_info.list_price > 0}
+						<div class="pb_old_price">
+							{$product_info.list_priceWithUnit}
+							{if $product_info.SavePricePercent > 0}
+								<div class="pb_price_save_percent">-{$product_info.SavePricePercent}%</div>
+							{/if}
+						</div>
+					{/if}
+				{elseif $product_info.Price > 0}
+					{if $product_info.list_price > 0}
+						<span class="pb_old_price">
+							{$product_info.list_priceWithUnit}
+							{if $product_info.SavePricePercent > 0}
+								<div class="pb_price_save_percent">-{$product_info.SavePricePercent}%</div>
+							{/if}
+						</span>{literal} {/literal}
+					{/if}
+				{/if}
+			{/if}
+
+			{*<a class="simulate_add2cart" href="{$_product_url}" title="{'label_buy'|t}">{'label_buy'|t}</a>*}
+			
+			{include file="product_add2cart_button.html" request_product_count="0"}
+
+			<div class="clr"></div>
+
+			{include file="product_instock_block.html"}
+
+			{if $_show_extra && $product_info.product_extra}
+				<div class="prdbrief_options"> 
+					{foreach from=$product_info.product_extra item=_product_extra_item name=_pbextra}
+						{*$_product_extra_item.option_type != 0*}
+						{if $_product_extra_item.optionID != 207}
+							{*$_product_extra_item.extra_showincategory || $_product_extra_item.showincategory*}
+							{if $_product_extra_item.values_to_select}
+								{$_product_extra_item.name|escape:'html'}:{literal} {/literal}
+								<b>{foreach from=$_product_extra_item.values_to_select item=_extra_item_value name=_pbextraval} 
+									{$_extra_item_value.option_value}{if !$smarty.foreach._pbextraval.last},{literal} {/literal}{/if}
+								{/foreach}</b>{if !$smarty.foreach._pbextra.last}<span class="pb_extra_coma">,{literal} {/literal}</span>{/if}<br>
+							{/if}
+						{/if}
+					{/foreach}
+				</div>
+			{/if}
+		</form>
+	{/if}
+{/strip}

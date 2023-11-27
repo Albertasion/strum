@@ -1,0 +1,525 @@
+{strip}
+{*if $product_news}
+	<div class="desc-news">
+		{section name=i loop=$product_news}
+			<span class="news_item" rel="#overlay" alt="{$product_news[i].NID}">{$product_news[i].title|escape:'html'}</span>
+		{/section}
+	</div>
+{/if*}
+
+{*<script type="text/javascript">{literal}$(document).ready(function(){gettreeproducts({/literal}{$selected_category.categoryID}{literal},0);});{/literal}</script>
+
+{*</>*}
+<div class="main_wide_padding">
+	{if !$products_found}
+		<div class="main_wide_col main_wide_col_w20">
+			{if !$isOptimizer}
+				{if $selected_category.sale_dateto > 0 && $selected_category.sale_dateto > $smarty.now}
+					<div class="sale_timer_wrp">
+						<link rel="stylesheet" href="/css/jquery.countdown.css" />
+						<script type="text/javascript">{literal}
+							var timerId = setInterval(function() {
+								if (window.jQuery) {
+									$('.date_discount_counter').countdown({timestamp: new Date({/literal}{$selected_category.sale_dateto}{literal}*1000)});
+									clearInterval(timerId);
+								}
+							}, 250); 							
+						{/literal}</script>
+						<div class="date_discount_wrp">
+							<div class="date_discount_counter"></div>
+							<div class="date_discount_counter_txt"></div>
+						</div>
+						<div class="sale_datetime_str">
+							Акция проводится до {$selected_category.sale_dateto|date_format:'%d.%m.%Y'}
+						</div>
+					</div>
+				{/if}
+			{/if}
+			
+			{if $categories_product_count}
+
+				<div class="root_cats_tree_btn clicktogglernext">
+					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+				</div>
+				{if !$isOptimizer}
+					<nav class="root_cats_tree hidden root_cats_tree_filter">
+						<ul>
+							{foreach from=$categories_product_count item=_category_cnt_item}
+								{if $_category_cnt_item.name}
+									<li> 
+										{if !$_category_cnt_item.redirect}
+											<a href='{"&fcatID=`$_category_cnt_item.categoryID`&fcatslug=`$_category_cnt_item.slug`&offset=&page="|set_query_html}' class="cat_item_name {if $_category_cnt_item.open || $_category_cnt_item.categoryID == $smarty.get.fcatID} open {/if}">
+										{else}
+											<span class="cat_item_name  {if $_category_cnt_item.open || $_category_cnt_item.categoryID == $smarty.get.fcatID} open {/if}">
+										{/if}
+												{$_category_cnt_item.name|escape:'html'}
+												{*<sup>&nbsp;{$_category_cnt_item.productCount}</sup>*}
+										{if !$_category_cnt_item.redirect}
+											</a>
+										{else}
+											</span>
+										{/if}
+										{if $_category_cnt_item.subcategories}
+											<span class="root_cats_tree_expander"><i class="fa fa-angle-down"></i></span>
+											<ul class="{if $_category_cnt_item.open || $_category_cnt_item.categoryID == $smarty.get.fcatID} visible {/if}">
+												{foreach from=$_category_cnt_item.subcategories item=_category_cnt_sub_item}
+													{if $_category_cnt_sub_item.name}
+														<li> 
+															<a class="cat_item_name {if $_category_cnt_sub_item.open || $_category_cnt_sub_item.categoryID== $smarty.get.fcatID} open {/if}" href='{"&page=&offset=&fcatID=`$_category_cnt_sub_item.categoryID`&fcatslug=`$_category_cnt_sub_item.slug`&offset=&page="|set_query_html}'>
+																{$_category_cnt_sub_item.name|escape:'html'}
+																{*<sup>&nbsp;{$_category_cnt_sub_item.productCount}</sup>*}
+															</a>
+														</li>
+													{/if}
+												{/foreach}
+											</ul>
+										{/if}
+									</li>
+								{/if}
+							{/foreach}
+						</ul>
+					</nav>		
+				{/if}	
+
+			{elseif $filter_categories}
+				<div class="root_cats_tree_btn clicktogglernext">
+					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+				</div>
+				{if !$isOptimizer}
+					<nav class="root_cats_tree hidden root_cats_tree_filter">
+						<ul>
+							<li>
+								{if !$selected_category.redirect}<a href='{"?categoryID=`$selected_category.categoryID`&category_slug=`$selected_category.slug`"|set_query_html}' {else}<span {/if} class="cat_item_name open">
+									{$selected_category.name|escape:'html'}
+								{if !$selected_category.redirect}</a>{else}</span>{/if}
+								{if $filter_categories}
+									<span class="root_cats_tree_expander"><i class="fa fa-angle-down"></i></span>
+									<ul class="visible">
+										{foreach from=$filter_categories item=_subsubcat}
+											{if $_subsubcat.parent_name && !$_subsubcat.hidden && $_subsubcat.products_count > 0}
+												<li>
+													{if !$_subsubcat.redirect}
+														<a href='{"&offset=&page=&fcatID=`$_subsubcat.parent`&fcatslug=`$_subsubcat.parent_slug`"|set_query_html}' class="cat_item_name {if $_subsubcat.parent == $smarty.get.fcatID} open {/if}">
+													{else}
+														<span class="cat_item_name {if $_subsubcat.parent == $smarty.get.fcatID} open {/if}">
+													{/if}
+															{$_subsubcat.parent_name|escape:'html'}
+													{if !$_subsubcat.redirect}
+														</a>
+													{else}
+														</span>
+													{/if}
+												</li>
+											{/if}
+										{/foreach}
+									</ul>
+								{/if}
+							</li>
+						</ul>
+					</nav>		
+				{/if}	
+			{elseif $root_cats_tree}
+				<div class="root_cats_tree_btn clicktogglernext {if !$params} clicktogglernexthandler-on {/if}">
+					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+				</div>
+
+				{if !$isOptimizer}
+					<nav class="root_cats_tree hidden root_cats_tree_smple {if !$params} clicktogglernext-on {/if}">
+						<ul>
+							{foreach from=$root_cats_tree item=_subcat}
+								{if $_subcat.name && !$_subcat.hidden && $_subcat.products_count > 0}
+									<li>
+										{if !$_subcat.redirect}<a href='{"?categoryID=`$_subcat.categoryID`&category_slug=`$_subcat.slug`"|set_query_html}' {else}<span {/if} class="cat_item_name {if $_subcat.open} open {/if}">
+											{$_subcat.name|escape:'html'} 
+										{if !$_subcat.redirect}</a>{else}</span>{/if}
+										{if $_subcat.categories}
+											<span class="root_cats_tree_expander"><i class="fa fa-angle-down"></i></span>
+											<ul {if $_subcat.open} class="visible" {/if}>
+												{foreach from=$_subcat.categories item=_subsubcat}
+													{if !$_subsubcat.hidden && $_subsubcat.products_count > 0}
+														<li>
+															{if !$_subsubcat.redirect}<a href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`&offset=&page=&"|set_query_html}' {else}<span {/if} class="cat_item_name {if $_subsubcat.open} open {/if}">	
+																{$_subsubcat.name|escape:'html'}
+															{if !$_subsubcat.redirect}</a>{else}</span>{/if}
+															{if $_subsubcat.categories && $_subsubcat.open}
+																<ul {if $_subsubcat.open} class="visible" {/if}>
+																	{foreach from=$_subsubcat.categories item=_subsubsubcat}
+																		{if !$_subsubsubcat.hidden && $_subsubsubcat.products_count > 0}
+																			<li>
+																				{if !$_subsubsubcat.redirect}
+																					<a href='{"?categoryID=`$_subsubsubcat.categoryID`&category_slug=`$_subsubsubcat.slug`&offset=&page=&"|set_query_html}' class="cat_item_name {if $_subsubsubcat.open} open {/if}">
+																				{else}
+																					<span class="cat_item_name {if $_subsubsubcat.open} open {/if}">
+																				{/if}
+																						{$_subsubsubcat.name|escape:'html'}
+																				{if !$_subsubsubcat.redirect}
+																					</a>
+																				{else}
+																					</span>
+																				{/if}
+																			</li>
+																		{/if}
+																	{/foreach}
+																</ul>
+															{/if}
+														</li>
+													{/if}
+												{/foreach}
+											</ul>
+										{/if}
+									</li>
+								{/if}
+							{/foreach}
+						</ul>
+					</nav>
+				{/if}
+			{else}
+				<div class="root_cats_tree_btn clicktogglernext">
+					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+				</div>
+				<ul class="real_category_tree hidden">
+					{$categories_tree_html}
+				</ul>
+			{/if}
+
+			{include file="advanced_search_in_category.tpl.html"} 
+
+			{banners type='1'}
+		</div>
+	{else}
+
+	{/if}
+
+	<div class="main_wide_col {if !$products_found} main_wide_col_w70 {else} main_wide_col_w100 {/if}">
+
+
+		{if !$isOptimizer}
+			<div class="category_view_select_wrp">
+				{if $products_to_show}
+					<div class="cat_view_label">{'Product view '|t}:</div>
+					<div class="category_view_select">
+						<form action='{""|set_query_html}' method="post">
+							<input type="hidden" name="category_view" value="">
+						</form>
+						<div class="cat_view_type cat_view_table{if $selected_category.product_view_type == 0 || $product_view_type == 0} current{/if}" rel="0" title="{'table_view'|translate}"><i class="fa fa-th"></i></div>
+						<div class="cat_view_type cat_view_list{if $selected_category.product_view_type == 1 || $product_view_type == 1} current{/if}" rel="1" title="{'list_view'|translate}"><i class="fa fa-th-list"></i></div>
+					</div>
+				{/if}
+			</div>
+		{/if}
+		<h1 class="category_name" data-products-count="{$products_count}">
+			{if $page_h1}
+				{$page_h1|escape:'html'} 
+			{elseif $selected_category.full_name}
+				{$selected_category.full_name|escape:'html'} 
+			{elseif $selected_category.name}
+				{$selected_category.name} 
+			{elseif $products_found ne NULL}
+				{"srch_found"|translate} {$products_found} {"srch_products_plural"|translate}
+			{else}
+				{'Nothing found'|t}
+			{/if}
+		</h1>
+
+		<input type="hidden" name="category_code" value="{$selected_category.categoryID}">
+
+		<div class="path" itemscope itemtype="https://schema.org/BreadcrumbList">
+			<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+				<a itemprop="item" href='{"?"|set_query}' class="path_item">
+					<span itemprop="name">{'Internet shop'|t} {'of tools'|t}</span>
+					<meta itemprop="position" content="{counter}" >
+				</a>
+			</span>
+			{literal} / {/literal}
+			{foreach from=$product_category_path item=_path_itm name=i}
+				{if $_path_itm.categoryID != 1}
+					<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+						{if !$_path_itm.redirect}
+							<a itemprop="item" href='{"?categoryID=`$_path_itm.categoryID`&category_slug=`$_path_itm.slug`"|set_query_html}' class="{cycle values='block1,block2'} path_item">
+						{else}
+							<span itemprop="item" class="{cycle values='block1,block2'} path_item">
+						{/if}
+						
+								<span itemprop="name">{$_path_itm.name|escape:'html'|default:"(no name)"}</span>
+								<meta itemprop="position" content="{counter}" >
+						{if !$_path_itm.redirect}
+							</a>
+						{else}
+							</span>
+						{/if}
+					</span>
+					{if !$smarty.foreach.i.last}
+						{literal} / {/literal}
+					{/if}
+				{/if}
+			{/foreach}
+		</div>
+
+
+
+		{if $selected_category.sale_category}
+			{if $selected_category.sale_picture}
+				<div class="sale_category_banner_wrp">
+					<img class="lazyload" data-src="/images_sale/{$selected_category.sale_picture}" alt="{$selected_category.name|escape:'html'}">
+				</div>
+			{/if}
+			{if $selected_category.descriptio}
+				<div class="sale_category_description">
+					{$selected_category.description|replace:'</h1>':'</h2>'|replace:'<h1':'<h2'}
+				</div> 
+			{/if}
+		{/if}
+		
+		<div class="category_banners_wrp">
+			{if $category_banners}
+				{$category_banners}
+			{/if}			
+		</div>
+
+		{if $category_hits && $selected_category.sale_category != 1}
+			<div class="category_hits">
+				<div class="category_hits_title"><i class="fa fa-star"></i> {'Sale hits'|t}</div>
+				<div class="category_hits_products">
+					{foreach from=$category_hits item=product_item name=product_brief}
+						{if $product_item.name}
+							{include file="product_brief_hit.html" product_info=$product_item _show_num=$smarty.foreach.product_brief.iteration}
+						{/if}
+					{/foreach} 
+				</div>
+			</div>
+		{/if}
+
+		{if !$products_to_show && $subcategories_to_be_shown} 
+			<div class="cat_subcategories">
+				{if $selected_category.type == 1}
+					{foreach from=$subcategories_to_be_shown item=_subcat name=foo}
+						{if !$_subcat.hidden}
+							{if $smarty.foreach.foo.iteration < 3 || !$isOptimizer}
+								{if !$_subcat.redirect}<a href='{"?categoryID=`$_subcat.categoryID`&category_slug=`$_subcat.slug`"|set_query_html}' {else}<span {/if} class="cat_subcat_name" href='{"?categoryID=`$_subcat.categoryID`&category_slug=`$_subcat.slug`"|set_query_html}'>
+									{$_subcat.name|escape:'html'}
+								{if !$_subcat.redirect}</a>{else}</span>{/if}
+								{if $_subcat.categories}
+									<div class="subsubcat_items_wrp">
+										{foreach from=$_subcat.categories item=_subsubcat name=bar}
+											{if !$_subsubcat.hidden && $_subsubcat.products_count > 0}
+												{if $smarty.foreach.bar.iteration < 16 || !$isOptimizer}
+													{if !$_subsubcat.redirect}<a href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}' {else}<span {/if} class="subsubcat_item" >
+														<div class="imgwrp">
+															{if $_subsubcat.picture}
+																<img class="lazyload" data-src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$_subsubcat.picture}" alt="{$_subsubcat.name|escape:'html'}">
+															{else}
+																<img class="lazyload" data-src="{$smarty.const.WBS_INSTALL_PATH}images/noimg.png" alt="{$_subsubcat.name|escape:'html'}">
+															{/if}
+														</div>
+														<div class="cat_item_name">{$_subsubcat.name|escape:'html'}</div>
+													{if !$_subsubcat.redirect}</a>{else}</span>{/if}
+												{/if}
+											{/if}
+										{/foreach}
+									</div>
+								{/if}
+							{/if}
+						{/if}
+					{/foreach}
+				{else}
+					<div class="subsubcat_items_wrp">
+						<div class="tooltip_helper">
+							{'parts_select_label'|t}
+						</div>						
+						{foreach from=$subcategories_to_be_shown item=_subsubcat name=foo}
+							{if !$_subsubcat.hidden && $_subsubcat.products_count > 0}
+								{if $smarty.foreach.foo.iteration < 10 || !$isOptimizer}
+									<a class="subsubcat_item" href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}'>
+										<div class="imgwrp">
+											{if $_subsubcat.picture}
+												<img class="lazyload" width="200" height="48" data-src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$_subsubcat.picture}" alt="{$_subsubcat.name|escape:'html'}">
+											{else}
+												<img class="lazyload" data-src="{$smarty.const.WBS_INSTALL_PATH}images/noimg.png" alt="{$_subsubcat.name|escape:'html'}">
+											{/if}
+										</div>
+										<div class="cat_item_name">{$_subsubcat.name|escape:'html'}</div>
+									</a>
+								{/if}
+							{/if}
+						{/foreach}
+					</div>
+				{/if}
+			</div>
+		{/if}
+
+
+		{if $products_to_show}
+			{if !$selected_category.parts_view == 1}
+				<div id="cat_product_sort">
+					<span class="hidden-xs">{'Output'|t}:&nbsp;</span>
+					<form action='{if $products_found}{"&offset=`$offset`"|set_query_html}{else}{"?categoryID=`$selected_category.categoryID`&category_slug=`$selected_category.slug`&offset=`$offset`"|set_query_html}{/if}' method="get">
+						{if $products_found}
+							<input type="hidden" name="searchstring" value="{$searchstring}">
+						{/if}
+						<select name="isort">
+							<option {if $isort == ''} selected="selected" {/if} value="">{'str_default'|t}</option>
+							<option {if $isort == 'cheap'}selected="selected"{/if} value="cheap">{'From cheap to expensive'|t}</option>
+							<option {if $isort == 'expansiv'}selected="selected"{/if} value="expansiv">{'From expensive to cheap'|t}</option>
+							<option {if $isort == 'new'}selected="selected"{/if} value="new">{'New products'|t}</option>
+							<option {if $isort == 'popular'}selected="selected"{/if} value="popular">{'Popular'|t}</option>
+						<select>
+						&nbsp;<input type="submit" name="sbm" value="OK" class="blue_btt">
+					</form>
+				</div>
+			{/if} 
+
+			{if !$subcategories_to_be_shown && $selected_category.show_subcategories_products == 1 && $selected_category.allow_products_search && $selected_category.parent
+					&& ($categoryMinMaxPrice.PriceMin != $categoryMinMaxPrice.PriceMax || $params) }
+				<span class="adv_search_button button visible-xs">
+					<i class="fa fa-filter"></i>Фильтр{if $total_selected_options}<sup>{$total_selected_options}</sup>{/if}
+				</span>
+			{/if}
+	
+			<div class="products_wrp"> 
+				{if $selected_category.parts_view == 1}
+					<div class="pb_product_table_search">
+						{if !$isOptimizer}
+							<form class="pb_product_table_search_form">
+								<input type="text" value="" placeholder="{'Fast search'|t}, {'enter model name'|t}...">
+								<button type="reset"><i>x</i> отменить</button>
+							</form>
+							<script>{literal}
+								function auto_layout_keyboard(str, en_to_ru) {
+									en_replacer = {
+										"q":"й", "w":"ц", "e":"у", "r":"к", "t":"е", "y":"н", "u":"г",
+										"i":"ш", "o":"щ", "p":"з", "[":"х", "]":"ъ", "a":"ф", "s":"ы",
+										"d":"в", "f":"а", "g":"п", "h":"р", "j":"о", "k":"л", "l":"д",
+										";":"ж", "'":"э", "z":"я", "x":"ч", "c":"с", "v":"м", "b":"и",
+										"n":"т", "m":"ь", ",":"б", ".":"ю", "/":"."
+									};
+									ru_replacer = [];
+									for (var key in en_replacer) {
+										ru_replacer[en_replacer[key]] = key;
+									}
+
+									if (en_to_ru == 1) {
+										return str.replace(/[A-z/,.;\'\]\[]/g, function ( x ){
+											return x == x.toLowerCase() ? en_replacer[ x ] : en_replacer[ x.toLowerCase() ].toUpperCase();
+										});
+									} else {
+										return str.replace(/[А-я/,.;\'\]\[]/g, function ( x ){
+											return x == x.toLowerCase() ? ru_replacer[ x ] : ru_replacer[ x.toLowerCase() ].toUpperCase();
+										});
+									}
+								}
+
+								var timerJQueryId_3453454 = setInterval(function() {
+									if (window.jQuery) {
+										clearInterval(timerJQueryId_3453454);
+										var $ = window.jQuery;
+
+										$('.pb_product_table_search_form input').on('keyup keypress blur change click', function() {
+											var searchText = $(this).val().toLowerCase();
+											$('.pb_product_table tr a').find('.hl').contents().unwrap();
+											if (searchText.length > 1) {
+												$('.pb_product_table tr').css({'display':'none'});
+												var _found = $('.pb_product_table tr').filter(function(){
+													checkTxt = $(this).text().toLowerCase(); 
+													return checkTxt.indexOf(searchText) != -1 || (searchText.length > 2 && (checkTxt.indexOf(auto_layout_keyboard(searchText, 1)) != -1  || checkTxt.indexOf(auto_layout_keyboard(searchText, 0)) != -1) ) ;
+												});
+												_found.css({'display':'table-row'}); 
+												_found.each(function () { 
+												    var rgxp = new RegExp(searchText, 'gmi'); 
+													var repl = '<span class="hl">' + searchText + '</span>';
+													$(this).find('a')[0].innerHTML = $(this).find('a')[0].innerHTML.replace(rgxp, repl);
+												});
+											} else {
+												$('.pb_product_table tr a').find('.hl').contents().unwrap();
+												$('.pb_product_table tr').css({'display':'table-row'});
+											}
+										});
+										$('.pb_product_table_search_form button').click(function() {
+											$('.pb_product_table tr a').find('.hl').contents().unwrap();
+											$('.pb_product_table tr').css({'display':'table-row'});
+										});
+									}
+								}, 250);
+							{/literal}</script>
+						{/if}
+					</div>
+					<div class="pb_product_table_wrp">						
+						<div class="tooltip_helper">
+							{if $selected_category.tooltip_description}
+								{$selected_category.tooltip_description}
+							{else}
+								{'select_model_label'|t}
+							{/if}
+						</div>	
+						<table class="pb_product_table">
+							{foreach from=$products_to_show item=product_info}
+								<tr>
+									<td>
+										{*"?ukey=product&productID=`$product_info.productID`&product_slug=``"|set_query_html*}
+										<a class="pb_product_name" href='/product/{if $product_info.slug}{$product_info.slug}{else}{$product_info.productID}{/if}/'>
+											{if $product_info.name}{$product_info.name}{else}{$product_info.productID}{/if}
+										</a>
+									</td>
+								</tr>
+							{/foreach} 
+						</table>
+					</div>
+				{else}
+					{foreach from=$products_to_show item=product_item name=product_brief}
+						{if $selected_category.product_view_type == 1 || $product_view_type == 1}
+							{include file="product_brief_list.html" product_info=$product_item}
+						{else}
+							{include file="product_brief_table.html" product_info=$product_item _show_extra=1}
+						{/if}
+					{/foreach} 
+				{/if}
+				{if $catalog_navigator && !$isOptimizer}
+					<div class="navigator_wrp">
+						{$catalog_navigator}
+					</div>
+				{/if}
+			</div>
+		{elseif !$subcategories_to_be_shown}
+			<p align="center">
+				{if $search_with_change_category_ability && !$advanced_search_in_category}
+					&nbsp;
+				{else}
+					{if $advanced_search_in_category}
+						&nbsp;&nbsp;&nbsp;&nbsp;< {"srch_no_matches_found"|translate} >
+					{else}
+						&nbsp;&nbsp;&nbsp;&nbsp;< {"str_empty_category"|translate} >
+					{/if}
+				{/if}
+			</p>
+		{/if}
+	</div>
+	
+	
+	<div class="seo_text">
+		<div class="main_wide_padding"> 
+			{literal}
+			<!--seo_text_start-->
+			{/literal}
+			{if $selected_category.description && (!$smarty.get.offset || $smarty.get.offset == 0) && !$isOptimizer}
+				{$selected_category.description}
+			{/if}
+			{literal}<!--seo_text_end-->{/literal}
+
+			{if $faqItems}
+				<div class="qa-block" itemscope='' itemtype='https://schema.org/FAQPage'>
+					{foreach from=$faqItems item=_faqItem}
+
+						<div class="qa-item question-spoiler" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+						    <h3 itemprop="name" class="question-spoiler-name">{$_faqItem.question}</h3>
+						    <div class="qa-item-answer question-spoiler-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+						      <div itemprop="text">
+						        {$_faqItem.answer}
+						      </div>
+						    </div>
+						  </div>
+
+					{/foreach}
+				</div>
+			{/if}
+		</div>
+	</div>
+{/strip}

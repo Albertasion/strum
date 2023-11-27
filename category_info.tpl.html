@@ -1,0 +1,93 @@
+{strip}
+	<div class="subcats_row">
+		<div class="subacts_col">
+			<ul>
+				{foreach from=$subcategories item=_subcat name=foo}
+					{if $_subcat.hidden==0 && $_subcat.name && $_subcat.products_count > 0}
+						<li class="subacts_item {if $smarty.foreach.foo.first} active {/if} " data-id="c{$_subcat.categoryID}"> 
+							<a href='{"?categoryID=`$_subcat.categoryID`&category_slug=`$_subcat.slug`"|set_query_html}'>
+								<span class="catimgwrp" {if $_subcat.picture} style="background-image: url('{$smarty.const.URL_PRODUCTS_PICTURES}/{$_subcat.picture}');" {/if}></span>
+								<span class="cattitle">{$_subcat.name|escape:'html'}</span>
+							</a>
+						</li>
+					{/if}
+				{/foreach}
+				{foreach from=$params item=_variant}
+					<li class="subacts_item " data-id="v{$_variant.variantID}">
+						<a href='{"?ukey=category_search&params[]=`$_variant.variant_slug`&categoryID=`$category.categoryID`&category_slug=`$category.slug`"|set_query_html}'>
+							<span class="scparam_img {if !$_variant.picture} noimg {else} withimg {/if}" {if $_variant.picture} style="background-image: url('{$smarty.const.URL_VARIANTS_PICTURES}/{$_variant.picture}');" {/if} title="{$_variant.option_value|escape:'html'}">
+								{$_variant.option_value|escape:'html'}
+							</span>
+						</a>
+					</li> 
+				{/foreach}
+			</ul>
+		</div>
+		<div class="subsubacts_col">
+			{foreach from=$subcategories item=_subcat name=foo}
+				<div class="subcat_pane {if $smarty.foreach.foo.first} active {/if}" data-id="c{$_subcat.categoryID}">
+					<ul>
+						{foreach from=$_subcat.subsubcategories item=_subsubcat}
+							{if $_subsubcat.params && $_subsubcat.hidden==0 && $_subsubcat.products_count > 0}
+								<li {if $_subsubcat.params} class="withparams" {/if}> 
+									<a class="ss_cat_title" href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}'>{$_subsubcat.name|escape:'html'}</a>	
+									<a href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}' class="imgwrp" {if $_subsubcat.picture} style="background-image: url('{$smarty.const.URL_PRODUCTS_PICTURES}/{$_subsubcat.picture}');" {/if} title="{$_subsubcat.name|escape:'html'}"></a>	
+									<span class="ss_cat_right">
+										<ul>
+											{foreach from=$_subsubcat.params item=_subsub_variant}
+												<li>
+													<a href='{"?ukey=category_search&params[]=`$_subsub_variant.variant_slug`&categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}'>{$_subsub_variant.option_value|escape:'html'}</a>
+												</li>
+											{/foreach}
+										</ul>
+									</span>									
+								</li>
+							{/if}
+						{/foreach}
+						{foreach from=$_subcat.subsubcategories item=_subsubcat}
+							{if !$_subsubcat.params && $_subsubcat.hidden==0 && $_subsubcat.name && $_subsubcat.products_count > 0}
+								<li {if $_subsubcat.params} class="withparams" {/if}> 
+									<a class="ss_cat_title" href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}'>{$_subsubcat.name|escape:'html'}</a>	
+									<a href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}' class="imgwrp" {if $_subsubcat.picture} style="background-image: url('{$smarty.const.URL_PRODUCTS_PICTURES}/{$_subsubcat.picture}');" {/if} title="{$_subsubcat.name|escape:'html'}"></a>	
+								</li>
+							{/if}
+						{/foreach}
+					</ul>			
+				</div>
+			{/foreach}
+			{foreach from=$params item=_variant}
+				<div class="subcat_pane" data-id="v{$_variant.variantID}">
+					<ul>
+						{foreach from=$_variant.subsubcategories item=_subsubcat}
+							{if $_subsubcat.params && $_subsubcat.hidden==0 && $_subsubcat.name && $_subsubcat.products_count > 0}
+								<li {if $_subsubcat.params} class="withparams" {/if}> 
+									<a class="ss_cat_title">{$_subsubcat.name|escape:'html'}</a>	
+									<a class="imgwrp" href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}' {if $_subsubcat.picture} style="background-image: url('{$smarty.const.URL_PRODUCTS_PICTURES}/{$_subsubcat.picture}');" {/if} title="{$_subsubcat.name|escape:'html'}"></a>
+									<span class="ss_cat_right">
+										<ul>
+											{foreach from=$_subsubcat.params item=_subsub_variant}
+												<li>
+													<a href='{"?ukey=category_search&params[]=`$_subsub_variant.variant_slug`&categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}'>{$_subsub_variant.option_value|escape:'html'}</a>
+												</li>
+											{/foreach}
+										</ul>
+									</span>
+								</li>
+							{/if}
+						{/foreach} 
+						{foreach from=$_variant.subsubcategories item=_subsubcat}
+							{if !$_subsubcat.params && $_subsubcat.hidden==0 && $_subsubcat.name && $_subsubcat.products_count > 0} 
+								<li {if $_subsubcat.params} class="withparams" {/if}> 
+									<a class="ss_cat_title">{$_subsubcat.name|escape:'html'}</a>	
+									<a class="imgwrp" href='{"?categoryID=`$_subsubcat.categoryID`&category_slug=`$_subsubcat.slug`"|set_query_html}' {if $_subsubcat.picture} style="background-image: url('{$smarty.const.URL_PRODUCTS_PICTURES}/{$_subsubcat.picture}');" {/if} title="{$_subsubcat.name|escape:'html'}"></a>		
+								</li>
+							{/if}
+						{/foreach}
+					</ul>			
+				</div>
+			{/foreach}
+		</div>
+		<div class="clr"></div>
+	</div>
+
+{/strip} 
