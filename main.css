@@ -6418,14 +6418,22 @@ img.vendorlogo {
         font-family: sans-serif;
         text-shadow: -5px 3px 19px #0f25df;
     }
-    /* span.\'info_text::after {
-        content: url(/images_sale/verified_icon.svg);
-        position: absolute;
-        left: 430px;
-        top: 50%;
-        transform: translateY(-50%);
 
-    } */
+    span.original_parts {
+        display: inline-block;
+        border: 1px solid #ede9e9;
+        padding: 5px;
+        margin: 10px;
+        border-radius: 10px;
+        color: #e81111;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: rgba(23,60,97,6%);
+    }
+    .photos {
+        display: flex;
+        justify-content: space-between;
+    }
 
 
 
