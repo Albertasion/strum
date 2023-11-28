@@ -1,12 +1,17 @@
+
 {strip}
 {if $product_info ne NULL}
 <div class="main_wide_padding">
+    <!-- path -->
     <div class="path">
+
+        <!-- main item crump -->
         <span>
             <a href='{"?"|set_query}' class="path_item">
                 <span>{'Internet shop'|t} {'of tools'|t}</span>
             </a>
         </span>
+
         {literal} / {/literal}
         {foreach from=$product_category_path item=_path_itm name=i}
             {if $_path_itm.categoryID != 1}
@@ -31,11 +36,16 @@
         {/foreach}
     </div>
 
+
+
     {$MessageBlock}
-
+    <!-- назва -->
     <h1 class="product_name">
-        {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}</h1>
+        {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}
+    </h1>
 
+
+    <!-- новина про товар -->
     {*if $product_news}
     <div class="desc-news">
         {section name=i loop=$product_news}
@@ -44,9 +54,13 @@
         {/section}
     </div>
     {/if*}
+
 </div>
+
 <hr>
+
 <div class="main_wide_padding">
+  <!-- ліва сторона . контейнер с фото -->
     <div class="pi_header_left">
         {if $all_product_pictures}
             <div class="pi_allimages">
@@ -70,6 +84,9 @@
                 {/foreach}
             </div>
         {/if}
+
+
+        <!-- стикери наклейки на фото -->
         <div class="pi_imgwrp">
             {if $product_info.sale_sticker_arr}
             <div class="pr_stickers_wrp">
@@ -80,6 +97,7 @@
                 {/foreach}
             </div>
             {/if}
+
             {if $product_info.gift_product && $product_info.gift_product.productID > 0}
             <span class="pr_gift_ico" title="+ Подарок {$product_info.gift_product.name|escape:'html'}">
                 <img class="lazyload"
@@ -87,6 +105,7 @@
                     alt="{$product_info.gift_product.name|escape:'html'}">
             </span>
             {/if}
+            <!-- саме головне фото(велике) -->
             <a name="anch_current_picture"></a>
             {if $product_info.picture}
                 <a class="imgwrp" data-fancybox="gallery" target="_blank"
@@ -99,6 +118,7 @@
                     <div class="lupa">{"img_enlarge"|translate}</div>
                 </a>
             {else}
+            <!-- якщо немає . фото заглушка -->
                 <div class="imgwrp">
                     <img class="lazyload" id='img-current_picture' data-src="/images/noimg.png"
                         title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" />
