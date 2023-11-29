@@ -58,8 +58,8 @@
 </div>
 
 <hr>
-
-<div class="photos">
+<!-- блок фото плюс короткий опис -->
+<div class="top_product_info_block">
   <!-- ліва сторона . контейнер с фото -->
     <div class="pi_header_left">
         {if $all_product_pictures}
@@ -153,14 +153,50 @@
         <span class="original_parts">{'Original spare part'|t}</span>
         {/if}
   <!-- назва -->
+  <div class="product_name_block">
   <h1 class="product_name">
     {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}
 </h1>
+</div>
+<div class="Description_statusRating_sku">
+  <!-- якщо товар не архивний -->
+  {if !$product_info.archive}
+<!-- кнопка наявності підєднується -->
+         {include file="product_instock_block.html"}
+     {else}
+<!-- напис аривний товар -->
+         <div class="stock_label archive">
+             <i class="fa fa-snowflake-o"></i>
+             {'Archive product'|t}
+         </div>
+     {/if}
+
+
+     <div class="Rating-module" style="height: 16px; cursor: default;"><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span>
+    </div>
+
+
+
+
        <!-- код для замовлення -->
-        <div class="product_code">{'Code for order'|t}: {$product_info.productID}
-            <!-- артикул -->
-    {if $product_info.product_code &&$smarty.const.CONF_ENABLE_PRODUCT_SKU} / 
-    Артикул: {$product_info.product_code|escape:'html'}{/if}
+    
+<div class="product_code">
+    <div class='code_for_order_block'>
+    <span class="code_for_order_word">{'Code for order'|t}:</span> 
+                <span class="code_for_order_defination">{$product_info.productID}</span>
+    </div>
+                    <!-- артикул -->
+                    <div class='code_for_order_block'>
+            {if $product_info.product_code &&$smarty.const.CONF_ENABLE_PRODUCT_SKU}
+            <span class="code_for_order_word"> Артикул:</span> 
+            <span class="code_for_order_defination">{$product_info.product_code|escape:'html'}</span>
+            {/if}
+        </div>
             <!-- код для заміни -->
             {if $product_info.replacementProducts}
                 <div class="pi_new_code">
@@ -175,15 +211,16 @@
                     {/foreach}
                 </div>
             {/if}
-
-        
         </div>
-        <table class="pi_header_right_header">
-            <tr>
+
+ </div>
+        <div class="pi_header_right_header">
+    
 <!-- якщо архивній товр то указіваем артхивний товр -->
                 {if !$product_info.archive}
-                <td width="49%">
-                <div class="pi_price" align="left">
+            
+                <div class="pi_price">
+
                     <!-- якщо товар не архивний -->
                 {if !$product_info.archive}
                 <!-- якщо курс не нуль ціна більше нуля -->
@@ -193,6 +230,27 @@
              <!-- ціна звичайна           -->
                 <span class="priceValue">{$product_info.PriceWithUnit}</span> 
                 </span>
+
+   <!-- якщо товар не архивний -->
+   {if !$product_info.archive}
+   <!-- кнопка купити -->
+   <div>
+          <form class="product_info" rel="{$product_info.productID}" action='{""|set_query_html}'
+                method="post">
+              <input name="productID" value="{$product_info.productID}" type="hidden" />
+              <input class="product_price" value="{$product_info.price_incurr|escape:'html'}" type="hidden" />
+              <input class="product_list_price" value="{$product_info.list_price_incurr|escape:'html'}" type="hidden" />
+      <!-- підключення файла кнопки -->
+              {include file="item_product_add2cart_button.html" product_info=$product_info request_product_count=1}
+
+          </form>
+          </div>
+      {/if}
+
+
+
+
+
 
             {if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0}
             <span class="regularPrice">
@@ -238,40 +296,14 @@
 
                             </div>
                         {/if}
-                    </td>
                 {/if}
 
 
-                <td width="1%" align="center"> </td>
-
-                <td width="49%" align="left">
-                    &nbsp;
-                    <!-- якщо товар не архивний -->
-                    {if !$product_info.archive}
-                 <!-- кнопка купити -->
-                        <form class="product_info" rel="{$product_info.productID}" action='{""|set_query_html}'
-                              method="post">
-                            <input name="productID" value="{$product_info.productID}" type="hidden" />
-                            <input class="product_price" value="{$product_info.price_incurr|escape:'html'}" type="hidden" />
-                            <input class="product_list_price" value="{$product_info.list_price_incurr|escape:'html'}" type="hidden" />
-                    <!-- підключення файла кнопки -->
-                            {include file="product_add2cart_button.html" product_info=$product_info request_product_count=1}
-
-                        </form>
-<!-- кнопка наявності підєднується -->
-                        {include file="product_instock_block.html"}
-
-                    {else}
-<!-- напис аривний товар -->
-                        <div class="stock_label archive">
-                            <i class="fa fa-snowflake-o"></i>
-                            {'Archive product'|t}
-                        </div>
-                    {/if}
-                </td>
-            </tr>
-
-        </table>
+                
+                 
+            
+<!-- див таблиця -->
+        </div>
 
         <!-- відлік часу акції -->
         {if $product_info.sale_dateto > 0 && $product_info.sale_dateto > $smarty.now}
