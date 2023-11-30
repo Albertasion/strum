@@ -1,0 +1,387 @@
+{strip}
+{if $smarty.const.CONF_TOP_HEADER_MSG}
+<div class="top-information" {if $smarty.const.CONF_TOP_HEADER_COLOR}
+	style="background-color: {$smarty.const.CONF_TOP_HEADER_COLOR};" {/if}>{$smarty.const.CONF_TOP_HEADER_MSG}
+
+</div>
+{/if}
+
+
+<!-- плаваюче меню -->
+<div class="top_menu_float_main">
+	<div class="header_search_float_menu">
+		{if !$isOptimizer}
+			{include file="product_search.html"}
+		{/if}
+	</div>
+
+
+	<div class="header_acount_link_float_main">
+		<a class="header_account_title handler_popup_login_form" href='{"?ukey=auth"|set_query_html}'>{'Cabinet'|t}</a>
+	</div>
+
+	<div class="header_shopping_cart_float_main">
+		{if !$isOptimizer}
+			{include file="shopping_cart_info.html"}
+		{/if}
+	</div>
+</div>
+
+
+
+
+
+<div class="main_wrp">
+	<div class="content">
+		<div class="hidden-xs">
+			<div class="header_top_menu_info">
+				<div class="main_wide_padding">
+					<ul class="header_list_top_menu_info">
+			
+						<li><span class="htm_ico htm_ico_id3"></span><a href="/auxpage_dostavka/">{'pgn_shipping_payment'|t}</a></li>
+						<li><span class="htm_ico htm_ico_id32"></span><a href="/auxpage_garantija/">{'Product return'|t}</a></li>
+						<li><span class="htm_ico htm_ico_id16"></span><a href="/auxpage_oplata/">{'Contacts'|t}</a></li>
+						<li><span class="htm_ico htm_ico_id29"></span><a href="/discussions/">{'pgn_product_reviews'|t}</a></li>
+						<li><span class="htm_ico htm_ico_id30"></span><a href="/auxpage_speczakaz-zapchastej/">{'Special parts order'|t}</a></li>
+						<li><span class="htm_ico htm_ico_id28"></span><a href="/auxpage_25/">{'Hot to order parts'|t}</a></li>
+
+						{foreach from=$lang_list key=lang_id item=lang}
+							<li>
+								<a class="lang {if $lang->iso2==$lang_iso2} current {/if}" href='{if $lang->iso2!="ru"}/{$lang->iso2}{/if}{"&lang_iso2="|set_query_html}' data-lang="{$lang->iso2}">
+									{$lang->iso2|escape:'html'}
+								</a>
+							</li>
+						{/foreach}
+					</ul>
+
+					<ul class="header_promotion_block">
+						<li class="">
+							<img src="/images_sale/header_new_icon.svg" alt="header_new_icon" width="16px">
+							
+							<a href='/category/novinki/'>{'New products '|t}</a>
+						</li>
+							{foreach from=$sale_categories item=_sale_cat}
+							<li>
+								<img src="/images_sale/header_percent.svg" alt="header_percent" width="16px">
+								{*<span class="header_promotion_block sale_cat_cnt {if $_sale_cat.sale_menu_icon} img {/if}">
+									{if $_sale_cat.sale_menu_icon}
+										<img class="lazyload" data-src="/images_sale/{$_sale_cat.sale_menu_icon}" alt="{$_sale_cat.name|escape:'html'}">
+									{else}
+										{$_sale_cat.products_count}
+									{/if}
+								</span>*}
+								<a href='{"?categoryID=`$_sale_cat.categoryID`&category_slug=`$_sale_cat.slug`"|set_query_html}'>{$_sale_cat.name|escape:'html'}</a>
+							{/foreach}
+						</li>
+					</ul>
+					<div class="clr"></div>
+				</div>
+			</div>
+		</div>
+		{include file="sidebar.html"}
+		<div class="rspns_header_top_menu_wrp visible-xs">
+			 <div class="rspns_header_top_menu">
+				<div class="rspns_htm_row">
+					<div class="rspns_htm_cell rspns_htm_cell_menu">
+						<div class="rspns_menu">
+
+						</div> 
+					</div>
+					<div class="rspns_htm_cell rspns_htm_cell_search">
+						<div class="rspns_htm_search">
+							<div class="rspns_search_btn clicktogglernext rspns_search_handler">
+								<i class="fa fa-search"></i>
+							</div>
+							{if !$isOptimizer}
+								<div class="rspns_search_form">
+									{include file="product_search.html"}
+								</div>
+							{/if}
+						</div>
+					</div>
+					<div class="rspns_htm_cell rspns_htm_cell_logo">
+						<a class="rspns_htm_logo" href="{$smarty.const.CONF_FULL_SHOP_URL}"></a>
+					</div>
+					<div class="rspns_htm_cell rspns_htm_cell_contacts">
+						<div class="rspns_contacts_btn clicktogglernext rspns_contacts_handler">
+							<i class="fa fa-phone"></i>
+						</div>
+						{if !$isOptimizer}
+						<div class="rspns_contacts_content">
+							<div class="rspns_contacts_block">
+								<div class="hdr_phone_ico">
+
+<a href="tel:+380970009161">(097) 000-91-61</a><br>
+<a href="tel:+380953004755">(095) 300-47-55</a><br>
+<a href="tel:+380632317000">(063) 231-70-00</a>
+<p>Не змогли дозвонитися. Зробіть замовлення через кошик, наші спеціалісти зв'яжуться з вами найближчим часом</p>
+
+</div>
+
+							</div>
+							<div class="rspns_contacts_block">
+								<div class="hdr_worktime_ico">
+								пн-пт: 9:00-18:00<br>
+
+								{'su'|t}: {'day off'|t}<br>
+							</div>
+
+							</div>
+							<div class="rspns_contacts_block">
+								<div class="hdr_map_ico">
+								<span class="b">{'addr_shrt'|t}</span>
+							</div>
+							</div>
+						</div>
+						{/if}
+					</div>
+					<div class="rspns_htm_cell rspns_htm_cell_cart">
+						<div class="rspns_cart_btn hndl_proceed_checkout">
+							<i class="fa fa-shopping-cart"></i>
+							<sup class="shpcrtgc shopping_cart_count">{$shopping_cart_items}</sup>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+<!-- Block of test menu rspnsv-->
+<div class="menu_wrapper_rspns">	
+<input type="checkbox" id="hmt" class="hidden-menu-ticker">
+  <label for="hmt" class="btn-menu">	
+    <span class="first"></span>
+    <span class="second"></span>
+    <span class="third"></span>
+  </label>
+  <input type="checkbox" id="hmt" class="hidden-menu-ticker-right">
+	<label for="hmt" class="btn-menu-right"></label> 
+	<div class="hidden-menu" id="hidden_menu_inverse" >
+		<div class="rspns_top_menu">
+			<a class="header_logo" href="{$smarty.const.CONF_FULL_SHOP_URL}">
+				<img src="/images_sale/logo_head.svg">
+			</a>
+
+			<div class="header_login ">
+				<a class="header_account_title handler_popup_login_form" href='{"?ukey=auth"|set_query_html}'>{'btn_login'|t}</a>
+			</div>
+
+			<div class="header_lang">
+				<ul>
+					{foreach from=$lang_list key=lang_id item=lang}
+					<li>
+						<a class="lang {if $lang->iso2==$lang_iso2} current {/if}" href='{if $lang->iso2!="ru"}/{$lang->iso2}{/if}{"&lang_iso2="|set_query_html}' data-lang="{$lang->iso2}">
+							{$lang->iso2|escape:'html'}
+						</a>
+					</li>
+					{/foreach}
+				</ul>
+			</div>
+		</div>
+		<div class="menu_list_common" >
+
+
+			<ul id="accordion" class="accordion">
+				<li>
+				  <div class="link"><i class="fa fa-database"></i>Каталог товаров<i class="fa fa-chevron-down"></i></div>
+				  <ul class="submenu">
+					<li><a href="/category/zapchasty/">Запчасти</a></li>
+					<li><a href="/category/elektroinstrument/">Электроинструменты</a></li>
+					<li><a href="/category/sadovaja-tehnika-5r/">Садовая техника</a></li>
+					<li><a href="/category/benzinovye-generatory-raznye/">Генераторы</a></li>
+					<li><a href="/category/stanki/">Станки</a></li>
+					<li><a href="/category/stroitelnoe-oborudovanie/">Строительное оборудование</a></li>
+					<li><a href="/category/pnevmooborudovanie/">Пневмоборудование</a></li>
+
+				  </ul>
+				</li>
+			  </ul>
+
+
+
+			<ul>
+				<li class="main_menu_slide"><a href="#">{'lnk_homepage'|t}</a></li>
+				
+
+				<li class="promotions_menu_slide"><a href="/category/akcija/">{'Promotions'|t}</a></li>
+				<li class="new_product_menu_slide"><a href="/category/novinki/">{'New products'|t}</a></li>
+				<li class="map_menu_slide"><a href="/auxpage_oplata/">{'Contacts'|t}</a></li>
+				<li class="basket_menu_slide"><a href='/cart/'>{'pgn_cart'|t}</a></li>
+				<li class="email_menu_slide"><a href="">strumentua@gmail.com</a></li>
+				<li class="reviews_menu_slide"><a href="/discussions/">{'pgn_product_reviews'|t}</a></li>
+				<li class="delivery_delay_menu_slide"><a href="/auxpage_speczakaz-zapchastej/">{'Specialorder'|t}</a></li>
+				<li class="return_menu_slide"><a href="/auxpage_garantija/">{'Product return '|t}</a></li>
+				<li class="worktime_menu_slide"><a href="#">ПН-ПТ 9:00-18:00</a></li>
+				<li class="phone_menu_slide"><a href="tel:+380970009161">(097) 000 91 61</a></li>
+				<p>Не змогли дозвонитися. Зробіть замовлення через кошик, наші спеціалісти зв'яжуться з вами найближчим часом</p>
+
+
+			</ul>
+			
+		</div>
+
+	</div>
+
+</div>
+
+
+ 
+<!-- End of block test menu -->
+
+
+
+
+		</div>
+
+		<header class="header_header hidden-xs">
+			<div class="main_wide_padding">
+				<div class="header_wrapper">
+					<div class="header_logo_top">
+						<a href="{$smarty.const.CONF_FULL_SHOP_URL}"><img src="/images_sale/logo_head.svg"> </a>
+						<img src="/images_sale/logohusqvarna.png" class="vendorlogo">
+					</div>
+					<div class="header_search">
+						{if !$isOptimizer}
+							{include file="product_search.html"}
+						{/if}
+					</div>
+					<div class="header_contacts_info">
+						<div class="header_chevron_icon">
+							<img src="/images_sale/header_chevron-down.svg" alt="chevron_icon" width="16px">
+						</div>
+						<div class="header-phone-link"><a href="tel:+380970009161">(097) 000-91-61</a></div>
+						<div class="header_phone_icon">
+							<img src="/images_sale/header-phone_icon.svg" alt="phone_icon" width="14px">
+						</div>
+
+						<div class="drop-down_contact">
+
+							<ul class="list-phone">
+								<li><a href="tel:+380970009161">(097) 000-91-61 </a>
+								</li>
+								<li> <a href="tel:+380999847337">(099) 984-73-37</a></li>
+								<li> <a href="tel:+380632317000">(063) 231-70-00</a></li>
+								<p class="text_list_phone_drope">Не змогли дозвонитися. <br>Зробіть замовлення через кошик, <br> наші спеціалісти зв'яжуться <br>з вами найближчим часом</p>
+							</ul>
+							<ul class="">
+								<li>strumentua@gmail.com</li>
+							</ul>
+
+							<ul class="">
+								<li>пн-пт:9.00-18.00</li>
+								<li>{'st,su'|t}:{'day off'|t}</li>
+							</ul>
+							<ul class="list_last_drop">
+								<li>{'Kyiv city'|t}</li>
+								<li>{'st'|t}. {'Kirillovskaya'|t} 160</li>
+							</ul>
+						</div>
+
+						{* <!-- {if $smarty.const.CONF_WARN_WORKTIME_MSG}
+						{$smarty.const.CONF_WARN_WORKTIME_MSG}
+						{/if} --> *}
+					</div>
+					<div class="header_right">
+						<div class="header_account">
+							<div class="header_account_icon">
+								<img src="/images_sale/header_user_account.svg" alt="user_accont_icon" width="16px">
+							</div>
+							<div class="header_acount_link">
+								<a class="header_account_title handler_popup_login_form" href='{"?ukey=auth"|set_query_html}'>{'Cabinet'|t}</a>
+							</div>
+						</div>
+						<div class="header_shopping_cart">
+							{if !$isOptimizer}
+								{include file="shopping_cart_info.html"}
+							{/if}
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="header_categories_wrp">
+
+			<div class="main_wide_padding">
+				<nav class="header_menu">
+					<table>
+						<tbody>
+							<tr>
+								{foreach from=$root_cats item=_cat}
+									<td class="tv_link_root {if $_cat.categoryID == $categoryID} open {/if} tvlr_{$_cat.categoryID}"
+										rel="{$_cat.categoryID}">
+										{if !$_cat.redirect}<a
+											href='{"?ukey=category&categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}'
+											{else}<span {/if}
+											class="tv_alink {if $_cat.categoryID == $categoryID} open {/if}">
+											<span class="vmenu_ico vmenu_ico_id{$_cat.categoryID}"></span><span
+												class="tv_link_name">{$_cat.name}</span><span class="tv_link_helper"></span>
+											{if !$_cat.redirect}</a>{else}</span>{/if}
+										<div class="tv_subcategories_wrp">
+											<div class="tv_subcategories">
+												<div class="loading"></div>
+											</div>
+										</div>
+									</td>
+								{/foreach}
+							</tr>
+						</tbody>
+					</table>
+				</nav>
+			</div>
+		</div>
+		{if $main_content_template == 'home.html'}
+		{$banners}
+		{/if}
+		<div class="page_body_wrp {if $main_content_template == 'home.html'} page_body_home {/if}">
+			{if $page_not_found404}
+			{include file="404.html"}
+			{else}
+			{include file=$main_content_template}
+			{/if}
+		</div>
+		{include file="footer.html"}
+
+<!-- {foreach from=$mob_root_cats item=_mob_main_cat}
+<ul>
+<li>
+	{$_mob_main_cat.name_ru}
+</li>
+</ul>
+{/foreach} -->
+
+
+
+
+
+	</div>
+</div>
+{if $main_content_template != 'checkout.frame.html'}
+<!-- BEGIN JIVOSITE CODE {literal} -->
+<!-- <script type='text/javascript'>
+	var scrollEventHandler = function (e) {
+		window.removeEventListener('scroll', scrollEventHandler, false);
+
+		//jivosite
+		setTimeout(function () {
+			var widget_id = 'Wu10HBgqbw';
+			var s = document.createElement('script');
+			s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/' + widget_id;
+			var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);
+		}, 4000);
+
+		//binotel
+		(function (d, w, s) {
+			var widgetHash = '88enw4m2aseysc9t3h03', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+			gcw.src = '//widgets.binotel.com/getcall/widgets/' + widgetHash + '.js';
+			var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+		})(document, window, 'script');
+	}
+
+	window.addEventListener("scroll", scrollEventHandler);
+</script> -->
+<!-- {/literal} END JIVOSITE CODE -->
+
+
+{/if}
+
+{/strip}
