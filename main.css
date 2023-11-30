@@ -6458,6 +6458,52 @@ img.vendorlogo {
     span.priceValue {
         font-size: 28px;
     }
+    .top_menu_float_main {
+        backdrop-filter: saturate(180%) blur(20px);
+        background-color: rgba(255,255,255,.72);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        display: flex;
+        border-bottom: 1px solid #b1b0b0;
+        z-index: 9999;
+        align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    }
+
+
+    .header_search_float_menu {
+
+    display: inline-block;
+position: relative;
+vertical-align: top;
+padding: 16px 0 0 0;
+width: 400px;
+}
+.header_search_float_menu input#searchstring {
+    width: 100%;
+    border-radius: 30px;
+    height: 35px;
+    position: relative;
+    text-indent: 22px;
+}
+.header_search_float_menu input#findbtt {
+    position: absolute;
+    z-index: 5656565;
+    right: 0;
+    top: 17px;
+    background-image: url(/images_sale/search-cust.svg);
+    width: 43px;
+    background-size: auto 70%;
+    background-position: 0 50%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+.top_menu_float_main a.header_account_title.handler_popup_login_form {
+    color:red;
+}
+
 
 
 
