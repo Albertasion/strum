@@ -1,0 +1,648 @@
+
+    
+
+
+    
+
+
+
+
+
+
+
+       
+
+            <!-- {if $product_info.gift_product && $product_info.gift_product.productID > 0}
+            <span class="pr_gift_ico" title="+ Подарок {$product_info.gift_product.name|escape:'html'}">
+                <img class="lazyload"
+                    data-src="{if $product_info.gift_product.thumbnail}{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.gift_product.thumbnail}{else}/images/noimg.png{/if}"
+                    alt="{$product_info.gift_product.name|escape:'html'}">
+            </span>
+            {/if} -->
+            <!-- саме головне фото(велике) -->
+            <!-- <a name="anch_current_picture"></a>
+            {if $product_info.picture}
+                <a class="imgwrp" data-fancybox="gallery" target="_blank"
+                    href='{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.big_picture}{$product_info.big_picture|escape:'
+                    url'}{else}{$product_info.picture}{/if}' img_width="{$product_info.picture_width}"
+                    img_height="{$product_info.picture_height}"> -->
+                    <!-- велике зображення -->
+                    <!-- <img class="lazyload" id="img-current_picture" width="620" height="450"
+                        data-src="{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.big_picture}{$product_info.big_picture}{else}{$product_info.picture}{/if}"
+                        title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" /><br /> -->
+                        <!-- напис збільшити фото -->
+                    <!-- <div class="lupa">{"img_enlarge"|translate}</div>
+                </a>
+            {else} -->
+            <!-- якщо немає . фото заглушка -->
+                <!-- <div class="imgwrp">
+                    <img class="lazyload" id='img-current_picture' data-src="/images/noimg.png"
+                        title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" />
+                </div>
+                
+            {/if} -->
+
+            <!-- напис безкоштовна доставка -->
+            <!-- {if $product_info.sale_icons_arr || $product_info.free_shipping}
+            <div class="pr_icons_wrp"> -->
+                <!-- напис безкоштовна доставка -->
+                <!-- {if $product_info.free_shipping}
+                    <div class="pr_freeshipping">{'Free shipping'|t}</div>
+                {/if} -->
+                <!-- інші іконки -->
+                <!-- {foreach from=$product_info.sale_icons_arr item=_icon}
+                    <div class="pr_icon_item">
+                        <img class="lazyload" data-src="/images_sale/{$_icon}">
+                    </div>
+                {/foreach}
+            </div>
+            {/if} -->
+        <!-- </div> -->
+
+
+
+   
+
+      
+  <!-- назва -->
+  <!-- <div class="product_name_block">
+  <h1 class="product_name">
+    {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}
+</h1>
+</div> -->
+
+<!-- <div class="Description_statusRating_sku"> -->
+  <!-- якщо товар не архивний -->
+  <!-- {if !$product_info.archive} -->
+<!-- кнопка наявності підєднується -->
+         <!-- {include file="product_instock_block.html"}
+     {else} -->
+<!-- напис аривний товар -->
+         <!-- <div class="stock_label archive">
+             <i class="fa fa-snowflake-o"></i>
+             {'Archive product'|t}
+         </div>
+     {/if} -->
+
+
+     <!-- <div class="Rating-module" style="height: 16px; cursor: default;"><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span>
+    </div> -->
+
+
+
+
+       <!-- код для замовлення -->
+    
+<!-- <div class="product_code">
+    <div class='code_for_order_block'>
+    <span class="code_for_order_word">{'Code for order'|t}:</span> 
+                <span class="code_for_order_defination">{$product_info.productID}</span>
+    </div> -->
+                    <!-- артикул -->
+                    <!-- <div class='code_for_order_block'>
+            {if $product_info.product_code &&$smarty.const.CONF_ENABLE_PRODUCT_SKU}
+            <span class="code_for_order_word"> Артикул:</span> 
+            <span class="code_for_order_defination">{$product_info.product_code|escape:'html'}</span>
+            {/if}
+        </div> -->
+            <!-- код для заміни -->
+            <!-- {if $product_info.replacementProducts}
+                <div class="pi_new_code">
+                    {'New article'|t}:{literal} {/literal}
+                    {foreach from=$product_info.replacementProducts item=$replacementProduct name=_rplFrch}
+                        {if $replacementProduct.productID > 0}
+                            <a href='{"?productID=`$replacementProduct.productID`&product_slug=`$replacementProduct.slug`"|set_query_html}' target="_blank">{$replacementProduct.product_code}</a>
+                        {else}
+                            {$replacementProduct.product_code}
+                        {/if}
+                        {if !$smarty.foreach._rplFrch.last}, {/if}
+                    {/foreach}
+                </div>
+            {/if} -->
+        <!-- </div> -->
+
+ <!-- </div>
+        <div class="pi_header_right_header"> -->
+    
+<!-- якщо архивній товр то указіваем артхивний товр -->
+                <!-- {if !$product_info.archive}
+            
+                <div class="pi_price"> -->
+
+                    <!-- якщо товар не архивний -->
+                <!-- {if !$product_info.archive} -->
+                <!-- якщо курс не нуль ціна більше нуля -->
+                <!-- {if $currencies_count ne 0 && $product_info.Price > 0} -->
+                <!-- блок ціна -->
+                <!-- <span class="totalPrice"> -->
+             <!-- ціна звичайна           -->
+                <!-- <span class="priceValue">{$product_info.PriceWithUnit}</span> 
+                </span> -->
+
+   <!-- якщо товар не архивний -->
+   <!-- {if !$product_info.archive} -->
+   <!-- кнопка купити -->
+   <!-- <div>
+          <form class="product_info" rel="{$product_info.productID}" action='{""|set_query_html}'
+                method="post">
+              <input name="productID" value="{$product_info.productID}" type="hidden" />
+              <input class="product_price" value="{$product_info.price_incurr|escape:'html'}" type="hidden" />
+              <input class="product_list_price" value="{$product_info.list_price_incurr|escape:'html'}" type="hidden" /> -->
+      <!-- підключення файла кнопки -->
+              <!-- {include file="item_product_add2cart_button.html" product_info=$product_info request_product_count=1} -->
+
+          <!-- </form>
+          </div>
+      {/if} -->
+
+
+
+            <!-- {if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0}
+            <span class="regularPrice">
+            {$product_info.list_priceWithUnit}
+            {if $product_info.SavePricePercent > 0}
+            <div class="pi_price_save_percent">-{$product_info.SavePricePercent}%</div>
+            {/if}
+            </span>
+            {/if}
+
+            {/if}
+            {/if}
+        </div> -->
+
+<!-- блок оптові ціни -->
+                    <!-- {if $wholesalePrices}
+                            <div class="pi-wholesale-price-block">
+                                <div class="wholesale-price">
+                                    <span class="wholesale-price-label">{'Wholesale price'|t}:</span>
+                                    {'str_from'|t}
+                                    {foreach from=$wholesalePrices item=$_wsDiscount name=foo}
+                                        {if $smarty.foreach.foo.first}
+                                            <span class="wholesale-price-summary">{$_wsDiscount.priceUC}</span> {'and lower'|t} *
+                                        {/if}
+                                    {/foreach}
+                                </div>
+                                <div class="pi-wholesale-prices-table">
+                                    <div class="ws-row ws-row-title">
+                                        <div class="ws-cell">{'Quantity'|t}</div>
+                                        <div class="ws-cell">{'str_price'|t}</div>
+                                    </div>
+                                    {foreach from=$wholesalePrices item=$_wsDiscount}
+                                    <div class="ws-row">
+                                        <div class="ws-cell quantity">{$_wsDiscount.quantity}</div>
+                                        <div class="ws-cell summary">
+                                            {*$_wsDiscount.summaryUC*}
+                                            {$_wsDiscount.priceUC}
+                                            {*<span class="discount">-{$_wsDiscount.discount}%</span>*}
+                                        </div>
+                                    </div>
+                                    {/foreach}
+                                </div>
+
+                            </div>
+                        {/if}
+                {/if} -->
+
+
+                
+                 
+            
+<!-- див таблиця -->
+        <!-- </div> -->
+
+        
+        <!-- відлік часу акції -->
+        <!-- {if $product_info.sale_dateto > 0 && $product_info.sale_dateto > $smarty.now}
+        <div class="pi_sale_info">
+            {if $product_info.sale_dateto > 0 && $product_info.sale_dateto > $smarty.now}
+                <div class="sale_timer_wrp">
+                    <link rel="stylesheet" href="/css/jquery.countdown.css" />
+                    <script type="text/javascript"> {literal}
+                        var timerId = setInterval(function () {
+                            if (window.jQuery) {
+                                $('.date_discount_counter').countdown({timestamp: new Date({/literal}{$product_info.sale_dateto}{literal} * 1000)
+                            });
+                        clearInterval(timerId);
+                        }}, 250);
+                    {/literal}</script> -->
+<!-- напис Акция проводится до 30.11.2023 -->
+                    <!-- <div class="sale_datetime_str">
+                        {'Promotion begins to'|t} {$product_info.sale_dateto|date_format:'%d.%m.%Y'}
+                    </div>
+                    <div class="date_discount_wrp">
+
+                        <div class="date_discount_counter"></div>
+                        <div class="clr"></div> -->
+                        <!-- текст дней часов минут секунд -->
+                        <!-- <div class="date_discount_counter_txt"></div>
+                    </div>
+                </div>
+            {/if} -->
+
+
+        <!-- напис назви акції -->
+            <!-- {if $product_info.sale_category_name}
+                <a href='{"?categoryID=`$product_info.sale_category_categoryID`&category_slug=`$product_info.sale_category_slug`"|set_query_html}'
+                    target="_blank" class="pi_sale_name">
+                    {$product_info.sale_category_name|escape:'html'}
+                </a>
+            {/if} -->
+
+<!-- напис опис акції -->
+            <!-- {if $product_info.sale_category_brief_description || $product_info.sale_category_description}
+            <div class="pi_sale_description">
+                {if $product_info.sale_category_brief_description}{$product_info.sale_category_brief_description}{else}{$product_info.sale_category_description|strip_tags|mb_truncate:256}{/if}
+                    <div class="clr"></div>
+                        {if $product_info.saleVariantID > 0 && $product_info.option_value_sale_brief_description}
+                            <span class="sale_variant_info_handler" data-variantid="{$product_info.saleVariantID}" {*
+                            href='{"?categoryID=`$product_info.sale_category_categoryID`&category_slug=`$product_info.sale_category_slug`"|set_query_html}'
+                            *}>Подробнее<i class="fa fa-info-circle" aria-hidden="true"></i></span>
+                        {/if}
+                    </div>
+                {/if}
+            </div>
+
+        {/if} -->
+
+
+<!-- блок доставка описание -->
+    <!-- <div class="delivery_container">                              
+    <div class="delivery_item">
+        <div class="delivery_pic_def">
+            <div><img src="/delivery_image/novaposhta.svg"></div>
+            <div>Доставка у вiддiлення "Нова пошта" </div>
+        </div>
+            <div>За тарифами перевізника</div>
+                                    
+     </div>
+     <div class="delivery_item">
+        <div class="delivery_pic_def">
+            <div><img src="/delivery_image/ukrposta.svg"></div>
+            <div>Доставка у вiддiлення "Укрпошта" </div>
+        </div>
+            <div>За тарифами перевізника</div>
+                                    
+     </div>
+     <div class="delivery_item">
+        <div class="delivery_pic_def">
+            <div><img src="/delivery_image/ukrposta.svg"></div>
+            <div>Самовивоз з офісу </div>
+        </div>
+            <div>Безкоштовно</div>
+                                    
+     </div>
+     <div class="delivery_item">
+        <div class="delivery_pic_def">
+            <div><img src="/delivery_image/novaposhta.svg"></div>
+            <div>Доставка у вiддiлення "Нова пошта" </div>
+        </div>
+            <div>За тарифами перевізника</div>
+                                    
+     </div>
+    </div>
+
+
+    <div class="PaymentMethods_block">
+        <div class="PaymentMethods_item">
+            <img src="/delivery_image/google-pay-logo.svg">
+        </div>
+        
+        <div class="PaymentMethods_item">
+            <img src="/delivery_image/apple-pay-logo.svg">
+        </div>
+
+        <div class="PaymentMethods_item">
+            <img src="/delivery_image/privat-pay-logo.svg">
+        </div>
+
+        <div class="PaymentMethods_item">
+            <img src="/delivery_image/visa-card-logo.svg">
+        </div>
+        <div class="PaymentMethods_item">
+            <img src="/delivery_image/master-card-logo.svg">
+        </div>
+    </div>
+
+    <div class="PaymentMethods_block_description">
+        <div class="PaymentMethods_item_description">
+           <div><img src="/delivery_image/nocash-icon.svg"></div>
+            Безготівковий розрахунок
+        </div>
+        
+        <div class="PaymentMethods_item_description">
+            Безготівковий розрахунок з ПДВ
+        </div>
+
+        <div class="PaymentMethods_item_description">
+            <div><img src="/delivery_image/bank-svgrepo-com.svg"></div>
+            Готівка
+        </div>
+
+        <div class="PaymentMethods_item_description">
+            Накладений платіж
+        </div>
+        <div class="PaymentMethods_item_description">
+         Безготівка від ФОП
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- блок опис достаки -->
+        <!-- {if $shippay_block_content_prods}
+            <div class="pi_shippay_block">
+                <ul>
+                    {foreach from=$shippay_block_content_prods item=_item}
+                        {if $_item.title}
+                            <li>
+                                <div class="imgwrp" title="{$_item.title|escape:'html'}">
+                                    {if $_item.icon}
+                                    <img class="lazyload" width="40" height="40"
+                                        data-src="/published/publicdata/STRUMENTSTRUM/attachments/SC/shippay_icons/{$_item.icon}">
+                                    {else}
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    {/if}
+                                </div>
+                                <div class="pi_spayblk_desc">
+                                    <div class="pi_spayblk_title">{$_item.title|escape:'html'}</div>
+                                    {if $_item.description}
+                                        <div class="pi_spayblk_description">{$_item.description|nl2br}</div>
+                                    {/if}
+                                    {if $_item.tooltip}
+                                        <div class="pi_spayblk_tooltip">{$_item.tooltip}</div>
+                                    {/if}
+                                </div>
+                            </li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </div>
+        {else} -->
+<!-- якщо немає протянутого блока информації про різні умови. Тойщо по дефолту у богатьох -->
+            <!-- <table class="pi_shippay_block">
+                <tr>
+                    <td class="pi_shippay_block_bg" width="15%" align="center" valign="top">
+                        <div class="pi_pay_block_ico"></div>
+                    </td>
+                    <td class="pi_shippay_block_bg" width="34%" valign="top">
+                        <div class="pi_shippay_block_title">{'payment'|t}</div>
+                        <ul>
+                            <li>- {'Cash payment'|t}</li>
+                            <li>- {'Cashless payment with VAT'|t}</li>
+                            <li>- {'C.O.D'|t}</li>
+                            <li>- {'Privat24'|t}</li>
+                        </ul>
+                    </td>
+                    <td width="2%">&nbsp;</td>
+                    <td class="pi_shippay_block_bg" width="15%" align="center" valign="top">
+                        <div class="pi_ship_block_ico"></div>
+                    </td>
+                    <td class="pi_shippay_block_bg" width="34%" valign="top">
+                        <div class="pi_shippay_block_title">{'shipping'|t}</div>
+                        <ul>
+                            <li>- {'Self pickup'|t}: {'Kyiv city'|t}.
+                                {'st. Kirillovskaya'|t} (Фрунзе) 160-А, оф. 57 {'elevator'|t} №3</li>
+                            <li>- {'Shipping by'|t} {'Украине'|t} {'freight carriers'|t}<br> {'Nova poshta '|t} ({'Payment upon receipt'|t})</li>
+                        </ul>
+                    </td>
+            </table>
+        {/if} -->
+
+    <!-- </div>
+
+
+</div> -->
+
+
+    <!-- список деталювань і до чого підходить запчастина -->
+    <!-- {if $model_parent_products}
+    <div class="model_suitable_for_block">
+        <div class="msf_title">Оригинальная запчасть подходит для следующих инструментов:</div>
+        <div class="msf_title_sub">Просмотреть деталировку модели &#11015;&#65039;</div>
+        <div class="model_list_block">
+            {foreach from=$model_parent_products item=_model_parent}
+                {if !$_model_parent.redirect}
+                    <div class="model_list_item">
+                        {if $_model_parent.productID || $_model_parent.slug}
+                       <div class="model_list_link"><a href='{"?productID=`$_model_parent.productID`&product_slug=`$_model_parent.slug`"|set_query_html}'>
+                            {/if}
+                            {if $_model_parent.name}
+                            {$_model_parent.name|replace:'Запчасти для ':''|escape:'html'}
+                            {/if}
+                            {if $_model_parent.productID || $_model_parent.slug}
+                        </a></div> 
+                        <div class="model_list_description">Посмотреть схему</div>
+
+                        {/if}
+                    </div>
+                {/if}
+            {/foreach}
+        </div>
+    </div>
+    {/if} -->
+
+<!-- </div> -->
+
+
+
+
+
+<!-- Опис -->
+<!-- <div class="main_wide_padding">
+    
+        <div id="kupit" class="box">
+            {$product_info.description|replace:'</h1>':'</h2>'|replace:'<h1':'<h2'|replace:' id="kupit"':''}
+        </div> -->
+
+        <!-- Відгуки -->
+        <!-- <div id="desc_diss" class="box">
+            <div class="h2"><span class = "diss_word">{'pgn_product_reviews'|translate} </span><span class = "name_product_discuss">{$product_info.short_name|escape:'html'}</span></div>
+            {if $product_info.product_last_reviews_count > 0}
+            {foreach from=$product_info.product_last_reviews item=_review}
+            {include file="review_brief.html"}
+            {/foreach}
+
+            {if $product_info.product_last_reviews_pages}
+            <div class="category_nav">{$product_info.product_last_reviews_pages}</div>
+            {/if}
+            {else}
+            <p>{"prddiscussion_no_posts_on_item_string"|translate}</p>
+            {/if} -->
+<!-- напис добавити відгук -->
+            <!-- <a name="add-review"></a>
+            <div class="h3">{"prddiscussion_add_message"|translate}</div>
+
+            {$MessageBlock}
+            {include file="product_discusss_form.html"}
+        </div> -->
+
+
+
+<!-- </div> -->
+
+<!-- ремондуеміе товари -->
+<!-- {if $product_folow_number > 0} -->
+<!-- $product_folow -->
+    <!-- <div class="main_wide_padding">
+        <div class="h2 product_related_title ">{'Related products '|t}</div>
+        <div class="products_scroll_wrp">
+            <div class="scrollable autoscroll">
+                <div class="lst">
+                    {foreach from=$product_folow item=_product_brief}
+                        {if !$_product_brief.redirect}
+                            {include file="product_brief_follow.html" product_info=$_product_brief}
+                        {/if}
+                    {/foreach}
+                </div>
+            </div>
+            <a class="prev"></a>
+            <a class="next"></a>
+        </div>
+
+        <div class="clr"></div>
+    </div>
+{/if} -->
+
+
+<!-- випадкові товари -->
+<!-- {if $product_rand} -->
+<!-- $product_rand -->
+    <!-- <div class="main_wide_padding">
+        <div class="h2 product_related_title product_recommended_title"></div>
+        <div class="products_wrp products_recommended_wrp">
+            {foreach from=$product_rand item=_product_brief}
+                {if !$_product_brief.redirect}
+                    {include file="product_brief_table.html" product_info=$_product_brief}
+                {/if}
+            {/foreach}
+        </div>
+        <div class="clr"></div>
+    </div>
+    {/if} -->
+
+    <!-- <div class="main_wide_padding">
+        <div class="h2 product_related_title">{'Recommend'|t}</div>
+        <div class="products_scroll_wrp">
+            <div class="scrollable autoscroll">
+                <div class="lst">
+                    {foreach from=$product_rand item=_product_brief}
+                        {if !$_product_brief.redirect}
+                            {include file="product_brief_follow.html" product_info=$_product_brief}
+                        {/if}
+                    {/foreach}
+                </div>
+            </div>
+            <a class="prev"></a>
+            <a class="next"></a>
+        </div>
+        <div class="clr"></div>
+    </div> -->
+<!-- {/if} -->
+
+
+<!-- {if $product_related}
+    <div class="main_wide_padding">
+        <div class="h2 product_related_title">{"str_related_items"|translate}</div>
+        <div class="products_scroll_wrp">
+            <div class="scrollable autoscroll">
+                <div class="lst">
+                    {foreach from=$product_related item=_product_brief}
+                        {if !$_product_brief.redirect}
+                            {include file="product_brief_follow.html" product_info=$_product_brief}
+                        {/if}
+                    {/foreach}
+                </div>
+            </div>
+            <a class="prev"></a>
+            <a class="next"></a>
+        </div>
+        <div class="clr"></div>
+    </div>
+{/if} -->
+
+
+<!-- близькі товари -->
+<!-- {if $product_nearest}
+<div class="main_wide_padding">
+    <div class="h2 product_related_title">{'Another category products'|t}</div>
+    <div class="products_scroll_wrp">
+        <div class="scrollable autoscroll">
+            <div class="lst">
+                {foreach from=$product_nearest item=_product_brief}
+                    {if !$_product_brief.redirect && $_product_brief.productID != $product_info.productID}
+                        {include file="product_brief_table.html" product_info=$_product_brief}
+                    {/if}
+                {/foreach}
+            </div>
+        </div>
+        <a class="prev"></a>
+        <a class="next"></a>
+    </div>
+    <div class="clr"></div>
+</div>
+{/if} -->
+
+<!-- хиті товаров -->
+<!-- {if $category_hits}
+    <div class="main_wide_padding">
+        <div class="h2 product_related_title">{'Sale hits '|t}</div>
+        <div class="products_scroll_wrp">
+            <div class="scrollable autoscroll">
+                <div class="lst">
+                    {foreach from=$category_hits item=_product_brief}
+                        {if !$_product_brief.redirect && $_product_brief.productID != $product_info.productID}
+                            {include file="product_brief_table.html" product_info=$_product_brief}
+                        {/if}
+                    {/foreach}
+                </div>
+            </div>
+            <a class="prev"></a>
+            <a class="next"></a>
+        </div>
+        <div class="clr"></div>
+    </div>
+{/if} -->
+
+
+<!-- відповіді на питання -->
+<!-- {if $faqItems}
+<div class="qa-block" itemscope='' itemtype='https://schema.org/FAQPage'>
+    {foreach from=$faqItems item=_faqItem}
+
+    <div class="qa-item question-spoiler" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <h3 itemprop="name" class="question-spoiler-name">{$_faqItem.question}</h3>
+        <div class="qa-item-answer question-spoiler-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+                {$_faqItem.answer}
+            </div>
+        </div>
+    </div>
+
+    {/foreach}
+</div>
+{/if} -->
+
+
+
+<!-- скипті для товара -->
+<!-- <script type="text/javascript" src="/js/productinfo.js?v=0.1{'/js/productinfo.js'|@filemtime}"></script>
+<script type="application/ld+json">
+    {$product_info.microdataJson}
+</script> -->
+
+<!-- {if $microdataBreadCrumbs}
+    <script type="application/ld+json">{$microdataBreadCrumbs}</script>
+{/if} -->
