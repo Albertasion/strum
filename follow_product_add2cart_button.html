@@ -1,0 +1,45 @@
+{if !$product_info.archive}
+
+
+
+	{if $product_info.Price > 0 && ($smarty.const.CONF_SHOW_ADD2CART == 1 || $product_info.supplier.enable_buy) && $product_info.preorder }
+
+ 
+
+		<button name='add2cart_preorder' type="submit" title='Предзаказ' class="add2cart_handler add2preorder"><i class="fa fa-clock-o"></i>{'Preorder'|t}</button>
+
+ 
+
+	{elseif $product_info.Price > 0 && ($product_info.sale_sticker_arr || (($smarty.const.CONF_SHOW_ADD2CART == 1 || $product_info.supplier.enable_buy) && $product_info.ordering_available > 0) ) } {*&& $product_info.in_stock > 0*}
+
+
+
+
+
+		<input name='add2cart' type="submit" value="{'label_buy'|t}" title='{'label_buy'|t}' {if $smarty.const.CONF_SHOPPING_CART_VIEW ne $smarty.const.SHCART_VIEW_PAGE} class="product_add2cart_handler button_buy_follow" {/if} />
+
+
+
+	{elseif ($smarty.const.CONF_SHOW_ADD2CART == 1 || $product_info.supplier.enable_buy) && $smarty.const.CONF_CHECKSTOCK && !$product_info.in_stock}
+
+		<div class="prd_out_of_stock">
+
+			{'prd_out_of_stock'|translate}
+
+		</div>
+
+	{elseif $product_info.Price == 0}
+
+		<div id="withoutPrice">
+
+			<span class="check_price_button button">Уточнить наличие</span>
+
+			{*"ask_for_exact_price"|translate*}
+
+		</div>
+
+	{/if}	
+
+{/if}
+
+ 

@@ -5,12 +5,13 @@
 		{else}
 			{assign var=_product_url value="?productID=`$product_info.productID`"|set_query_html}
 		{/if}
-		<form class="product_brief_table {if $product_info.ordering_available == 0} notavailible {/if}" action='{"?ukey=cart`$_form_action_url`"|set_query_html}' method="post" rel="{$product_info.productID}" {if $widget}target="_blank"{/if}>
+<div class="product_follow_block">
+		<form class="product_brief_table_follow {if $product_info.ordering_available == 0} notavailible {/if}" action='{"?ukey=cart`$_form_action_url`"|set_query_html}' method="post" rel="{$product_info.productID}" {if $widget}target="_blank"{/if}>
 			<input name="action" value="add_product" type="hidden" >
 			<input name="productID" value="{$product_info.productID}" type="hidden" >
 			<input class="product_price" value="{$product_info.PriceWithOutUnit|escape:'html'}" type="hidden" >
 
-			<a class="imgwrp" {$target} href='{$_product_url}'>
+		<div>	<a class="imgwrp" {$target} href='{$_product_url}'>
 				{if $product_info.sale_sticker_arr} 
 					<div class="pr_stickers_wrp">
 						{foreach from=$product_info.sale_sticker_arr item=_sticker}
@@ -56,10 +57,15 @@
 						{/foreach}
 					</div>
 				{/if}
-			</a>
-			<a class="pb_product_name" href='{$_product_url}'>{$product_info.name}</a>
+			</a></div>
+
+			<div><a class="pb_product_name" href='{$_product_url}'>{$product_info.name}</a></div>
 		
 
+
+
+			<!-- блок цена -->
+<div class="price_product_follow">
 			{if !$product_info.archive}
 				{if $product_info.minMaxPrice}
 					<div class="pb_price {if $product_info.minMaxPrice.minPrice != $product_info.minMaxPrice.maxPrice} pb_price_di {/if} {if $product_info.list_price > 0} pb_price_action{/if}">
@@ -75,7 +81,7 @@
 						{$product_info.PriceWithUnit} ₴
 					</div>
 				{/if}
-				<div class="clr"></div>
+
 				{if $product_info.minMaxPrice.minPrice > 0}
 					{if $product_info.minMaxPrice.minPrice == $product_info.minMaxPrice.maxPrice && $product_info.list_price > 0}
 						<div class="pb_old_price">
@@ -96,14 +102,14 @@
 					{/if}
 				{/if}
 			{/if}
+		</div>
+		<!-- конец price_product_follow -->
 
-			{*<a class="simulate_add2cart" href="{$_product_url}" title="{'label_buy'|t}">{'label_buy'|t}</a>*}
 			
-			{include file="product_add2cart_button.html" request_product_count="0"}
-
-			<div class="clr"></div>
-
-			{include file="product_instock_block.html"}
+			<div>{include file="follow_product_add2cart_button.html" request_product_count="0"}</div>
+			<div>{include file="product_instock_block.html"}</div>
 		</form>
+
+	</div>
 	{/if}
 {/strip}

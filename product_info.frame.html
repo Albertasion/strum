@@ -474,8 +474,7 @@
 
 
 
-</div>
-<!-- конец main_wide_padding -->
+
 
 
 
@@ -544,12 +543,57 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
  
 
 
+</div>
+<!-- конец main_wide_padding -->
 
 
 
+
+
+
+
+
+
+
+
+
+<div class="main_wide_padding">
+
+    {if $product_nearest}
+    <!-- назва категории фолов -->
+        <div class="h2 product_related_title">{'Another category products'|t}</div>
+        <div id="reccom_related" class="box">
+        <!-- <div class="products_scroll_wrp"> -->
+            <!-- <div class="scrollable autoscroll"> -->
+                <!-- <div class="lst"> -->
+                    {foreach from=$product_nearest item=_product_brief}
+                        {if !$_product_brief.redirect && $_product_brief.productID != $product_info.productID}
+                            {include file="product_brief_follow.html" product_info=$_product_brief}
+                        {/if}
+                    {/foreach}
+                <!-- </div> -->
+            <!-- </div> -->
+            <!-- <a class="prev"></a>
+            <a class="next"></a> -->
+        <!-- </div> -->
+        <!-- <div class="clr"></div> -->
+    </div>
+    {/if}
+    
+    </div>
 
 
 {/if}

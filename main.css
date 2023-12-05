@@ -2805,7 +2805,7 @@ text-align: center;
     box-shadow: 0 0 7px rgba(0,0,0,.1);
     border-radius: 10px;
     border: 1px solid #0000001f;
-    min-height: 280px;
+    min-height: 376px;
 }
 .products_wrp .product_brief_table.hover {
 box-shadow: 0px 2px 2px rgba(0,8,29,5%), 0px 0px 2px rgba(0,8,29,6%), 0px 1px 3px rgba(0,8,29,8%);
@@ -6587,4 +6587,50 @@ span.name_product_discuss {
 .pi_header_left .pi_allimages {
     display: flex;
     flex-direction: column;
+}
+div#reccom_related {
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-gap: 17px;
+    margin: 0 -8px;
+    padding: 10px 3px;
+    display: grid;
+    overflow: hidden;
+    max-height: 503px;
+}
+
+.product_follow_block {
+    -webkit-box-shadow: var(--shadow-1dp);
+    box-shadow: 0px 2px 2px rgb(0 8 29 / 5%), 0px 0px 2px rgb(0 8 29 / 6%), 0px 1px 3px rgb(0 8 29 / 8%);
+    padding: 28px 8px 12px;
+    height: 100%;
+    min-height: 388px;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    transition: .3s;
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+input.product_add2cart_handler.button_buy_follow {
+    margin: 10px 0 10px;
+    background: none repeat scroll 0 0 #fcfafa;
+    color: #e31837;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: left;
+}
+.price_product_follow {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+form.product_brief_table.notavailible {
+    opacity: 60%;
 }
