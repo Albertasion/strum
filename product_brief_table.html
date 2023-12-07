@@ -8,13 +8,15 @@
 		{/if}
 
 
-		
+		<!-- <div class="product_brief_block_common"> -->
 		<form class="product_brief_table {if $product_info.ordering_available == 0} notavailible {/if}" action='{"?ukey=cart`$_form_action_url`"|set_query_html}' method="post" rel="{$product_info.productID}" {if $widget}target="_blank"{/if}>
 			<input name="action" value="add_product" type="hidden" >
 			<input name="productID" value="{$product_info.productID}" type="hidden" >
 			<input class="product_price" value="{$product_info.PriceWithOutUnit|escape:'html'}" type="hidden" >
 
-			<a class="imgwrp" {$target} href='{$_product_url}'>
+			<div class="product_brief_sku_block">Код:345544</div>
+			
+			<div class="product_brief_img_block"><a class="imgwrp" {$target} href='{$_product_url}'>
 				{if $product_info.sale_sticker_arr} 
 					<div class="pr_stickers_wrp">
 						{foreach from=$product_info.sale_sticker_arr item=_sticker}
@@ -61,7 +63,11 @@
 					</div>
 				{/if}
 			</a>
-			<a class="pb_product_name" href='{$_product_url}'>{$product_info.name}</a>
+		</div>
+
+
+		<!-- название товара -->
+		<div class="product_brief_name_block">	<a class="pb_product_name" href='{$_product_url}'>{$product_info.name}</a></div>
 		
 
 			{if !$product_info.archive}
@@ -79,7 +85,6 @@
 						{$product_info.PriceWithUnit} ₴
 					</div>
 				{/if}
-				<div class="clr"></div>
 				{if $product_info.minMaxPrice.minPrice > 0}
 					{if $product_info.minMaxPrice.minPrice == $product_info.minMaxPrice.maxPrice && $product_info.list_price > 0}
 						<div class="pb_old_price">
@@ -104,9 +109,12 @@
 			{*<a class="simulate_add2cart" href="{$_product_url}" title="{'label_buy'|t}">{'label_buy'|t}</a>*}
 			
 			{include file="product_add2cart_button.html" request_product_count="0"}
-
-			<div class="clr"></div>
-
+			<div class="comparisson_icon">
+				<!-- <svg viewBox="0 0 24 24" fill="currentColor" class="icon_component_comparison"><path d="M20 2H4C2.9 2 2 2.9 2 4V19.5858C2 20.4767 3.07714 20.9229 3.70711 20.2929L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16ZM11 6C11 5.44772 11.4477 5 12 5C12.5523 5 13 5.44772 13 6V10C13 10.5523 12.5523 11 12 11C11.4477 11 11 10.5523 11 10V6ZM11 14C11 13.4477 11.4477 13 12 13C12.5523 13 13 13.4477 13 14C13 14.5523 12.5523 15 12 15C11.4477 15 11 14.5523 11 14Z"></path></svg> -->
+				<span class="review-button__text">залишити відгук</span>
+			<svg viewBox="0 0 24 24" fill="currentColor" class="icon_component_comparison"><path d="M9.26709 4C9.68709 2.8 10.8171 2 12.0871 2C13.3571 2 14.4871 2.8 14.9171 4H20.0871C20.6394 4 21.0871 4.44772 21.0871 5C21.0871 5.55228 20.6394 6 20.0871 6H19.1371L22.0871 13C22.6471 15 21.0871 16 18.5871 16C16.0871 16 14.6171 15 15.0871 13L18.0371 6H14.9071C14.5871 6.85 13.9371 7.5 13.0871 7.82C13.0871 7.82 12.3905 7.99805 12 8C11.6095 8.00195 11.0871 7.83 11.0871 7.83C10.2371 7.5 9.58709 6.85 9.25709 6H6.13709L9.08709 13C9.64709 15 8.08709 16 5.58709 16C3.08709 16 1.61709 15 2.08709 13L5.03709 6H4.08709C3.53481 6 3.08709 5.55228 3.08709 5C3.08709 4.44772 3.53481 4 4.08709 4H9.26709ZM12.7942 4.29289C12.6067 4.10536 12.3523 4 12.0871 4C11.8219 4 11.5675 4.10536 11.38 4.29289C11.1924 4.48043 11.0871 4.73478 11.0871 5C11.0871 5.26522 11.1924 5.51957 11.38 5.70711C11.5675 5.89464 11.8219 6 12.0871 6C12.3523 6 12.6067 5.89464 12.7942 5.70711C12.9817 5.51957 13.0871 5.26522 13.0871 5C13.0871 4.73478 12.9817 4.48043 12.7942 4.29289ZM7.08709 13L5.58709 9.25L4.08709 13H7.08709ZM20.0871 13L18.5871 9.25L17.0871 13H20.0871Z"></path><path d="M4.08709 19C3.53481 19 3.08709 19.4477 3.08709 20C3.08709 20.5523 3.53481 21 4.08709 21H20.0871C20.6394 21 21.0871 20.5523 21.0871 20C21.0871 19.4477 20.6394 19 20.0871 19H4.08709Z"></path></svg>
+			<svg viewBox="0 0 24 24" fill="currentColor" class="icon_component_comparison"><path d="M16.5 3C14.76 3 13.09 3.81 12 5.09C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5C2 12.28 5.4 15.36 10.55 20.04L10.6541 20.1341C11.4178 20.824 12.5803 20.8218 13.3413 20.129L13.45 20.03C18.6 15.36 22 12.28 22 8.5C22 5.42 19.58 3 16.5 3ZM12.1 18.55L12 18.65L11.9 18.55C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 5.99 11.07 7.36H12.94C13.46 5.99 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 18.55Z"></path></svg>
+		</div>
 			{include file="product_instock_block.html"}
 
 			{if $_show_extra && $product_info.product_extra}
@@ -126,5 +134,6 @@
 				</div>
 			{/if}
 		</form>
+	<!-- </div> -->
 	{/if}
 {/strip}

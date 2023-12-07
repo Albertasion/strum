@@ -25,13 +25,6 @@
 		<input name='add2cart' type="submit" value="{'label_buy'|t}" title='{'label_buy'|t}' {if $smarty.const.CONF_SHOPPING_CART_VIEW ne $smarty.const.SHCART_VIEW_PAGE} class="add2cart_handler button_buy" {/if} />
 
 
-<!-- 
-		<span class='quick-buy quick-buy-handler' title="{'label_buy'|t} в 1 клик" data-product-id="{$product_info.productID}">
-
-			<i class="fa fa-bolt"></i>{'label_buy'|t} в 1 клик
-
-		</span> -->
-
 
 
 	{elseif ($smarty.const.CONF_SHOW_ADD2CART == 1 || $product_info.supplier.enable_buy) && $smarty.const.CONF_CHECKSTOCK && !$product_info.in_stock}
