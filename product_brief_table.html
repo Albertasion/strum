@@ -1,3 +1,4 @@
+<!-- товар для категории -->
 {strip}
 	{if $product_info ne NULL}
 		{if $product_info.slug}
@@ -5,6 +6,9 @@
 		{else}
 			{assign var=_product_url value="?productID=`$product_info.productID`"|set_query_html}
 		{/if}
+
+
+		
 		<form class="product_brief_table {if $product_info.ordering_available == 0} notavailible {/if}" action='{"?ukey=cart`$_form_action_url`"|set_query_html}' method="post" rel="{$product_info.productID}" {if $widget}target="_blank"{/if}>
 			<input name="action" value="add_product" type="hidden" >
 			<input name="productID" value="{$product_info.productID}" type="hidden" >
