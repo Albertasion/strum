@@ -6634,3 +6634,7 @@ input.product_add2cart_handler.button_buy_follow {
 form.product_brief_table.notavailible {
     opacity: 60%;
 }
+.name_block_follow {
+    height: 64px;
+    overflow: hidden;
+}
