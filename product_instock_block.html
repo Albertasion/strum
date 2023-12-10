@@ -1,0 +1,49 @@
+{*if $product_info.importProductID*}
+
+    <div class="stock_label 
+    {if $product_info.canbuy} 
+    instock 
+    {else} 
+    outofstock 
+    {/if}" 
+    data-canbuy="{$product_info.canbuy}">
+
+        {if !($product_info.ordering_available && $product_info.Price && ($smarty.const.CONF_SHOW_ADD2CART || $product_info.supplier.enable_buy) && !$product_info.preorder && ( $smarty.const.CONF_CHECKSTOCK == 0 || $product_info.in_stock > 0 ))}
+
+            {if $product_info.stock_status_text}
+                {$product_info.stock_status_text}
+
+            {else}
+
+                {if $product_info.Price > 0 && ($product_info.sale_sticker_arr || (($smarty.const.CONF_SHOW_ADD2CART == 1 || $product_info.supplier.enable_buy) && $product_info.ordering_available > 0) ) }
+                <svg viewBox="0 0 24 24" fill="currentColor" class="icon-component Status_icon__1F72W"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 14.17L15.88 8.29C16.27 7.9 16.91 7.9 17.3 8.29C17.69 8.68 17.69 9.31 17.3 9.7L10.71 16.29C10.32 16.68 9.69 16.68 9.3 16.29L6.71 13.7C6.32 13.31 6.32 12.68 6.71 12.29C7.1 11.9 7.73 11.9 8.12 12.29L10 14.17Z"></path></svg>
+                    {'In stock_'|t}
+
+                {else}
+
+                    {'Not in stock'|t}
+
+                {/if}
+
+            {/if}
+
+        {else}
+
+            {if $product_info.stock_status_text}
+
+                {$product_info.stock_status_text}
+
+            {else}
+            <svg viewBox="0 0 24 24" fill="currentColor" class="icon-component Status_icon__1F72W"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 14.17L15.88 8.29C16.27 7.9 16.91 7.9 17.3 8.29C17.69 8.68 17.69 9.31 17.3 9.7L10.71 16.29C10.32 16.68 9.69 16.68 9.3 16.29L6.71 13.7C6.32 13.31 6.32 12.68 6.71 12.29C7.1 11.9 7.73 11.9 8.12 12.29L10 14.17Z"></path></svg>
+                {'In stock_'|t}
+
+            {/if}
+
+        {/if}
+
+    </div>
+
+
+
+{*/if*}
+

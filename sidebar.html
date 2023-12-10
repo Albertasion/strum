@@ -1,0 +1,67 @@
+{strip}
+	<div class="floating_sidebar">
+		<div class="main_wide_padding">
+
+
+
+
+			<div class="mainMenu_catalog_float_block">
+				<button type="button" class="mainMenu_catalog_float_button">
+				<svg viewBox="0 0 24 24" fill="currentColor" class="icon-component_catalog_float">
+				<path d="M3 17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17C21 16.4477 20.5523 16 20 16H4C3.44772 16 3 16.4477 3 17ZM3 12C3 12.5523 3.44772 13 4 13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H4C3.44772 11 3 11.4477 3 12ZM4 6C3.44772 6 3 6.44772 3 7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7C21 6.44772 20.5523 6 20 6H4Z"></path></svg>
+			<span>
+				Каталог
+			</span>
+				</button>
+
+				
+				{if !$isOptimizer}
+				{include file="product_search_floating.html"}
+			{/if}
+			<div>{'Promotions'|t}</div>
+			<div>{'New products'|t}</div>
+			<div>{'Contacts'|t}</div>
+			<div>{'pgn_cart'|t}</div>
+			<div>{'pgn_product_reviews'|t}</div>
+	
+
+
+
+
+
+			</div>
+		
+	
+
+
+
+
+
+			<!-- <div class="fs_item product_history_handler" rel="0">
+				<span class="fs_ico fs_history_ico"></span>
+				<span class="fs_item_name">Просмотренные</span>
+				<sup>{$product_history_count}</sup>
+			</div>
+			<div class="fs_item" rel="0">
+				<span class="fs_ico fs_recallme_ico"></span>
+				<span rel="#overlay" class="fs_item_name recallme">Обратный звонок</span>
+			</div>
+			{*<div class="fs_item">
+				<sup class="shpcrtgc">{if $shopping_cart_items}{$shopping_cart_items}{else}0{/if}</sup>
+				<a class="fs_item_name hndl_proceed_checkout">
+					{'btn_viewcart'|t}
+				</a>
+			</div>
+			<div class="fsbr_block">
+				<form method="get" action="{$smarty.const.WBS_INSTALL_PATH}search/" class="fsbr_search_form">
+					<input type="text" class="fsbr_search_form_input" placeholder="Поиск товаров" value="{$searchstring}" name="searchstring">
+					<input type="submit" class="fsbr_search_form_submit" value="">
+				</form> 
+			</div>*}
+			<div class="clr"></div> -->
+
+
+
+		</div>
+	</div>
+{/strip} 

@@ -1,0 +1,8 @@
+{strip}
+<form action="{'?ukey=search'|set_query_html}" method="get" class="search_form_floating">
+	{assign var=_str value='search_products'|transcape}
+	<input type="text" id="searchstring" name="searchstring" value='{$searchstring}'
+		class="input_message_floating" placeholder="{'search_products'|transcape}">
+	<input type="submit" id="findbtt" class="findbtt_float" value="">
+</form>
+{/strip}

@@ -1309,10 +1309,11 @@ vertical-align: top;
 width: 24%;
 font-size: 14px;
 border: 1px solid #e5e5e5;
-border-radius: 3px;
+border-radius: 10px;
 box-shadow: 0 0 7px rgba(0, 0, 0, 0.07);
 margin: 0 1% 15px 0;
 padding: 15px;
+min-height: 230px;
 }
 .cat_subcategories .subsubcat_item .imgwrp {
 display: block;
@@ -1575,10 +1576,7 @@ text-transform: uppercase;
 background-color: #fbf7ed;
 }
 .sale_timer_wrp {
-background-color: #fff4d9;
-padding: 25px 0 20px;
-text-align: center;
-margin: 10px 0 0 0;
+
 }
 .sale_timer_wrp .sale_datetime_str {
 font-size: 11px;
@@ -1587,21 +1585,13 @@ padding: 10px 0 0;
 font-style: italic;
 }
 .sale_timer_wrp .date_discount_wrp {
-text-align: center;
+
 }
 .sale_timer_wrp .date_discount_counter {
-text-align: center;
-font-size: 22px;
-margin: 0 0 3px;
-display: inline-block;
+
 }
 .sale_timer_wrp .date_discount_counter_txt {
-background: url("/images/header_action_counter_bottomtxt.png") no-repeat scroll 50% 0 rgba(0, 0, 0, 0);
-height: 13px;
-width: 100%;
-background-size: contain;
-max-width: 231px;
-display: inline-block;
+
 }
 .pr_stickers_wrp {
 position: absolute;
@@ -1777,13 +1767,13 @@ font-size: 13px;
 font-size: 13px;
 }
 .product_brief_table .pb_old_price {
-text-align: center;
-margin: -5px 0 10px;
-color: #505050;
 text-decoration: line-through #a70000;
-font-size: 14px;
-position: relative;
-display: block;
+}
+.price_promotion_block {
+    display: flex;
+    justify-content: flex-start;
+    align-items:center; 
+    
 }
 .product_brief_table .pb_old_price .pb_price_save_percent {
 display: inline-block;
@@ -1792,6 +1782,17 @@ vertical-align: top;
 color: #bd0000;
 font-weight: bold;
 text-indent: 5px;
+}
+
+.pb_price_save_percent {
+    color: white;
+    background: red;
+    border-radius: 5px;
+    padding: 0 2px;
+    margin-right: 5px;
+    font-size: 10px;
+    font-weight: 900;
+
 }
 .simulate_add2cart {
 background: none repeat scroll 0 0 #394550;
@@ -1893,12 +1894,11 @@ svg.icon-component.Status_icon__1F72W {
 
 
 .stock_label.outofstock {
-    background: url("/images/outofinstock_ico.png") no-repeat scroll 0 50% rgba(0, 0, 0, 0);
-    color: #fb393d;
-    font-weight: 400;
-    font-style: inherit;
-    font-size: 14px;
-    margin-top: 10px;
+    color: rgba(0,0,0,54%);
+    width: 120px;
+    margin-top: 15px;
+    padding: 0;
+    font-size: 16px;
 }
 .stock_label.stock_label>i {
 color: #47abd3;
@@ -2805,7 +2805,7 @@ text-align: center;
     box-shadow: 0 0 7px rgba(0,0,0,.1);
     border-radius: 10px;
     border: 1px solid #0000001f;
-    min-height: 430px;
+    min-height: 450px;
 }
 .products_wrp .product_brief_table.hover {
 box-shadow: 0px 2px 2px rgba(0,8,29,5%), 0px 0px 2px rgba(0,8,29,6%), 0px 1px 3px rgba(0,8,29,8%);
@@ -2893,6 +2893,39 @@ margin: 0 0 20px;
 text-align: center;
 padding: 20px;
 }
+.navigator_wrp a {
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 10px;
+    padding: 6px 15px;
+    -moz-box-align: center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(0,0,0,.87);
+}
+font.faq b {
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 10px;
+    padding: 6px 15px;
+    -moz-box-align: center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 24px;
+    color: white;
+    background: red;
+}
+
+
+.navigator_wrp a:hover{
+border-color: rgba(0,0,0,.22);
+background: rgba(63,78,93,.05);
+text-decoration: none;
+}
+
+
+
+
+
 
 
 
@@ -2965,6 +2998,11 @@ min-height: 70px;
 .pi_header_left .pi_allimages .imgwrp img {
 vertical-align: middle !important;
 }
+.pi_header_right {
+    margin-left: 20px;
+}
+
+
 
 
 .pi_header_right_header tr td {
@@ -3093,22 +3131,23 @@ button.add2cart_handler.add2preorder {
 margin: 0 10px 0 0;
 }
 .pi_sale_info {
-margin: 0 0 20px;
-background-color: #fffbf1;
-padding: 0 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px 20px;
+    background: rgba(23,60,97,6%);
+
 }
 .pi_sale_info .sale_timer_wrp {
-background-color: #fff4d9;
-padding: 10px 0 10px;
-text-align: center;
-margin: 0 0 10px 0;
+
 }
 .pi_sale_info .sale_timer_wrp .date_discount_wrp {}
 .pi_sale_info .sale_timer_wrp .sale_datetime_str {
 padding: 0 0 7px;
 }
 .pi_sale_info .sale_timer_wrp .date_discount_counter {
-font-size: 33px;
+
 }
 .pi_sale_info .sale_timer_wrp .date_discount_counter_txt {}
 .pi_sale_info .pi_sale_name {
@@ -3947,15 +3986,15 @@ background-color: #0c88ef;
 .footer_wrp .footer_soc_buttons .fsoc_ico.fsoc_item_gp {
 background-color: #ea4335;
 }
-.footer_wrp .footer_soc_buttons .fsoc_ico>i {}
+
 .floating_sidebar {
-background: none repeat scroll 0 0 #323a41;
-bottom: 0;
-box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1);
-color: #fff;
-position: fixed;
-width: 100%;
-z-index: 2;
+    background: none repeat scroll 0 0 #394550;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1);
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 999999999;
+    top: 0;
 }
 .floating_sidebar .fs_item {
 cursor: pointer;
@@ -3973,6 +4012,73 @@ margin: 0 10px 0 0;
 vertical-align: middle;
 width: 30px;
 }
+button.mainMenu_catalog_float_button {
+    background: 0 0;
+    font-size: 18px;
+    line-height: 21px;
+    height: 50px;
+    display: -moz-box;
+    display: flex;
+    -moz-box-ordinal-group: 2;
+    align-items: center;
+    border: none;
+}
+svg.icon-component_catalog_float {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 10px;
+}
+
+
+.mainMenu_catalog_float_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.events_container_product {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.Events_containerIcon__1SbO5 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-gray-border);
+    transition: border-color 0.3s ease 0s, background 0.3s ease 0s; 
+}
+.events_container_product svg {
+    height: 35px;
+    color: rgba(63,78,93,60%);
+    border:1px solid rgba(0,0,0,12%);
+    border-radius:10px;
+    padding: 5px;
+}
+.add-favorire_block, .add-compare_block, .tracking_price_block {
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+}
+
+.add-favorire_text_link, .add-compare__text_link, .tracking_price_text_link {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
 .floating_sidebar .fs_item .fs_ico.fs_compare_ico {}
 .floating_sidebar .fs_item .fs_ico.fs_wishlist_ico {}
 .floating_sidebar .fs_item .fs_ico.fs_history_ico {}
@@ -6450,7 +6556,6 @@ img.vendorlogo {
         position: fixed;
         width: 100%;
         top: 0;
-        display: none;
         border-bottom: 1px solid #b1b0b0;
         z-index: 9999;
         align-items: center;
@@ -6517,7 +6622,7 @@ width: 400px;
 }
 .PaymentMethods_block_description {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
@@ -6666,4 +6771,19 @@ form.product_brief_table.notavailible {
     font-weight: 600;
     line-height: 24px;
     border-radius:10px;
+}
+.users_shippay_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.users_spayblk_img {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    padding: 3px 6px;
+    background: rgba(23,60,97,6%);
+    border-radius: 10px;
 }

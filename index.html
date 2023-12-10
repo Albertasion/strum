@@ -7,28 +7,7 @@
 {/if}
 
 
-<!-- плаваюче меню -->
-<div class="top_menu_float_main">
-	<div class="header_search_float_menu">
-		{if !$isOptimizer}
-			{include file="product_search.html"}
-		{/if}
-	</div>
-
-
-	<div class="header_acount_link_float_main">
-		<a class="header_account_title handler_popup_login_form" href='{"?ukey=auth"|set_query_html}'>{'Cabinet'|t}</a>
-	</div>
-
-	<div class="header_shopping_cart_float_main">
-		{if !$isOptimizer}
-			{include file="shopping_cart_info.html"}
-		{/if}
-	</div>
-</div>
-
-
-
+{include file="sidebar.html"}
 
 
 <div class="main_wrp">
