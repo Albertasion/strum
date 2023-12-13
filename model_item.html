@@ -1,0 +1,94 @@
+{strip}
+{if $product_info ne NULL}
+	{if $product_counter > 0 && $product_counter < 2} 
+		<div class="tooltip_helper tooltip_helper_upper">Внизу представлен список запчастей</div>
+	{/if}
+
+
+	<form class="product_model_block product_model_block_c{$product_counter}" action='{"?ukey=cart"|set_query_html}' method="post" rel="{$product_info.productID}">
+		<input name="action" value="add_product" type="hidden" />
+		<input name="productID" value="{$product_info.productID}" type="hidden" />
+		<div class="pm_table"> 
+			<div class="pm_table_row"> 
+				<div class="pm_table_cell pmtc_img">
+					{if $product_info.enlarged || $product_info.filename}
+						<a class="imgwrp" href="{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.enlarged}{$product_info.enlarged}{else}{$product_info.filename}{/if}">
+					{else}
+						<div class="imgwrp">
+					{/if}
+						<img class="lazyload" width="190" height="190" data-src="{if $product_info.thumbnail}{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.thumbnail}{else}/images/noimg.png{/if}" alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}"/>
+				
+					{if $product_info.enlarged || $product_info.filename}
+						</a>
+					{else}
+						</div>
+					{/if}
+				</div>
+				<div class="pm_table_cell pmtc_id">
+					{if $product_info.id}
+						{if $product_counter > 3 && $product_counter < 6} 
+							<div class="tooltip_helper tooltip_helper_upper">Номер запчасти с картинки</div> 
+						{/if}
+						{$product_info.id|escape:'html'}
+					{/if}
+				</div>
+				<div class="pm_table_cell pmtc_id">
+					{if $product_info.product_code}
+						{if $product_counter > 3 && $product_counter < 6} 
+							<div class="tooltip_helper tooltip_helper_upper">Артикул</div> 
+						{/if}
+						{$product_info.product_code|escape:'html'}
+
+						{if $product_info.replacementProducts && !$product_info.redirect}
+							<div class="pm_new_code">
+								Новый артикул:{literal} {/literal}
+								{foreach from=$product_info.replacementProducts item=$replacementProduct name=_rplFrch}
+									{if $replacementProduct.productID > 0}
+										<a href='{"?productID=`$replacementProduct.productID`&product_slug=`$replacementProduct.slug`"|set_query_html}' target="_blank">{$replacementProduct.product_code}</a>
+									{else}
+										{$replacementProduct.product_code}
+									{/if}
+									{if !$smarty.foreach._rplFrch.last}, {/if}
+								{/foreach}
+							</div> 
+						{/if}
+					{/if}
+				</div>
+				<div class="pm_table_cell pmtc_name">
+					{if $product_info.productID || $product_info.slug}
+						<a href='{"?productID=`$product_info.productID`&product_slug=`$product_info.slug`"|set_query_html}'>
+					{/if}
+					{if $product_info.name}
+						{$product_info.name|escape:'html'}
+					{/if}
+					{if $product_info.productID || $product_info.slug}
+						</a>
+					{/if} 
+				</div> 
+				<div class="pm_table_cell pmtc_price">
+					{if $product_info.Price}
+						{if $product_counter > 3 && $product_counter < 6}
+							<div class="tooltip_helper">Актуальная цена запчасти</div>	
+						{/if}
+						<span class="pm_price">
+							<span class="price_label">Цена </span>
+							{$product_info.PriceWithUnit|replace:' грн.':'<small> грн.</small>'}
+						</span>
+					{/if}
+				</div>
+				<div class="pm_table_cell pmtc_add2cart">
+					{include file="product_add2cart_button.html" product_info=$product_info request_product_count=1}
+				</div>
+			</div>
+		</div>
+		<div class="clr"></div>
+	</form>
+	{if $product_counter > 10 && $product_counter < 15} 
+		{if $description_has_images > 2}
+			<div class="tooltip_helper">
+				Внизу еще есть схемы <i class="fa fa-arrow-down"></i>
+			</div>	
+		{/if}
+	{/if}
+{/if}
+{/strip}

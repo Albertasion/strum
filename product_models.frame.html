@@ -1,0 +1,202 @@
+{strip}
+{if $widget}
+	{assign var=_ext_url value="&view=noframe&external=1"}
+{/if}
+{if $product_info ne NULL}
+	<script>{literal}
+		var timerJQueryId_4947 = setInterval(function() {
+			if (window.jQuery && window.jQuery.elevateZoom) {
+				clearInterval(timerJQueryId_4947);
+				var $ = window.jQuery;
+
+				$('.pi_models_descriprion p img').each( function() {
+				    $(this).replaceWith('<a class="pim_desc_imgwrp zoomImage" href="' + $(this).attr('src') + '" data-fancybox="product_pictures_models"><img src="'+$(this).attr('src')+'" data-zoom-image="'+$(this).attr('src')+'" /><i class="fa fa-search-plus" aria-hidden="true"></i></a>');
+				});
+				$('.zoomImage img').elevateZoom({
+					zoomType : 'lens',
+					scrollZoom : true
+				}); 
+				$('.zoomImage').fancybox();
+
+				if ($('.product_model_block').length) {
+					$('.product_models_footer_btns').insertAfter($('.product_model_block:last'));
+				}
+			}
+		}, 200);
+	{/literal}</script>
+	<div class="main_wide_padding">
+		<div class="path" xmlns:v="http://rdf.data-vocabulary.org/#">
+			<span typeof="v:Breadcrumb">
+				<a href='{"?"|set_query}' class="path_item" rel="v:url" property="v:title">
+					{'Internet shop'|t} {'of tools'|t}
+				</a>
+			</span>
+			{literal} / {/literal}
+			{foreach from=$product_category_path item=_path_itm name=i}
+				{if $_path_itm.categoryID != 1}
+					<span typeof="v:Breadcrumb">
+						{if !$_path_itm.redirect}
+							<a href='{"?categoryID=`$_path_itm.categoryID`&category_slug=`$_path_itm.slug`"|set_query_html}' class="{cycle values='block1,block2'} path_item" rel="v:url" property="v:title">
+						{else}
+							<span class="{cycle values='block1,block2'} path_item">
+						{/if}
+						
+							{$_path_itm.name|escape:'html'|default:"(no name)"}
+						{if !$_path_itm.redirect}
+							</a>
+						{else}
+							</span>
+						{/if}
+					</span>
+					{if !$smarty.foreach.i.last}
+						{literal} / {/literal}
+					{/if}
+				{/if}
+			{/foreach}
+		</div>
+		<h1 class="product_name">{$product_info.short_name|escape:'html'}<br><small>{$product_info.name_ending|escape:'html'}</small></h1>
+	</div>
+	<div class="main_wide_padding">
+			<!-- Выпадающий список для выбора числа -->
+<select id="numberSelector">
+</select>
+		<hr>
+		<div class="pi_models_page product_info" rel="{$product_info.productID}">
+			<div class="tooltip_helper">
+				Найдите на рисунке необходимую запчасть 
+			</div>	
+			<div class="pim_header">
+				<div class="pim_header_left {if !$all_product_pictures}w100{/if}">
+					{if $product_info.picture}
+						<a class="imgwrp notfancybox" target="_blank" href='{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.big_picture}{$product_info.big_picture}{else}{$product_info.picture}{/if}' data-fancybox="product_pictures" data-caption="{$product_info.name|escape:'html'} #1">
+							<img class="lazyload" id="img-current_picture" border='0' data-src="{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.big_picture}" data-pagespeed-no-transform title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" /><br />
+							<i class="fa fa-search-plus" aria-hidden="true"></i>
+						</a> 
+					{else}
+						<div class="imgwrp notfancybox">
+							<img class="lazyload" id="img-current_picture" border='0' data-src="/images/noimg.png" title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" /><br />
+						</div>
+					{/if}
+				</div>
+				{if $all_product_pictures}
+					<div class="pim_header_right">
+						<div class="pim_allimages">
+							<div class="scrollable_wrp">
+								<div class="scrollable vertical">
+									<div class="lst">
+										{foreach from=$all_product_pictures item=_picture name=frpict}
+											{if $_picture.photoID != $product_info.photoID}
+												<div class="item">
+													<a class="imgwrp notfancybox" href='{$smarty.const.URL_PRODUCTS_PICTURES}/{if $_picture.enlarged}{$_picture.enlarged}{else}{$_picture.filename}{/if}' target="_blank" data-fancybox="product_pictures" data-caption="{$product_info.name|escape:'html'} #{$smarty.foreach.frpict.iteration}">
+														<img class="lazyload" data-src='{$smarty.const.URL_PRODUCTS_PICTURES}/{$_picture.thumbnail}' alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}" />
+														<i class="fa fa-search-plus" aria-hidden="true"></i>
+													</a>
+												</div>
+											{/if}
+										{/foreach}
+									</div>
+								</div>
+								<span class="next"></span>
+								<span class="prev"></span>
+							</div>
+						</div>
+					</div> 
+				{/if}
+			</div>
+			<div class="clr"></div>
+			<div class="pi_models_descriprion">
+				<div class="product_model_block product_model_block_header">
+					<div class="pm_table">
+						<div class="pm_table_row">
+							<div class="pm_table_cell pmtc_img">
+								Схема
+							</div>
+							<div class="pm_table_cell pmtc_id">
+								&nbsp;
+							</div>
+							<div class="pm_table_cell pmtc_id">
+								Код
+							</div>
+							<div class="pm_table_cell pmtc_name">
+								Название
+							</div>
+							<div class="pm_table_cell pmtc_price">
+								{'str_price'|t}
+							</div>
+							<div class="pm_table_cell pmtc_add2cart">
+								&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clr"></div>
+				{$product_info.description} 
+				<div class="product_models_footer_btns visible-xs">
+					<a class="product_models_back" href='{"?ukey=category_&category_slug=`$product_info.selected_category.slug`&categoryID=`$product_info.selected_category.categoryID`"|set_query_html}'>
+						<i class="fa fa-chevron-left" aria-hidden="true"></i>Вернуться назад
+					</a>
+				</div>
+				<div class="clr"></div>
+			</div>
+		</div>
+	</div>
+
+	{if $product_related}
+		<div class="main_wide_padding">
+			<div class="h2 product_related_title">{"str_related_items"|translate}</div>
+			<div class="products_scroll_wrp">
+				<div class="scrollable autoscroll">
+					<div class="lst">
+						{foreach from=$product_related item=_product_brief}
+							{include file="product_brief_table.html" product_info=$_product_brief}
+						{/foreach}
+					</div>
+				</div>
+				<a class="prev"></a>
+				<a class="next"></a>
+			</div>
+			<div class="clr"></div>
+		</div>
+	{/if}
+
+	{if $category_hits}
+		<div class="main_wide_padding">
+			<div class="h2 product_related_title">Хиты продаж</div>
+			<div class="products_scroll_wrp">
+				<div class="scrollable autoscroll">
+					<div class="lst">
+						{foreach from=$category_hits item=_product_brief}
+							{if !$_product_brief.redirect && $_product_brief.productID != $product_info.productID}
+								{include file="product_brief_table.html" product_info=$_product_brief}
+							{/if}
+						{/foreach}
+					</div>
+				</div>
+				<a class="prev"></a>
+				<a class="next"></a>
+			</div>
+			<div class="clr"></div>
+		</div>
+	{/if}
+
+	<div class="main_wide_padding">
+		<div class="h2 product_related_title">Товары категории</div>
+		<div class="pb_product_table_wrp">
+			<table class="pb_product_table">
+				{foreach from=$category_products item=category_product_info}
+					<tr>
+						<td>
+							<a class="pb_product_name" href='/product/{if $category_product_info.slug}{$category_product_info.slug}{else}{$category_product_info.productID}{/if}/'>
+								{if $category_product_info.name}{$category_product_info.name}{else}{$category_product_info.productID}{/if}
+							</a>
+						</td>
+					</tr>
+				{/foreach}
+			</table>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/js/productmodels.js?v=0.1{'/js/productmodels.js'|@filemtime}"></script>
+
+{/if}
+{/strip}

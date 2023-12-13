@@ -3750,6 +3750,7 @@ background-color: #fbf7ed;
 font-weight: bold;
 }
 .product_model_block .pm_table .pm_table_row {
+    position: relative;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -3791,7 +3792,16 @@ font-size: 18px;
 .product_model_block .pm_table .pm_table_row .pm_table_cell .pm_price .price_label {
 font-size: 12px;
 }
-.product_model_block .pm_table .pm_table_row .pm_table_cell.pmtc_name {}
+
+.pm_table_cell.pmtc_name {
+    width: 300px;
+    height: 45px;
+    overflow: hidden;
+}
+
+
+
+
 .product_model_block .pm_table .pm_table_row .pm_table_cell.pmtc_name a {
 font-size: 13px;
 }
@@ -6795,4 +6805,14 @@ form.product_brief_table.notavailible {
     padding: 3px 6px;
     background: rgba(23,60,97,6%);
     border-radius: 10px;
+}
+.pmtc_id:nth-child(2) {
+    color: white;
+    background: #376cca;
+    border-radius: 26px;
+    padding: 5px 9px;
+    position: absolute;
+    top: 0;
+    left: 5px;
+
 }
