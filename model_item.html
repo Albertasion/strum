@@ -14,7 +14,7 @@
 					{if $product_info.enlarged || $product_info.filename}
 						<a class="imgwrp" href="{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.enlarged}{$product_info.enlarged}{else}{$product_info.filename}{/if}">
 					{else}
-						<div class="imgwrp">
+						<div class="imgwrp_noimage">
 					{/if}
 						<img class="lazyload" width="190" height="190" data-src="{if $product_info.thumbnail}{$smarty.const.URL_PRODUCTS_PICTURES}/{$product_info.thumbnail}{else}/images/noimg.png{/if}" alt="{$product_info.name|escape:'html'}" title="{$product_info.name|escape:'html'}"/>
 				

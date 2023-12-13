@@ -23249,7 +23249,9 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
     var selectedNumber = $(this).val();
 
     // Находим соответствующий элемент и получаем его позицию
-    var targetElement = $('.pmtc_id:contains(' + selectedNumber + ')');
+    var targetElement = $('.pmtc_id').filter(function() {
+        return $(this).text() === selectedNumber;
+      });
     var targetPosition = targetElement.offset().top;
 
     // Прокручиваем браузер к целевой позиции
