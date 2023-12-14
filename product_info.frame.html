@@ -533,6 +533,8 @@
 
 
 
+    <div class="addtocompare" rel="{$product_info.productID}"><i></i>{'Add to compare'|t}</div>
+    <div rel="{$product_info.productID}" class="addtowishlist"><i></i>{'Add to notepad'|t}</div>
      
 
 
@@ -721,6 +723,35 @@
                     {/foreach}
     </div>
     {/if}
+
+
+
+
+
+    <!-- хиті товаров -->
+{if $category_hits}
+   
+        <div class="h2 product_related_title">{'Sale hits '|t}</div>
+      
+            
+        <div id="reccom_related" class="box">
+                    {foreach from=$category_hits item=_product_brief}
+                        {if !$_product_brief.redirect && $_product_brief.productID != $product_info.productID}
+                            {include file="product_brief_follow.html" product_info=$_product_brief}
+                        {/if}
+                    {/foreach}
+                </div>
+
+
+{/if}
+
+
+
+
+
+
+
+
     
     <!-- </div> -->
 
