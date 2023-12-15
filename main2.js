@@ -23238,9 +23238,13 @@ $('.pmtc_id').each(function(index, element) {
     
     if (index % 2 === 0) {
    var number = $(this).text();
+
+   if (number !== '') {
+  
       // Добавляем числа в выпадающий список
 $('#numberSelector').append('<option value="' + number + '">' + number + '</option>');
     }
+}
 
   });
 
@@ -23251,8 +23255,8 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
     // Находим соответствующий элемент и получаем его позицию
     var targetElement = $('.pmtc_id').filter(function() {
         return $(this).text() === selectedNumber;
-      });
-    var targetPosition = targetElement.offset().top;
+    });
+      var targetPosition = targetElement.offset().top - ($(window).height() - targetElement.outerHeight()) / 2;
 
     // Прокручиваем браузер к целевой позиции
     $('html, body').animate({ scrollTop: targetPosition }, 1000);
@@ -23263,6 +23267,29 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
       targetElement.css('background-color', 'black'); // Убираем выделение через 2 секунды
     }, 6000);
   });
+
+
+
+  var $floatingBlock = $('.floating_sidebar');
+
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 10) {
+      $floatingBlock.fadeIn();
+    } else {
+      $floatingBlock.fadeOut();
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
