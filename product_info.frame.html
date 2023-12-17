@@ -1,5 +1,189 @@
 {strip}
 {if $product_info ne NULL}
+
+<div class="floating_sidebar_product">
+    <div class="main_wide_padding">
+
+
+
+        <div class="pi_tabs_wrp_floating">
+            <ul class="tabs_floating">
+                <li rel="charTable" class="current">
+                    <span class="tabs_ico tabs_ttx_ico"></span>
+                    <span class="tabs_name">{'Specifications'|t}</span>
+                </li>
+                <li rel="kupit">
+                    <span class="tabs_ico tabs_desc_ico"></span>
+                    <span class="tabs_name">{'str_description'|t}</span>
+                </li>
+                <li rel="desc_diss">
+                    {if $product_info.discussions_counter}
+                        <span class="tabs_ico tabs_disc_ico"><sup>{$product_info.discussions_counter}</span></span>
+                    {/if}
+                    <span class="tabs_name">{'pgn_product_reviews'|t}</span>
+                </li>
+                <li rel="dostavka">
+                    <span class="tabs_ico tabs_shippping_ico"></span>
+                    <span class="tabs_name">{'shipping'|t}</span>
+                </li>
+            </ul>
+
+
+
+
+
+
+
+<div class="floating_picture_top">
+            {if $product_info.picture}
+                    <img src="{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.big_picture}{$product_info.big_picture}{else}{$product_info.picture}{/if}"
+                        title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" /><br />
+                </a>
+            {else}
+            <!-- якщо немає . фото заглушка -->
+                    <img src="/images/noimg.png"
+                        title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" />
+            {/if}
+
+
+
+
+            <div class="floating_product_name_top">
+
+                <h2 class="floating_product_name">
+                   {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}
+               </h2>
+               </div>
+</div>
+
+{if !$product_info.archive}
+                
+<div class="pi_price">
+
+                <!-- якщо товар не архивний -->
+            {if !$product_info.archive}
+            <!-- якщо курс не нуль ціна більше нуля -->
+            {if $currencies_count ne 0 && $product_info.Price > 0}
+            <!-- блок ціна -->
+            <div class="totalPrice">
+         <!-- ціна звичайна -->
+            <span class="priceValue">{$product_info.PriceWithUnit}</span> 
+            </div>
+
+<!-- блок акцыйна цына -->
+<div class="discount_price_block">
+{if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0}
+<span class="regularPrice">
+{$product_info.list_priceWithUnit}
+{if $product_info.SavePricePercent > 0}
+<span class="pi_price_save_percent">-{$product_info.SavePricePercent}%</span>
+{/if}
+</span>
+{/if}
+</div>
+<!-- конец discount_price_block -->
+
+            {/if}
+
+
+
+
+
+    {/if}
+    <!-- currencies_count ne 0 && $product_info.Price -->
+
+{/if}
+<!-- !$product_info.archive -->
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- конец pi_price -->
+
+
+
+
+
+
+
+
+
+
+
+{if !$product_info.archive}  
+<!-- кнопка купити -->
+<div class="button_buy_product_floating_block">
+       <form class="product_info" rel="{$product_info.productID}" action='{""|set_query_html}' method="post">
+         <input name="productID" value="{$product_info.productID}" type="hidden" />
+         <input class="product_price" value="{$product_info.price_incurr|escape:'html'}" type="hidden" />
+         <input class="product_list_price" value="{$product_info.list_price_incurr|escape:'html'}" type="hidden" />
+   <!-- підключення файла кнопки floating_add2card_button.html -->
+         {include file="floating_add2card_button.html" product_info=$product_info request_product_count=1}
+     </form>
+ </div>
+ {/if}
+
+
+
+<!-- конец floating_picture_top -->
+
+
+
+
+
+
+
+        </div>
+        <!-- конец  pi_tabs_wrp_floating -->
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="main_wide_padding">
     <div class="header_main_content_product"> 
     <!-- хлібні крошки -->

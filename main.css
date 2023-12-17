@@ -6566,7 +6566,16 @@ img.vendorlogo {
         text-transform: uppercase;
         border-radius: 10px;
         color:red;
+        transition: .3s;
     }
+
+    .quick-buy_button:hover {
+background:#e8eaed;
+border:1px solid rgba(0,0,0,12%);
+    }
+
+
+
     span.priceValue {
         font-size: 28px;
     }
@@ -6752,6 +6761,7 @@ input.product_add2cart_handler.button_buy_follow {
     border-radius: 5px;
     border: 1px solid;
     text-align: left;
+    transition: .3s;
 }
 .price_product_follow {
     font-weight: 600;
@@ -6842,4 +6852,140 @@ input.product_add2cart_handler.button_buy:hover {
 }
 form.search_form_floating {
     color: #5f5c5c;
+}
+.mainMenu_catalog_float_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+button.mainMenu_catalog_float_button {
+    background: 0 0;
+    font-size: 18px;
+    line-height: 21px;
+    height: 50px;
+    display: -moz-box;
+    display: flex;
+    -moz-box-ordinal-group: 2;
+    align-items: center;
+    border: none;
+}
+
+.product_search_floating_block {
+    display: flex;
+    position: relative;
+}
+form.search_form_floating {
+    color: #5f5c5c;
+    position: relative;
+}
+
+.input_message_floating {
+    border-radius: 10px;
+    width: 400px;
+    height: 36px;
+    padding: 20px;
+    font-size: 16px;
+}
+input.findbtt_float {
+    background: blue;
+    color: #ff0303;
+    position: absolute;
+    z-index: 5656565;
+    right: 2px;
+    top: 1px;
+    font-size: 16px;
+    background-image: url(/images_sale/search-cust.svg);
+    background-size: auto 80%;
+    background-position: 0 50%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+h1.product_name {
+    word-break: break-word;
+}
+a.fs_item_name.hndl_proceed_checkout img {
+    margin-right: 10px;
+}
+svg.HeaderActionButton {
+    height: 32px;
+}
+button.header_action_button_action, button.header_card_button_action {
+    color: white;
+    background: #394550;
+    border: none;
+    transition: .3s;
+}
+button.header_action_button_action:hover, button.header_card_button_action:hover {
+    color: red;
+}
+
+svg.HeaderCardButton {
+    height: 28px;
+    margin-right: 6px;
+}
+
+
+.floating_sidebar_product {
+    background: white;
+    box-shadow: 0px 2px 2px rgba(0,8,29,5%), 0px 0px 2px rgba(0,8,29,6%), 0px 1px 3px rgba(0,8,29,8%);
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 999999999;
+    top: 50px;
+    display: none;
+}
+.pi_tabs_wrp_floating {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.pi_tabs_wrp_floating .tabs_floating {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    color: rgba(0,0,0,54%);
+}
+.pi_tabs_wrp_floating .tabs_floating li.current {
+    color: red;
+    border-bottom: 2px solid red;
+    position: relative;
+}
+.pi_tabs_wrp_floating .tabs_floating li {
+    display: block;
+    padding-left: 24px;
+    padding: 14px 16px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: .25px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.floating_picture_top img {
+    height: 40px;
+    width: 40px;
+}
+
+.floating_picture_top {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+h2.floating_product_name {
+    font-size: 14px;
+    color: black;
+    padding: 2px 7px;
+    width: 266px;
+    overflow: hidden;
+    height: 35px;
+}
+.button_buy_product_floating_block {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+input.product_add2cart_handler.button_buy.floating {
+    width: 130px;
 }

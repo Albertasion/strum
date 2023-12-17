@@ -14,51 +14,44 @@
 			</span>
 				</button>
 
-				
-				{if !$isOptimizer}
+				<div class="product_search_floating_block">
 				{include file="product_search_floating.html"}
-			{/if}
+			</div>
+			
 			<div>{'Promotions'|t}</div>
-			<div>{'New products'|t}</div>
 			<div>{'Contacts'|t}</div>
-			<div>{'pgn_cart'|t}</div>
 			<div>{'pgn_product_reviews'|t}</div>
+			<button class="header_action_button_action">
+			<svg viewBox="0 0 24 24" fill="currentColor" class="HeaderActionButton"><path d="M16.5 3C14.76 3 13.09 3.81 12 5.09C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5C2 12.28 5.4 15.36 10.55 20.04L10.6541 20.1341C11.4178 20.824 12.5803 20.8218 13.3413 20.129L13.45 20.03C18.6 15.36 22 12.28 22 8.5C22 5.42 19.58 3 16.5 3ZM12.1 18.55L12 18.65L11.9 18.55C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 5.99 11.07 7.36H12.94C13.46 5.99 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 18.55Z"></path></svg>
+		</button>		<a class="" href='{"?ukey=auth"|set_query_html}'>
+		<button class="header_action_button_action">
 	
-
-
-
-
-
-			</div>
+			<svg viewBox="0 0 24 24" fill="currentColor" class="HeaderActionButton"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 6C13.1 6 14 6.9 14 8C14 9.1 13.1 10 12 10C10.9 10 10 9.1 10 8C10 6.9 10.9 6 12 6ZM12 13C9.33 13 4 14.34 4 17V19C4 19.55 4.45 20 5 20H19C19.55 20 20 19.55 20 19V17C20 14.34 14.67 13 12 13ZM18 18H6V17.01C6.2 16.29 9.3 15 12 15C14.7 15 17.8 16.29 18 17V18Z"></path></svg>
+			{'btn_login'|t}
 		
+		</button>
+	</a>
 	
-
-
-
-
-
-			<!-- <div class="fs_item product_history_handler" rel="0">
-				<span class="fs_ico fs_history_ico"></span>
-				<span class="fs_item_name">Просмотренные</span>
-				<sup>{$product_history_count}</sup>
-			</div>
-			<div class="fs_item" rel="0">
-				<span class="fs_ico fs_recallme_ico"></span>
-				<span rel="#overlay" class="fs_item_name recallme">Обратный звонок</span>
-			</div>
-			{*<div class="fs_item">
-				<sup class="shpcrtgc">{if $shopping_cart_items}{$shopping_cart_items}{else}0{/if}</sup>
+			<div class="fs_item">
+				<button class="header_card_button_action">
+					<svg viewBox="0 0 24 24" fill="currentColor" class="HeaderCardButton"><path d="M20.63 12.5l1.84-8.13c.12-.59-.31-1.17-.94-1.17H6.21l-.35-1.72c-.12-.43-.51-.78-.94-.78H.94c-.55 0-.94.43-.94.94v.63a.9.9 0 0 0 .94.94h2.7l2.77 13.44c-.66.39-1.09 1.09-1.09 1.88 0 1.21.98 2.19 2.19 2.19 1.17 0 2.19-.98 2.19-2.19 0-.59-.27-1.13-.66-1.56h8.16c-.39.43-.62.98-.62 1.56 0 1.21.98 2.19 2.19 2.19 1.17 0 2.19-.98 2.19-2.19 0-.86-.51-1.6-1.25-1.95l.2-.94c.16-.59-.31-1.17-.9-1.17H8.52l-.27-1.25h11.45c.43 0 .82-.27.94-.7z"></path></svg>
 				<a class="fs_item_name hndl_proceed_checkout">
 					{'btn_viewcart'|t}
 				</a>
+				<sup class="shpcrtgc"><span class="notempty_card_number">{if $shopping_cart_items}{$shopping_cart_items}</span>{else}0{/if}</sup>
+			</button>
 			</div>
-			<div class="fsbr_block">
-				<form method="get" action="{$smarty.const.WBS_INSTALL_PATH}search/" class="fsbr_search_form">
-					<input type="text" class="fsbr_search_form_input" placeholder="Поиск товаров" value="{$searchstring}" name="searchstring">
-					<input type="submit" class="fsbr_search_form_submit" value="">
-				</form> 
-			</div>*}
-			<div class="clr"></div> -->
+
+			
+		
+
+
+
+		</div>
+
+		
+		
+	
 
 
 

@@ -23283,6 +23283,19 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
 
 
 
+  var $floatingBlockProduct = $('.floating_sidebar_product');
+
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 270) {
+      $floatingBlockProduct.fadeIn();
+    } else {
+      $floatingBlockProduct.fadeOut();
+    }
+  });
+
+
+
+
 
 
 
