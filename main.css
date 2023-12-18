@@ -6989,3 +6989,13 @@ h2.floating_product_name {
 input.product_add2cart_handler.button_buy.floating {
     width: 130px;
 }
+.logo_brands_logo_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.logo_brands_logo_block svg {
+    height: 40px;
+}
