@@ -21823,12 +21823,12 @@ function updateAjaxPageData() {
                 $(".header_list_top_menu_info .additional_menu").remove();
                 $(".header_list_top_menu_info").append(_additional_menu);
             }
-            /*if (data.history_count > 0) {
+            if (data.history_count > 0) {
 				$('.product_history_handler sup').addClass('visible').text(data.history_count);
-			} else {
-				$('.product_history_handler sup').removeClass('visible');
-			}
-			if (data.wishlist_count > 0) {
+			 } else {
+			 	$('.product_history_handler sup').removeClass('visible');
+			 }
+		if (data.wishlist_count > 0) {
 				$('.hbm_wishlist_counter').addClass('visible').text(data.wishlist_count);
 			} else {
 				$('.hbm_wishlist_counter').removeClass('visible');
@@ -21837,7 +21837,7 @@ function updateAjaxPageData() {
 				$('.hbm_compare_counter').addClass('visible').text(data.compare_count);
 			} else {
 				$('.hbm_compare_counter').removeClass('visible');
-			}*/
+			 }
         },
     });
 }
@@ -22585,27 +22585,27 @@ $(function () {
         return false;
     });
 
-    $(document).on("click", ".hndl_proceed_checkout", function () {
-        var fancyWidth = $(".main_wrp").outerWidth();
-        fancyWidth = fancyWidth > 0 ? fancyWidth * 0.9 : 1024;
-        $.fancybox.open({
-            src:
-                "/" +
-                (CURR_LANG_ISO != "ru" ? CURR_LANG_ISO + "/" : "") +
-                "cart/?view=noframe&t=" +
-                Math.round(+new Date() / 1000),
-            type: "iframe",
-            opts: {
-                iframe: {
-                    css: {
-                        width: fancyWidth,
-                    },
-                },
-            },
-        });
+    // $(document).on("click", ".hndl_proceed_checkout", function () {
+    //     var fancyWidth = $(".main_wrp").outerWidth();
+    //     fancyWidth = fancyWidth > 0 ? fancyWidth * 0.9 : 1024;
+    //     $.fancybox.open({
+    //         src:
+    //             "/" +
+    //             (CURR_LANG_ISO != "ru" ? CURR_LANG_ISO + "/" : "") +
+    //             "cart/?view=noframe&t=" +
+    //             Math.round(+new Date() / 1000),
+    //         type: "iframe",
+    //         opts: {
+    //             iframe: {
+    //                 css: {
+    //                     width: fancyWidth,
+    //                 },
+    //             },
+    //         },
+    //     });
 
-        return false;
-    });
+    //     return false;
+    // });
 
     $(document).on("click", ".quick-buy-handler", function () {
         let fancyWidth = $(".main_wrp").outerWidth();
@@ -23292,6 +23292,95 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
       $floatingBlockProduct.fadeOut();
     }
   });
+
+
+
+
+
+
+
+
+  $.ajax({
+    dataType: "json",
+    type: "get",
+    url: homeurl + "ajax.php",
+    data: { q: _searchstring.val(), t: "qsearch" },
+    success: function (data) {
+        _searchstring.removeClass("ui-autocomplete-loading");
+        response(data);
+    },
+    error: function (data) {
+        _searchstring.removeClass("ui-autocomplete-loading");
+    },
+});
+
+
+
+
+
+
+
+
+
+  $('.addtowishlist').click(function(){
+    productID = $(this).attr('rel');
+    $.ajax(
+        'ajax.php', {t: 'wishlist', id: productID, json: '1'}, function(data) {
+        $('.wishlist_handler').find('sup').html(data.list_count);
+        $('.wishlist_handler').data('tooltip').show();
+        $('.tooltip_wish_list').html(data.tooltip_content);
+        setTimeout(function() {$('.wishlist_handler').data('tooltip').hide();} , 1000);
+    });
+    $(this).html('<i></i>Добавлено');
+});
+$('.dellallwishlist').on('click', function() { 
+    $.get(homeurl+'ajax.php', {t: 'wishlist', del: -1}, function(data) {
+        $('.wishlist_handler').find('sup').html('0');
+        $('.tooltip_wish_list').html(data);
+    });
+});
+$('.tooltip_wish_list .pb_item_delete').on('click', function() {
+    var itm = $(this).closest('.pb_item');
+    var productID = itm.attr('rel')
+    itm.hide('fast');
+    $.getJSON(homeurl+'ajax.php?callback=?', {t: 'wishlist', del: productID, json: '1'}, function(data) {
+        $('.wishlist_handler').find('sup').html(data.list_count);
+        $('.tooltip_wish_list').html(data.tooltip_content);
+    });
+    return false;
+});
+
+
+
+
+
+
+
+
+
+
+
+   // $(document).on("click", ".hndl_proceed_checkout", function () {
+    //     var fancyWidth = $(".main_wrp").outerWidth();
+    //     fancyWidth = fancyWidth > 0 ? fancyWidth * 0.9 : 1024;
+    //     $.fancybox.open({
+    //         src:
+    //             "/" +
+    //             (CURR_LANG_ISO != "ru" ? CURR_LANG_ISO + "/" : "") +
+    //             "cart/?view=noframe&t=" +
+    //             Math.round(+new Date() / 1000),
+    //         type: "iframe",
+    //         opts: {
+    //             iframe: {
+    //                 css: {
+    //                     width: fancyWidth,
+    //                 },
+    //             },
+    //         },
+    //     });
+
+    //     return false;
+    // });
 
 
 
