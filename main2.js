@@ -23297,25 +23297,20 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
 
 
 
-
-
-
-  $.ajax({
-    dataType: "json",
-    type: "get",
-    url: homeurl + "ajax.php",
-    data: { q: _searchstring.val(), t: "qsearch" },
-    success: function (data) {
-        _searchstring.removeClass("ui-autocomplete-loading");
-        response(data);
-    },
-    error: function (data) {
-        _searchstring.removeClass("ui-autocomplete-loading");
-    },
+  $('.arrow_more_product').click(function(){
+    $('#reccom_related').css({'max-height':'846px'});
+    $(this).css({'display':'none'});
 });
 
 
+ 
 
+
+  setInterval(function() {
+    $('svg.arrow_more_product').animate({ bottom: '10px' }, 300, function() {
+      $(this).animate({ bottom: '0' }, 300);
+    });
+  }, 1000);
 
 
 
@@ -23324,31 +23319,58 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
 
   $('.addtowishlist').click(function(){
     productID = $(this).attr('rel');
-    $.ajax(
-        'ajax.php', {t: 'wishlist', id: productID, json: '1'}, function(data) {
-        $('.wishlist_handler').find('sup').html(data.list_count);
-        $('.wishlist_handler').data('tooltip').show();
-        $('.tooltip_wish_list').html(data.tooltip_content);
-        setTimeout(function() {$('.wishlist_handler').data('tooltip').hide();} , 1000);
+    console.log(productID);
+    $.ajax({
+        type: "get",
+        url: "ajax.php?callback=?",
+        data: {t: 'wishlist', id: productID, json: '1'},
+        success: function (data) {
+            $('.product-details__all').html(data);
+        },
+        error: function (data) {
+  
+        }
     });
     $(this).html('<i></i>Добавлено');
 });
-$('.dellallwishlist').on('click', function() { 
-    $.get(homeurl+'ajax.php', {t: 'wishlist', del: -1}, function(data) {
-        $('.wishlist_handler').find('sup').html('0');
-        $('.tooltip_wish_list').html(data);
-    });
-});
-$('.tooltip_wish_list .pb_item_delete').on('click', function() {
-    var itm = $(this).closest('.pb_item');
-    var productID = itm.attr('rel')
-    itm.hide('fast');
-    $.getJSON(homeurl+'ajax.php?callback=?', {t: 'wishlist', del: productID, json: '1'}, function(data) {
-        $('.wishlist_handler').find('sup').html(data.list_count);
-        $('.tooltip_wish_list').html(data.tooltip_content);
-    });
-    return false;
-});
+
+
+
+
+
+
+
+
+
+    // $.get(homeurl+'ajax.php', {t: 'wishlist', del: -1}, function(data) {
+        //         $('.wishlist_handler').find('sup').html('0');
+        //         $('.tooltip_wish_list').html(data);
+            // });
+//     $.ajax(
+//         'ajax.php', {t: 'wishlist', id: productID, json: '1'}, function(data) {
+//         $('.wishlist_handler').find('sup').html(data.list_count);
+//         $('.wishlist_handler').data('tooltip').show();
+//         $('.tooltip_wish_list').html(data.tooltip_content);
+//         setTimeout(function() {$('.wishlist_handler').data('tooltip').hide();} , 1000);
+//     });
+//     $(this).html('<i></i>Добавлено');
+// });
+// $('.dellallwishlist').on('click', function() { 
+//     $.get(homeurl+'ajax.php', {t: 'wishlist', del: -1}, function(data) {
+//         $('.wishlist_handler').find('sup').html('0');
+//         $('.tooltip_wish_list').html(data);
+//     });
+// });
+// $('.tooltip_wish_list .pb_item_delete').on('click', function() {
+//     var itm = $(this).closest('.pb_item');
+//     var productID = itm.attr('rel')
+//     itm.hide('fast');
+//     $.getJSON(homeurl+'ajax.php?callback=?', {t: 'wishlist', del: productID, json: '1'}, function(data) {
+//         $('.wishlist_handler').find('sup').html(data.list_count);
+//         $('.tooltip_wish_list').html(data.tooltip_content);
+//     });
+//     return false;
+
 
 
 
@@ -23439,4 +23461,3 @@ if ($('.top-information').length) {
     });
 
 }
-
