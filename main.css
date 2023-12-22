@@ -1992,27 +1992,27 @@ top: 0;
 width: 100%;
 }
 .question-spoiler {
-margin: 0 0 20px;
-position: relative;
-clear: both;
-padding: 10px 0 0 0;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+    height: 60px;
+    cursor: pointer;
 }
 .question-spoiler .question-spoiler-name {
 position: relative;
 overflow: hidden;
-margin: 0 0 10px;
-padding: 0 0 0 30px;
 font-weight: bold;
-text-decoration: underline dotted rgba(0, 0, 0, .3);
-cursor: pointer;
-font-size: 18px;
+font-size: 16px;
 }
 .question-spoiler .question-spoiler-name:hover {
 text-decoration: none;
-color: #e14d4d;
+color: #1a1717;
 }
 .question-spoiler .question-spoiler-name::before {
-content: "\203A";
+/* content: "\203A";
 display: block;
 position: absolute;
 top: 0;
@@ -2024,7 +2024,7 @@ width: 24px;
 height: 24px;
 text-align: center;
 line-height: 17px;
-text-indent: -9px;
+text-indent: -9px; */
 }
 .question-spoiler .question-spoiler-name span {}
 .question-spoiler .question-spoiler-name br {
@@ -6995,7 +6995,7 @@ input.product_add2cart_handler.button_buy.floating {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     
 }
 
@@ -7040,4 +7040,24 @@ a.pb_product_name:hover {
 }
 .product_follow_block:hover {
     box-shadow: 0px 12px 17px rgba(0,8,29,5%),0px 5px 22px rgba(0,8,29,6%),0px 7px 8px rgba(0,8,29,8%);
+}
+
+.qa-block {
+    border: 1px solid #f1f0f0;
+    box-shadow: 0 2px 2px rgb(0 8 29 / 5%), 0 0 2px rgb(0 8 29 / 6%), 0 1px 3px rgb(0 8 29 / 8%);
+    border-radius: 10px;
+    margin: 0;
+    padding: 10px 20px 40px 20px;
+    margin-bottom: 40px;
+}
+.catalog_footer a {
+    color: white;
+    font-weight: bold;
+    padding: 10px 0;
+}
+.catalog_footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
 }
