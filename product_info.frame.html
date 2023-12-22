@@ -397,11 +397,11 @@
 {/if}
     <!-- зырочки -->
  <div class="Rating-module" style="height: 16px; cursor: default;"><span class="">
-    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
-    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
-    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
-    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
-    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span>
+    <svg class="stars_1" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg class="stars_2" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg class="stars_3" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg class="stars_4" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
+    <svg class="stars_5" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span>
 </div>
 
 
@@ -882,7 +882,6 @@
 
 
 
- 
 
 
 
@@ -937,6 +936,41 @@
                 </div>
 
 
+{/if}
+
+
+
+ 
+<!-- відповіді на питання -->
+{if $faqItems}
+<div class="qa-block" itemscope='' itemtype='https://schema.org/FAQPage'>
+    {foreach from=$faqItems item=_faqItem}
+
+    <div class="qa-item question-spoiler" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        
+        <h3 itemprop="name" class="question-spoiler-name">{$_faqItem.question}
+          
+        </h3>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" height="20" viewBox="0 0 256 256" xml:space="preserve">
+
+            <defs>
+            </defs>
+            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                <path d="M 90 24.25 c 0 -0.896 -0.342 -1.792 -1.025 -2.475 c -1.366 -1.367 -3.583 -1.367 -4.949 0 L 45 60.8 L 5.975 21.775 c -1.367 -1.367 -3.583 -1.367 -4.95 0 c -1.366 1.367 -1.366 3.583 0 4.95 l 41.5 41.5 c 1.366 1.367 3.583 1.367 4.949 0 l 41.5 -41.5 C 89.658 26.042 90 25.146 90 24.25 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+            </g>
+            </svg>
+    
+        <div class="qa-item-answer question-spoiler-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+                {$_faqItem.answer}
+
+            </div>
+        </div>
+        
+    </div>
+
+    {/foreach}
+</div>
 {/if}
 
 
