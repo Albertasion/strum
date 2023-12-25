@@ -3039,31 +3039,37 @@ font-size: 20px;
 font-size: 16px;
 }
 .pi-wholesale-price-block {
-margin: 0 0 10px 0;
+    margin: 10px auto;
+    border: 1px solid hsl(0deg 0% 89% / 80%);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 5px rgba(0,8,29,5%), 0px 3px 4px rgba(0,8,29,6%), 0px 2px 5px rgba(0,8,29,8%);
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 .wholesale-price {
-display: block;
-margin: 0 0 10px;
-font-size: 12px;
-color: #606060;
-border-left: 2px solid #d9a9a8;
-padding: 5px 0 5px 10px;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
 }
 .wholesale-price .wholesale-price-label {
 display: block;
-color: #df514e;
+color: #ff0400;
 }
 .wholesale-price .wholesale-price-summary {
-font-size: 36px;
+font-size: 22px;
 font-weight: bold;
-color: #4d0e0d;
+color: #ff0400;
 padding: 0 5px;
 }
 .pi-wholesale-prices-table {
 display: table;
 margin: 0 0 10px;
 background-color: rgba(255,255,255,0.5);
-width: 100%;
 }
 .pi-wholesale-prices-table .ws-row {
 display: table-row;
@@ -6635,9 +6641,13 @@ width: 400px;
 .delivery_pic_def {
     display: flex;
     margin-bottom: 12px;
+    align-items: center;
+
 }
 .delivery_pic_def img {
-    margin-right: 5px;
+    margin-right: 10px;
+    height: 30px;
+
 }
 .PaymentMethods_block {
     display: flex;
@@ -6723,6 +6733,8 @@ span.name_product_discuss {
 .pi_header_left .pi_allimages {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    height: 700px;
 }
 div#reccom_related {
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -7061,3 +7073,121 @@ a.pb_product_name:hover {
     flex-wrap: wrap;
     margin-bottom: 25px;
 }
+button.add-favorire_block_button {
+    color: #211f1f;
+    background: white;
+    border: none;
+}
+/* button.add-favorire_block_button:active {
+    border: none;
+} */
+
+
+button.add-favorire_block_button:focus {
+    outline: none;
+  }
+
+
+
+  svg.icon-component.icon.add-favorire:hover {
+    fill:red;
+}
+
+
+.events_container_product svg:hover {
+    background-color:#e8eaed;
+}
+
+.container_check_mark svg {
+    height: 130px;
+}
+
+
+.container_check_mark svg path {
+    stroke-dasharray: 99.47578430175781;
+    stroke-dashoffset: -99.47578430175781;
+    fill: transparent;
+  }
+  
+  .container_check_mark svg.animate path {
+    animation: 0.8s ease forwards draw;
+    opacity:1;
+  }
+  
+  @keyframes draw {
+    0% {
+      opacity: 1;
+      stroke-dashoffset: -99.47578430175781;
+      fill: transparent;
+      transform: translateY(0);
+    }
+    
+    35% {
+      stroke-dashoffset: 0;
+      fill: transparent;
+    }
+    
+    60% {
+      fill: red;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    100% {
+      fill: red;
+      stroke-dashoffset: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  .container_check_mark {
+    position: fixed;
+    top: 120px;
+
+}
+.add_check_mate_text {
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+  
+}
+.add_check_mate_text.show_checkmark_text {
+    opacity: 1;
+    visibility: visible;
+    font-size: 18px;
+    color: red;
+    font-weight: bolder;
+}
+.container_check_mark.active_background {
+    background: white;
+    opacity: 91%;
+    transition: .3s;
+}
+
+
+svg.info_imag {
+    height: 20px;
+    position: relative;
+
+}
+.delivery_pic_def img {
+    margin-right: 5px;
+    height: 25px;
+}
+.tooltip_defination_block_pickup {
+    position: absolute;
+    background: white;
+    right: 140px;
+    width: 370px;
+    opacity: 0;
+    box-shadow:0px 12px 17px rgba(0,8,29,5%),0px 5px 22px rgba(0,8,29,6%),0px 7px 8px rgba(0,8,29,8%);
+    border-radius: 10px;
+  z-index: 999999;
+  padding: 15px;
+}
+
+
+
+
+  

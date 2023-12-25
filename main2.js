@@ -23335,6 +23335,19 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
 });
 
 
+$('.definat_block_pickup').hover(
+    function() {
+        $('.tooltip_defination_block_pickup').stop().animate({
+            opacity: 1
+          }, 10);
+        },
+        function() {
+          $('.tooltip_defination_block_pickup').stop().animate({
+            opacity: 0
+          }, 10);
+        }
+      );
+
 
 
 
@@ -23405,6 +23418,30 @@ $('#numberSelector').append('<option value="' + number + '">' + number + '</opti
     // });
 
 
+
+
+    var button_checkmate = document.querySelector('.add-favorire_block');
+    var container_check_mark = document.querySelector('.container_check_mark');
+    var checkmark = document.querySelector('.container_check_mark svg');
+    var checkmark_text = document.querySelector('.add_check_mate_text');
+    var className = "animate";
+    
+    button_checkmate.addEventListener('click', function(){
+        
+        // container_check_mark.classList.add('active_background');
+        checkmark_text.classList.add('show_checkmark_text');
+
+      if (!checkmark.classList.contains(className)) {
+        checkmark.classList.add(className);
+        
+        setTimeout(function(){  
+            checkmark_text.classList.remove('show_checkmark_text'); 
+            // container_check_mark.classList.remove('.active_background');
+            checkmark.classList.remove(className);
+            
+        }, 1100);  
+      } 
+    });
 
 
 
