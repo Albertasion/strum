@@ -7191,6 +7191,12 @@ svg.info_imag {
   z-index: 999999;
   padding: 15px;
 }
+img#img-current_picture {
+    max-width: 650px;
+    height: max-content;
+    position: sticky;
+    top: 110px;
+}
 
 
 
