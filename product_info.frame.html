@@ -309,7 +309,7 @@
                     href='{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.big_picture}{$product_info.big_picture|escape:'
                     url'}{else}{$product_info.picture}{/if}' img_width="{$product_info.picture_width}"
                     img_height="{$product_info.picture_height}">
-                    <img class="lazyload" id="img-current_picture" width="620" height="450"
+                    <img class="lazyload" id="img-current_picture" 
                         data-src="{$smarty.const.URL_PRODUCTS_PICTURES}/{if $product_info.big_picture}{$product_info.big_picture}{else}{$product_info.picture}{/if}"
                         title="{$page_title|escape:'html'}" alt="{$page_title|escape:'html'}" /><br />
                     <div class="lupa">{"img_enlarge"|translate}</div>
@@ -876,7 +876,7 @@
 <!-- список деталювань і до чого підходить запчастина -->
 {if $model_parent_products}
 <div class="model_suitable_for_block">
-    <div class="msf_title">Оригинальная запчасть подходит для следующих инструментов:</div>
+    <div class="msf_title"><p>Оригинальная запчасть подходит для следующих инструментов:</p></div>
     <div class="msf_title_sub">Просмотреть деталировку модели &#11015;&#65039;</div>
     <div class="model_list_block">
         {foreach from=$model_parent_products item=_model_parent}
@@ -885,7 +885,10 @@
                     {if $_model_parent.productID || $_model_parent.slug}
                    <div class="model_list_link"><a href='{"?productID=`$_model_parent.productID`&product_slug=`$_model_parent.slug`"|set_query_html}'>
                         {/if}
+                        
                         {if $_model_parent.name}
+
+                        <img class="lazyload" height="60" width="60" data-src="/published/publicdata/STRUMENTSTRUM/attachments/SC/products_pictures/{$_model_parent.thumbnail}">
                         {$_model_parent.name|replace:'Запчасти для ':''|escape:'html'}
                         {/if}
                         {if $_model_parent.productID || $_model_parent.slug}

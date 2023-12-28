@@ -23447,6 +23447,16 @@ $('.definat_block_pickup').hover(
 
 
 
+    var curr_picture =$("#img-current_picture");
+    console.log(curr_picture.width());
+
+
+
+
+
+
+
+
 
 
 
