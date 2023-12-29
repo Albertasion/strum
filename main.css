@@ -2931,6 +2931,7 @@ text-decoration: none;
 
 .pi_header_left .pi_imgwrp {
 position: relative;
+width: calc(50% - 12px);
 }
 .pi_header_left .pi_imgwrp .pr_stickers_wrp {
 z-index: 1;
@@ -7026,6 +7027,7 @@ svg.arrow_more_product {
     position: absolute;
     bottom: 0;
     left: 50%;
+    cursor: pointer;
 }
 .logo_brands_title {
     margin-bottom: 10px;
@@ -7192,12 +7194,17 @@ svg.info_imag {
   padding: 15px;
 }
 img#img-current_picture {
-    max-width: 650px;
+    max-width: 600px;
     height: max-content;
     position: sticky;
     top: 110px;
 }
+span.shopping_cart_count.sc_nonempty {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
 
+}
 
 
 
