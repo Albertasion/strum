@@ -7436,8 +7436,27 @@ span.rating_text_value {
 .drop_down_sub_catalog_block {
     position: absolute;
     left: 254px;
-    z-index: 999999999999;
+    z-index: 9999999999;
     top: 10px;
     width: 1098px;
     background: white;
+}
+span.pi_price_save_percent {
+    color: white;
+    background: red;
+    border-radius: 10px;
+    padding: 2px 3px;
+    margin-left: 3px;
+}
+svg.stars_1 path {
+    fill: yellow;
+}
+svg.stars_2 path {
+    fill: yellow;
+}
+svg.stars_3 path {
+    fill: yellow;
+}
+svg.stars_4 path {
+    fill: yellow;
 }

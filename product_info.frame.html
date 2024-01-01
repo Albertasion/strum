@@ -75,10 +75,11 @@
 {if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0}
 <span class="regularPrice">
 {$product_info.list_priceWithUnit}
+</span>
 {if $product_info.SavePricePercent > 0}
 <span class="pi_price_save_percent">-{$product_info.SavePricePercent}%</span>
 {/if}
-</span>
+
 {/if}
 </div>
 <!-- конец discount_price_block -->
@@ -504,10 +505,11 @@
     {if $product_info.list_price > 0 && $product_info.list_price > $product_info.Price && $product_info.Price > 0}
      <span class="regularPrice">
      {$product_info.list_priceWithUnit}
+    </span>
      {if $product_info.SavePricePercent > 0}
      <span class="pi_price_save_percent">-{$product_info.SavePricePercent}%</span>
      {/if}
-     </span>
+    
      {/if}
  </div>
 <!-- конец discount_price_block -->
