@@ -1,9 +1,22 @@
 {strip}
 	<div class="floating_sidebar">
+
+
+
+		
+		
+
+
 		<div class="main_wide_padding">
 
-
+			
 			<div class="mainMenu_catalog_float_block">
+
+
+				<div class="header_logo_top_float">
+					<a href="{$smarty.const.CONF_FULL_SHOP_URL}"><img src="/images_sale/logo_head.svg"> </a>
+				</div>
+				<div class="header_catalog_top_float_block">
 				<button type="button" class="mainMenu_catalog_float_button">
 				<svg viewBox="0 0 24 24" fill="currentColor" class="icon-component_catalog_float">
 				<path d="M3 17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17C21 16.4477 20.5523 16 20 16H4C3.44772 16 3 16.4477 3 17ZM3 12C3 12.5523 3.44772 13 4 13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H4C3.44772 11 3 11.4477 3 12ZM4 6C3.44772 6 3 6.44772 3 7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7C21 6.44772 20.5523 6 20 6H4Z"></path></svg>
@@ -11,14 +24,76 @@
 				Каталог
 			</span>
 				</button>
+				<div class="drop_down_catalog_block">
+					<ul>
+						<!-- <li>ЗАПЧАСТИ</li>
+						<li>ВСЕ ДЛЯ ДОМА И САДА</li>
+						<li>ОБОРУДОВАНИЕ</li>
+						<li>ИНСТРУМЕНТЫ</li>
+					</ul> -->
+
+					{foreach from=$root_cats item=_cat}
+					<li rel="{$_cat.categoryID}"><a href='{"?ukey=category&categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}'>{$_cat.name}</a></li>
+					
+					<!-- <td class="tv_link_root {if $_cat.categoryID == $categoryID} open {/if} tvlr_{$_cat.categoryID}"
+						rel="{$_cat.categoryID}">
+						{if !$_cat.redirect}<a
+							href='{"?ukey=category&categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}'
+							{else}<span {/if}
+							class="tv_alink {if $_cat.categoryID == $categoryID} open {/if}">
+							<span class="vmenu_ico vmenu_ico_id{$_cat.categoryID}"></span><span
+								class="tv_link_name">{$_cat.name}</span><span class="tv_link_helper"></span>
+							{if !$_cat.redirect}</a>{else}</span>{/if}
+						<div class="tv_subcategories_wrp">
+							<div class="tv_subcategories">
+								<div class="loading"></div>
+							</div>
+						</div>
+					</td> -->
+				{/foreach}
+			</ul>
+			<div class="drop_down_sub_catalog_block">
+				
+			</div>
+
+		</div>
+				
+			</div>
+
+				
 
 				<div class="product_search_floating_block">
 				{include file="product_search_floating.html"}
 			</div>
 			
-			<div>{'Promotions'|t}</div>
-			<div>{'Contacts'|t}</div>
-			<div>{'pgn_product_reviews'|t}</div>
+			<div class="contacts_floating_block"><a href="tel:+380970009161">(097) 000-91-61</a>
+			
+				<div class="drop_down_contacts_block">
+					
+					<ul>
+						<li><a href="tel:0800330200" class="footer-info__link">0800 330 200</a></li>
+						<li><a href="tel:+380671759425" class="footer-info__link">067 175 94 25</a></li>
+						<li><a href="tel:+380671759425" class="footer-info__link">067 175 94 25</a></li>
+						<li><a href="tel:+380671759425" class="footer-info__link">067 175 94 25</a></li>
+						<li><a href="mailto:shop@akvarel-n.com.ua" class="footer-info__link">strumentua@gmail.com</a></li>
+						<li><strong>Пн - Пт</strong> з 08:30 до 17:30</li>
+						<li><strong>Сб - Нд</strong> з 10:00 до 17:30</li>
+						<li>м. Київ, вул. Кирилівська 160</li>
+	
+				<ul>		
+			
+				
+				
+				
+				</div>
+			
+			
+			
+			
+			
+			
+			
+			</div>
 			<button class="header_action_button_action">
 			<svg viewBox="0 0 24 24" fill="currentColor" class="HeaderActionButton"><path d="M16.5 3C14.76 3 13.09 3.81 12 5.09C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5C2 12.28 5.4 15.36 10.55 20.04L10.6541 20.1341C11.4178 20.824 12.5803 20.8218 13.3413 20.129L13.45 20.03C18.6 15.36 22 12.28 22 8.5C22 5.42 19.58 3 16.5 3ZM12.1 18.55L12 18.65L11.9 18.55C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 5.99 11.07 7.36H12.94C13.46 5.99 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 18.55Z"></path></svg>
 		</button>		<a class="" href='{"?ukey=auth"|set_query_html}'>
@@ -38,7 +113,16 @@
 				</a>
 				<sup class="shpcrtgc"><span class="shopping_cart_count">{if $shopping_cart_items}{$shopping_cart_items}</span>{else}0{/if}</sup>
 			</button>
+			<div class="drop_down_bloc_cart">
+				<div id="loading">
+					<img src="/images/ajax_load.gif" alt="Loading...">
+				  </div>
+				<div class="drop_down__cart_header">Кошик</div>
+				<div class="drop_down__cart_body"></div>
+			
 			</div>
+			</div>
+			
 
 			
 		

@@ -367,6 +367,7 @@
     <div class="pi_header_right">
         {if $model_parent_products}
         <span class="original_parts">{'Original spare part'|t}</span>
+        <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path><path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path></svg>
         {/if}
 
 
@@ -374,7 +375,7 @@
      <!-- назва -->
   <div class="product_name_block">
   <h1 class="product_name">
-    {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}
+    {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}<br> {$product_info.add2cart_counter}
 </h1>
 </div>
 
@@ -401,6 +402,7 @@
     <svg class="stars_3" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
     <svg class="stars_4" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span><span class="">
     <svg class="stars_5" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 2px;"><path fill="rgb(221, 221, 221)" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"></path></svg></span>
+    <span class="rating_text_value">4.5</span>
 </div>
 
 
@@ -420,7 +422,43 @@
         </div>
             <!-- код для заміни -->
             {if $product_info.replacementProducts}
+            
                 <div class="pi_new_code">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 286.054 286.054" style="enable-background:new 0 0 286.054 286.054;" xml:space="preserve">
+                        <g>
+                            <path style="fill:#E2574C;" d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027   c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236   c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209   S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972   c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723   c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843   C160.878,195.732,152.878,187.723,143.036,187.723z"/>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        </svg>
                     {'New article'|t}:{literal} {/literal}
                     {foreach from=$product_info.replacementProducts item=$replacementProduct name=_rplFrch}
                         {if $replacementProduct.productID > 0}
@@ -678,6 +716,14 @@
 
 
 
+
+
+
+
+
+
+
+
 <!-- блок доставка описание -->
     <div class="delivery_container">                              
         <div class="delivery_item">
@@ -779,9 +825,9 @@
 
 
 
-
+<!-- 
     <div class="addtocompare" rel="{$product_info.productID}"><i></i>{'Add to compare'|t}</div>
-    <div rel="{$product_info.productID}" class="addtowishlist"><i></i>{'Add to notepad'|t}</div>
+    <div rel="{$product_info.productID}" class="addtowishlist"><i></i>{'Add to notepad'|t}</div> -->
      
 
 
@@ -875,9 +921,97 @@
 
 <!-- список деталювань і до чого підходить запчастина -->
 {if $model_parent_products}
+
+
+
+					
+
+
 <div class="model_suitable_for_block">
     <div class="msf_title"><p>Оригинальная запчасть подходит для следующих инструментов:</p></div>
     <div class="msf_title_sub">Просмотреть деталировку модели &#11015;&#65039;</div>
+
+    <div class="pb_product_table_search">
+        <form class="pb_product_table_search_form">
+            <input type="text" value="" placeholder="{'Fast search'|t}, {'enter model name'|t}...">
+            <button type="reset"><i>x</i> отменить</button>
+        </form>
+        <script>{literal}
+            function auto_layout_keyboard(str, en_to_ru) {
+                en_replacer = {
+                    "q":"й", "w":"ц", "e":"у", "r":"к", "t":"е", "y":"н", "u":"г",
+                    "i":"ш", "o":"щ", "p":"з", "[":"х", "]":"ъ", "a":"ф", "s":"ы",
+                    "d":"в", "f":"а", "g":"п", "h":"р", "j":"о", "k":"л", "l":"д",
+                    ";":"ж", "'":"э", "z":"я", "x":"ч", "c":"с", "v":"м", "b":"и",
+                    "n":"т", "m":"ь", ",":"б", ".":"ю", "/":"."
+                };
+                ru_replacer = [];
+                for (var key in en_replacer) {
+                    ru_replacer[en_replacer[key]] = key;
+                }
+
+                if (en_to_ru == 1) {
+                    return str.replace(/[A-z/,.;\'\]\[]/g, function ( x ){
+                        return x == x.toLowerCase() ? en_replacer[ x ] : en_replacer[ x.toLowerCase() ].toUpperCase();
+                    });
+                } else {
+                    return str.replace(/[А-я/,.;\'\]\[]/g, function ( x ){
+                        return x == x.toLowerCase() ? ru_replacer[ x ] : ru_replacer[ x.toLowerCase() ].toUpperCase();
+                    });
+                }
+            }
+
+            var timerJQueryId_3453454 = setInterval(function() {
+                if (window.jQuery) {
+                    clearInterval(timerJQueryId_3453454);
+                    var $ = window.jQuery;
+
+                    $('.pb_product_table_search_form input').on('keyup keypress blur change click', function() {
+                        var searchText = $(this).val().toLowerCase();
+                        $('.pb_product_table tr a').find('.hl').contents().unwrap();
+                        if (searchText.length > 1) {
+                            $('.model_list_item').css({'display':'none'});
+                            var _found = $('.model_list_item').filter(function(){
+                                checkTxt = $(this).text().toLowerCase(); 
+                                return checkTxt.indexOf(searchText) != -1 || (searchText.length > 2 && (checkTxt.indexOf(auto_layout_keyboard(searchText, 1)) != -1  || checkTxt.indexOf(auto_layout_keyboard(searchText, 0)) != -1) ) ;
+                            });
+                            _found.css({'display':'flex'}); 
+                            _found.each(function () { 
+                                var rgxp = new RegExp(searchText, 'gmi'); 
+                                var repl = '<span class="hl">' + searchText + '</span>';
+                                $(this).find('a')[0].innerHTML = $(this).find('a')[0].innerHTML.replace(rgxp, repl);
+                            });
+                        } else {
+                            $('.model_list_item a').find('.hl').contents().unwrap();
+                            $('.model_list_item').css({'display':'flex'});
+                        }
+                    });
+                    $('.pb_product_table_search_form button').click(function() {
+                        $('.model_list_item a').find('.hl').contents().unwrap();
+                        $('.model_list_item').css({'display':'flex'});
+                    });
+                }
+            }, 250);
+        {/literal}</script>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="model_list_block">
         {foreach from=$model_parent_products item=_model_parent}
             {if !$_model_parent.redirect}
@@ -900,7 +1034,9 @@
             {/if}
         {/foreach}
     </div>
+    <svg viewBox="0 0 24 24" fill="white" class="arrow_more_product models"><path d="M19.799 13.3988C20.1311 13.8401 20.0425 14.4671 19.6012 14.7991L13.2529 19.5759C12.5052 20.1379 11.5072 20.1365 10.7631 19.5996L10.747 19.5877L4.39869 14.8109C3.95738 14.4789 3.86882 13.8519 4.20088 13.4106C4.53295 12.9693 5.15989 12.8808 5.6012 13.2128L11.9379 17.9809C11.9618 17.997 11.9809 18.0001 11.9934 18.0001C12.006 18 12.0252 17.9967 12.0507 17.9776C12.0507 17.9776 12.0506 17.9776 12.0507 17.9776L18.3987 13.201C18.84 12.8689 19.4669 12.9575 19.799 13.3988Z"></path><path d="M19.799 6.3988C20.1311 6.84011 20.0425 7.46705 19.6012 7.79912L13.2529 12.5759C12.5052 13.1379 11.5072 13.1365 10.7631 12.5996L10.747 12.5877L4.39869 7.81094C3.95738 7.47887 3.86882 6.85193 4.20088 6.41063C4.53295 5.96932 5.15989 5.88076 5.6012 6.21282L11.9379 10.9809C11.9618 10.997 11.9809 11.0001 11.9934 11.0001C12.006 11 12.0252 10.9967 12.0507 10.9776C12.0507 10.9776 12.0506 10.9776 12.0507 10.9776L18.3987 6.201C18.84 5.86894 19.4669 5.9575 19.799 6.3988Z"></path></svg>
 </div>
+
 {/if}
 
 
@@ -964,13 +1100,13 @@
     {if $product_nearest}
     <!-- назва категории фолов -->
         <div class="h2 product_related_title">{'Another category products'|t}</div>
-        <div id="reccom_related" class="box">
+        <div id="reccom_related" class="box category_nearest_reccom_down">
                     {foreach from=$product_nearest item=_product_brief}
                         {if !$_product_brief.redirect && $_product_brief.productID != $product_info.productID}
                             {include file="product_brief_follow.html" product_info=$_product_brief}
                         {/if}
                     {/foreach}
-                    <svg viewBox="0 0 24 24" fill="white" class="arrow_more_product"><path d="M19.799 13.3988C20.1311 13.8401 20.0425 14.4671 19.6012 14.7991L13.2529 19.5759C12.5052 20.1379 11.5072 20.1365 10.7631 19.5996L10.747 19.5877L4.39869 14.8109C3.95738 14.4789 3.86882 13.8519 4.20088 13.4106C4.53295 12.9693 5.15989 12.8808 5.6012 13.2128L11.9379 17.9809C11.9618 17.997 11.9809 18.0001 11.9934 18.0001C12.006 18 12.0252 17.9967 12.0507 17.9776C12.0507 17.9776 12.0506 17.9776 12.0507 17.9776L18.3987 13.201C18.84 12.8689 19.4669 12.9575 19.799 13.3988Z"></path><path d="M19.799 6.3988C20.1311 6.84011 20.0425 7.46705 19.6012 7.79912L13.2529 12.5759C12.5052 13.1379 11.5072 13.1365 10.7631 12.5996L10.747 12.5877L4.39869 7.81094C3.95738 7.47887 3.86882 6.85193 4.20088 6.41063C4.53295 5.96932 5.15989 5.88076 5.6012 6.21282L11.9379 10.9809C11.9618 10.997 11.9809 11.0001 11.9934 11.0001C12.006 11 12.0252 10.9967 12.0507 10.9776C12.0507 10.9776 12.0506 10.9776 12.0507 10.9776L18.3987 6.201C18.84 5.86894 19.4669 5.9575 19.799 6.3988Z"></path></svg>
+                    <svg viewBox="0 0 24 24" fill="white" class="arrow_more_product nearest"><path d="M19.799 13.3988C20.1311 13.8401 20.0425 14.4671 19.6012 14.7991L13.2529 19.5759C12.5052 20.1379 11.5072 20.1365 10.7631 19.5996L10.747 19.5877L4.39869 14.8109C3.95738 14.4789 3.86882 13.8519 4.20088 13.4106C4.53295 12.9693 5.15989 12.8808 5.6012 13.2128L11.9379 17.9809C11.9618 17.997 11.9809 18.0001 11.9934 18.0001C12.006 18 12.0252 17.9967 12.0507 17.9776C12.0507 17.9776 12.0506 17.9776 12.0507 17.9776L18.3987 13.201C18.84 12.8689 19.4669 12.9575 19.799 13.3988Z"></path><path d="M19.799 6.3988C20.1311 6.84011 20.0425 7.46705 19.6012 7.79912L13.2529 12.5759C12.5052 13.1379 11.5072 13.1365 10.7631 12.5996L10.747 12.5877L4.39869 7.81094C3.95738 7.47887 3.86882 6.85193 4.20088 6.41063C4.53295 5.96932 5.15989 5.88076 5.6012 6.21282L11.9379 10.9809C11.9618 10.997 11.9809 11.0001 11.9934 11.0001C12.006 11 12.0252 10.9967 12.0507 10.9776C12.0507 10.9776 12.0506 10.9776 12.0507 10.9776L18.3987 6.201C18.84 5.86894 19.4669 5.9575 19.799 6.3988Z"></path></svg>
  
     </div>
     {/if}
@@ -985,7 +1121,7 @@
         <div class="h2 product_related_title">{'Sale hits '|t}</div>
       
             
-        <div id="reccom_related" class="box">
+        <div id="reccom_related" class="box category_hits_reccom_down">
                     {foreach from=$category_hits item=_product_brief}
                         {if !$_product_brief.redirect && $_product_brief.productID != $product_info.productID}
                             {include file="product_brief_follow.html" product_info=$_product_brief}
@@ -995,7 +1131,7 @@
 
 
                     
-<svg viewBox="0 0 24 24" fill="white" class="arrow_more_product"><path d="M19.799 13.3988C20.1311 13.8401 20.0425 14.4671 19.6012 14.7991L13.2529 19.5759C12.5052 20.1379 11.5072 20.1365 10.7631 19.5996L10.747 19.5877L4.39869 14.8109C3.95738 14.4789 3.86882 13.8519 4.20088 13.4106C4.53295 12.9693 5.15989 12.8808 5.6012 13.2128L11.9379 17.9809C11.9618 17.997 11.9809 18.0001 11.9934 18.0001C12.006 18 12.0252 17.9967 12.0507 17.9776C12.0507 17.9776 12.0506 17.9776 12.0507 17.9776L18.3987 13.201C18.84 12.8689 19.4669 12.9575 19.799 13.3988Z"></path><path d="M19.799 6.3988C20.1311 6.84011 20.0425 7.46705 19.6012 7.79912L13.2529 12.5759C12.5052 13.1379 11.5072 13.1365 10.7631 12.5996L10.747 12.5877L4.39869 7.81094C3.95738 7.47887 3.86882 6.85193 4.20088 6.41063C4.53295 5.96932 5.15989 5.88076 5.6012 6.21282L11.9379 10.9809C11.9618 10.997 11.9809 11.0001 11.9934 11.0001C12.006 11 12.0252 10.9967 12.0507 10.9776C12.0507 10.9776 12.0506 10.9776 12.0507 10.9776L18.3987 6.201C18.84 5.86894 19.4669 5.9575 19.799 6.3988Z"></path></svg>
+<svg viewBox="0 0 24 24" fill="white" class="arrow_more_product hits"><path d="M19.799 13.3988C20.1311 13.8401 20.0425 14.4671 19.6012 14.7991L13.2529 19.5759C12.5052 20.1379 11.5072 20.1365 10.7631 19.5996L10.747 19.5877L4.39869 14.8109C3.95738 14.4789 3.86882 13.8519 4.20088 13.4106C4.53295 12.9693 5.15989 12.8808 5.6012 13.2128L11.9379 17.9809C11.9618 17.997 11.9809 18.0001 11.9934 18.0001C12.006 18 12.0252 17.9967 12.0507 17.9776C12.0507 17.9776 12.0506 17.9776 12.0507 17.9776L18.3987 13.201C18.84 12.8689 19.4669 12.9575 19.799 13.3988Z"></path><path d="M19.799 6.3988C20.1311 6.84011 20.0425 7.46705 19.6012 7.79912L13.2529 12.5759C12.5052 13.1379 11.5072 13.1365 10.7631 12.5996L10.747 12.5877L4.39869 7.81094C3.95738 7.47887 3.86882 6.85193 4.20088 6.41063C4.53295 5.96932 5.15989 5.88076 5.6012 6.21282L11.9379 10.9809C11.9618 10.997 11.9809 11.0001 11.9934 11.0001C12.006 11 12.0252 10.9967 12.0507 10.9776C12.0507 10.9776 12.0506 10.9776 12.0507 10.9776L18.3987 6.201C18.84 5.86894 19.4669 5.9575 19.799 6.3988Z"></path></svg>
 
                 </div>
 
