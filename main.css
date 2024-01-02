@@ -2117,16 +2117,12 @@ font-size: 14px;
 /*new category tree END*/
 .root_cats_tree_btn {
 display: block;
-text-align: left;
-height: 50px;
-line-height: 46px;
-margin: 30px 0 0 0;
+text-align: left; 
 font-size: 16px;
 font-weight: bold;
-text-decoration: underline dotted rgba(0, 0, 0, 0.2);
-border: 2px solid #f9ecce;
-padding: 0 15px;
 cursor: pointer;
+box-shadow: 0px 2px 2px rgba(0,8,29,5%), 0px 0px 2px rgba(0,8,29,6%), 0px 1px 3px rgba(0,8,29,8%);
+border-radius: 10px;
 }
 .root_cats_tree_btn:hover {
 background-color: #fbf7ed;
@@ -2524,11 +2520,11 @@ text-decoration: underline dotted;
 margin: 0 7px 0 0;
 }
 .category_name {
-font-size: 27px;
+font-size: 30px;
+line-height: 36px;
 font-weight: bold;
-padding: 25px 190px;
-text-align: center;
-text-transform: uppercase;
+margin-bottom: 16px;
+margin-top: 16px;
 }
 .category_view_select_wrp {
 float: right;
@@ -2654,10 +2650,11 @@ overflow: hidden;
     padding: 10px 0 0;
 
 }
-.path a, .path .path_item {}
+
 #cat_product_sort {
-margin: 10px 0 20px;
-text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 #cat_product_sort .hidden-xs {
 display: inline-block;
@@ -2666,10 +2663,9 @@ display: inline-block;
 display: inline-block;
 }
 #cat_product_sort form select {
-border-color: #fd6f6f;
-height: 30px;
-padding: 0 5px;
+border-color: #bbb9b9;
 }
+
 #cat_product_sort form input {
 display: none;
 }
@@ -2801,9 +2797,8 @@ margin: 0 20px 0 0;
 vertical-align: middle;
 }
 .products_wrp {
-clear: both;
-display: block;
-text-align: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 .products_wrp .product_brief_table {
     box-sizing: content-box;

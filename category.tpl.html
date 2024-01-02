@@ -1,4 +1,5 @@
 {strip}
+<!-- початок категории tamplate category.tpl.html-->
 {*if $product_news}
 	<div class="desc-news">
 		{section name=i loop=$product_news}
@@ -10,7 +11,71 @@
 {*<script type="text/javascript">{literal}$(document).ready(function(){gettreeproducts({/literal}{$selected_category.categoryID}{literal},0);});{/literal}</script>
 
 {*</>*}
+
+
+
+
 <div class="main_wide_padding">
+
+	<!-- хлебные крошки -->
+<div class="path" itemscope itemtype="https://schema.org/BreadcrumbList">
+	<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+		<a itemprop="item" href='{"?"|set_query}' class="path_item">
+			<span itemprop="name">{'Internet shop'|t} {'of tools'|t}</span>
+			<meta itemprop="position" content="{counter}" >
+		</a>
+	</span>
+	{literal} / {/literal}
+	{foreach from=$product_category_path item=_path_itm name=i}
+		{if $_path_itm.categoryID != 1}
+			<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+				{if !$_path_itm.redirect}
+					<a itemprop="item" href='{"?categoryID=`$_path_itm.categoryID`&category_slug=`$_path_itm.slug`"|set_query_html}' class="{cycle values='block1,block2'} path_item">
+				{else}
+					<span itemprop="item" class="{cycle values='block1,block2'} path_item">
+				{/if}
+				
+						<span itemprop="name">{$_path_itm.name|escape:'html'|default:"(no name)"}</span>
+						<meta itemprop="position" content="{counter}" >
+				{if !$_path_itm.redirect}
+					</a>
+				{else}
+					</span>
+				{/if}
+			</span>
+			{if !$smarty.foreach.i.last}
+				{literal} / {/literal}
+			{/if}
+		{/if}
+	{/foreach}
+</div>
+<!-- path конец  -->
+
+
+
+
+<!-- название категории -->
+<h1 class="category_name" data-products-count="{$products_count}">
+	{if $page_h1}
+		{$page_h1|escape:'html'} 
+	{elseif $selected_category.full_name}
+		{$selected_category.full_name|escape:'html'} 
+	{elseif $selected_category.name}
+		{$selected_category.name} 
+	{elseif $products_found ne NULL}
+		{"srch_found"|translate} {$products_found} {"srch_products_plural"|translate}
+	{else}
+		{'Nothing found'|t}
+	{/if}
+</h1>
+
+
+
+
+
+
+
+
 	{if !$products_found}
 		<div class="main_wide_col main_wide_col_w20">
 			{if !$isOptimizer}
@@ -35,12 +100,18 @@
 					</div>
 				{/if}
 			{/if}
-			
-			{if $categories_product_count}
 
+
+			<!-- напис категорії зліва -->
+			{if $categories_product_count}
 				<div class="root_cats_tree_btn clicktogglernext">
-					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+				{'pgn_category_tree'|t}
 				</div>
+
+
+
+
+
 				{if !$isOptimizer}
 					<nav class="root_cats_tree hidden root_cats_tree_filter">
 						<ul>
@@ -81,10 +152,12 @@
 					</nav>		
 				{/if}	
 
+
 			{elseif $filter_categories}
 				<div class="root_cats_tree_btn clicktogglernext">
-					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+					{'pgn_category_tree'|t}
 				</div>
+
 				{if !$isOptimizer}
 					<nav class="root_cats_tree hidden root_cats_tree_filter">
 						<ul>
@@ -120,7 +193,7 @@
 				{/if}	
 			{elseif $root_cats_tree}
 				<div class="root_cats_tree_btn clicktogglernext {if !$params} clicktogglernexthandler-on {/if}">
-					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+					{'pgn_category_tree'|t}
 				</div>
 
 				{if !$isOptimizer}
@@ -175,7 +248,7 @@
 				{/if}
 			{else}
 				<div class="root_cats_tree_btn clicktogglernext">
-					<i class="fa fa-folder"></i>{'pgn_category_tree'|t}
+				{'pgn_category_tree'|t}
 				</div>
 				<ul class="real_category_tree hidden">
 					{$categories_tree_html}
@@ -193,7 +266,7 @@
 	<div class="main_wide_col {if !$products_found} main_wide_col_w70 {else} main_wide_col_w100 {/if}">
 
 
-		{if !$isOptimizer}
+		<!-- {if !$isOptimizer}
 			<div class="category_view_select_wrp">
 				{if $products_to_show}
 					<div class="cat_view_label">{'Product view '|t}:</div>
@@ -206,54 +279,12 @@
 					</div>
 				{/if}
 			</div>
-		{/if}
-		<h1 class="category_name" data-products-count="{$products_count}">
-			{if $page_h1}
-				{$page_h1|escape:'html'} 
-			{elseif $selected_category.full_name}
-				{$selected_category.full_name|escape:'html'} 
-			{elseif $selected_category.name}
-				{$selected_category.name} 
-			{elseif $products_found ne NULL}
-				{"srch_found"|translate} {$products_found} {"srch_products_plural"|translate}
-			{else}
-				{'Nothing found'|t}
-			{/if}
-		</h1>
+		{/if} -->
+		
 
 		<input type="hidden" name="category_code" value="{$selected_category.categoryID}">
 
-		<div class="path" itemscope itemtype="https://schema.org/BreadcrumbList">
-			<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-				<a itemprop="item" href='{"?"|set_query}' class="path_item">
-					<span itemprop="name">{'Internet shop'|t} {'of tools'|t}</span>
-					<meta itemprop="position" content="{counter}" >
-				</a>
-			</span>
-			{literal} / {/literal}
-			{foreach from=$product_category_path item=_path_itm name=i}
-				{if $_path_itm.categoryID != 1}
-					<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-						{if !$_path_itm.redirect}
-							<a itemprop="item" href='{"?categoryID=`$_path_itm.categoryID`&category_slug=`$_path_itm.slug`"|set_query_html}' class="{cycle values='block1,block2'} path_item">
-						{else}
-							<span itemprop="item" class="{cycle values='block1,block2'} path_item">
-						{/if}
-						
-								<span itemprop="name">{$_path_itm.name|escape:'html'|default:"(no name)"}</span>
-								<meta itemprop="position" content="{counter}" >
-						{if !$_path_itm.redirect}
-							</a>
-						{else}
-							</span>
-						{/if}
-					</span>
-					{if !$smarty.foreach.i.last}
-						{literal} / {/literal}
-					{/if}
-				{/if}
-			{/foreach}
-		</div>
+		
 
 
 
@@ -276,7 +307,10 @@
 			{/if}			
 		</div>
 
-		{if $category_hits && $selected_category.sale_category != 1}
+
+
+<!-- хиты продаж -->
+		<!-- {if $category_hits && $selected_category.sale_category != 1}
 			<div class="category_hits">
 				<div class="category_hits_title"><i class="fa fa-star"></i> {'Sale hits'|t}</div>
 				<div class="category_hits_products">
@@ -287,7 +321,9 @@
 					{/foreach} 
 				</div>
 			</div>
-		{/if}
+		{/if} -->
+
+
 
 		{if !$products_to_show && $subcategories_to_be_shown} 
 			<div class="cat_subcategories">
