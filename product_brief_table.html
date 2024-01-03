@@ -14,7 +14,7 @@
 			<input name="productID" value="{$product_info.productID}" type="hidden" >
 			<input class="product_price" value="{$product_info.PriceWithOutUnit|escape:'html'}" type="hidden" >
 
-			<div class="product_brief_sku_block">Код:345544</div>
+			<div class="product_brief_sku_block">Код:{$product_info.product_code}</div>
 			<div class="product_brief_sticker">Акція</div>
 			<div class="product_brief_img_block"><a class="imgwrp" {$target} href='{$_product_url}'>
 				{if $product_info.sale_sticker_arr} 
@@ -69,6 +69,11 @@
 		<!-- название товара -->
 		<div class="product_brief_name_block">	<a class="pb_product_name" href='{$_product_url}'>{$product_info.name}</a></div>
 		
+
+
+
+
+
 <!-- блок цена -->
 <!-- если продукт не архивный-->
 			{if !$product_info.archive}
