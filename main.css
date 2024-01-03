@@ -1313,7 +1313,7 @@ border-radius: 10px;
 box-shadow: 0 0 7px rgba(0, 0, 0, 0.07);
 margin: 0 1% 15px 0;
 padding: 15px;
-min-height: 230px;
+min-height: 270px;
 }
 .cat_subcategories .subsubcat_item .imgwrp {
 display: block;
@@ -1332,6 +1332,11 @@ vertical-align: middle;
 width: auto;
 height: auto;
 }
+
+.cat_subcategories .subsubcat_item:hover {
+    box-shadow: 0px 12px 17px rgb(0 8 29 / 5%), 0px 5px 22px rgb(0 8 29 / 6%), 0px 7px 8px rgb(0 8 29 / 8%);
+    text-decoration: none;
+}
 .cat_subcategories .subsubcat_item .cat_item_name {
 display: block;
 font-size: 18px;
@@ -1341,12 +1346,11 @@ text-align: center;
 text-decoration: none;
 }
 .cat_subcategories .subsubcat_item:hover .cat_item_name {
-text-decoration: underline;
-color:#ce0000;
+text-decoration: none;
+
 }
 .subsubcat_item a:hover {
-    text-decoration: underline;
-    color:#ce0000;
+    text-decoration: none; 
 }
 
 .panels_mini_wrp {
@@ -1573,10 +1577,7 @@ background-color: #ff87a5;
 text-transform: uppercase;
 }
 .pb_product_table tr:nth-child(2n) {
-background-color: #fbf7ed;
-}
-.sale_timer_wrp {
-
+background-color: #f6f6f6;
 }
 .sale_timer_wrp .sale_datetime_str {
 font-size: 11px;
@@ -1955,8 +1956,6 @@ border-top: 2px solid #a2a9ad;
 margin: 20px 0 30px;
 padding: 30px 0 0;
 }
-.home_news_wrp .panels_mini_wrp {}
-.home_news_wrp .news_shortlist {}
 .home_news_wrp .news_item {
 clear: both;
 display: block;
@@ -2106,10 +2105,6 @@ background-position: 0 0;
 padding: 5px 0px;
 list-style: none;
 }
-.real_category_tree li ul li {}
-.real_category_tree li ul li a {}
-.real_category_tree li ul li ul {}
-.real_category_tree li ul li ul li {}
 .real_category_tree li ul li ul li a {
 color: black;
 font-size: 14px;
@@ -2123,6 +2118,7 @@ font-weight: bold;
 cursor: pointer;
 box-shadow: 0px 2px 2px rgba(0,8,29,5%), 0px 0px 2px rgba(0,8,29,6%), 0px 1px 3px rgba(0,8,29,8%);
 border-radius: 10px;
+padding: 10px;
 }
 .root_cats_tree_btn:hover {
 background-color: #fbf7ed;
@@ -2167,10 +2163,10 @@ text-decoration: none;
 text-transform: uppercase;
 }
 .root_cats_tree ul li .cat_item_name:hover {
-color: #ce0000;
+/* color: #ce0000; */
 }
 .cat_item_name a:hover {
-color: #ce0000;
+/* color: #ce0000; */
     }
 .root_cats_tree ul li .cat_item_name.open {
 background-color: #fbf7ed;
@@ -2233,8 +2229,8 @@ padding: 3px 0 3px 10px;
 text-transform: none;
 }
 .root_cats_tree ul li ul li .cat_item_name:hover {
-color: #ce0000;
-text-decoration: underline;
+/* color: #ce0000;
+text-decoration: underline; */
 }
 .root_cats_tree ul li ul li a.open {
 font-weight: bold;
@@ -2282,6 +2278,7 @@ width: auto;
 .cat_advproduct_search {
 padding: 0;
 border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 10px;
 }
 .cat_advproduct_search .adv_search_option_name {
 color: #050f1e;
@@ -2358,7 +2355,7 @@ height: 4px;
 position: absolute;
 }
 .cat_advproduct_search .trackbar_wrp .ui-slider .ui-slider-handle {
-background-color: #ff9c9c;
+background-color: red;
 background-image: none;
 border: medium none;
 border-radius: 50%;
@@ -2379,6 +2376,7 @@ text-align: center;
 text-indent: 0;
 margin: 0 0 8px;
 width: 70px;
+border-radius:10px;
 }
 .cat_advproduct_search .trackbar_slider_submit {
 display: none;
@@ -2431,7 +2429,6 @@ z-index: 0;
 display: none;
 }
 .cat_advproduct_search .adv_search_variant .adv_search_variant_name {
-color: #494940;
 display: block;
 font-size: 14px;
 overflow: hidden;
@@ -2439,6 +2436,9 @@ text-decoration: none;
 vertical-align: middle;
 padding: 0 0 0 20px;
 position: relative;
+}
+a.adv_search_variant_name {
+    color: #3b6d9a;
 }
 .cat_advproduct_search .adv_search_variant .adv_search_variant_name .adv_search_variant_product_count {
 color: gray;
@@ -2858,6 +2858,7 @@ text-align: left;
     color: rgba(0,0,0,54%);
     padding-top: 15px;
     display: none;
+    text-align: left;
 
 }
 .prdbrief_options b {
@@ -3842,7 +3843,6 @@ width: 30px;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 2px 2px rgba(0,8,29,5%), 0 0 2px rgba(0,8,29,6%), 0 1px 3px rgba(0,8,29,8%);
-    height: 500px;
     overflow: hidden;
     position: relative;
 }
@@ -3850,8 +3850,6 @@ width: 30px;
     display: block;
     font-size: 21px;
     margin: 10px auto;
-    background: rgb(57 69 80);
-    color: white;
     padding: 10px 10px;
 }
 .model_suitable_for_block .msf_title_sub{
@@ -7076,8 +7074,8 @@ svg.arrow_more_product {
 }
 a.pb_product_name {
     color: #3b6d9a;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 16px;
+    line-height: 30px;
     margin-bottom: 8px;
     transition: color .3s;
 }

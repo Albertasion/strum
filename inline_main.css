@@ -407,13 +407,6 @@ header .header_cell_popup_wrp .header_cell_popup a {
 	z-index: 1;
 }
 
-.category_name {
-	font-size: 27px;
-	font-weight: 700;
-	padding: 0 190px;
-	text-align: center;
-	text-transform: uppercase;
-}
 
 .cat_subcategories .subsubcat_item_wrp {
 	display: inline-block;
