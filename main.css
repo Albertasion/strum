@@ -186,8 +186,7 @@ html {
 }
 body {
 font-size: 15px;
-line-height: 1.42857143;
-color: rgb(58, 58, 58);
+/* color: rgb(58, 58, 58); */
 background-color: #ffffff;
 display: block!important;
 }
