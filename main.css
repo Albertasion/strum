@@ -1,20 +1,20 @@
 @charset "utf-8";
 @font-face {
-font-family: 'Helvetica Neue';
-src:url('/fonts/HelveticaNeueBlackCondensed.ttf') format('truetype');
-font-weight: 900;
+font-family: 'Roboto';
+src:url('/fonts/Roboto-Bold.ttf') format('truetype');
+font-weight: 700;
 font-style: normal;
 }
 @font-face {
-font-family: 'Helvetica Neue';
-src: url('/fonts/HelveticaNeueCyr-Medium.ttf') format('truetype');
+font-family: 'Roboto';
+src: url('/fonts/Roboto-Medium.ttf') format('truetype');
 font-weight: 500;
 font-style: normal;
 }
 @font-face {
-font-family: 'Helvetica Neue';
-src: url('/fonts/HelveticaNeueCyr-Light.ttf') format('truetype');
-font-weight: 300;
+font-family: 'Roboto';
+src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+font-weight: 400;
 font-style: normal;
 }
 .global_page_preloader {
@@ -25,14 +25,14 @@ position: static;
 visibility: hidden;
 }
 html {
-font-family: sans-serif;
+font-family: 'Roboto', sans-serif;
 -ms-text-size-adjust: 100%;
 -webkit-text-size-adjust: 100%;
 }
 body {
 margin: 0;
 font-weight: 400;
-font-family: sans-serif;
+font-family: 'Roboto', sans-serif;
 line-height: 21px;
 font-size: 16px;
 }
@@ -233,8 +233,8 @@ h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small, h4 .small, .h4 .s
 font-size: 75%;
 }
 h1, .h1 {
-font-family: sans-serif;
-color: #3a3a3a;
+font-family: 'Roboto', sans-serif;
+color: rgba(0,0,0,87%);
 font-size: 28px;
 font-weight: 400;
 line-height: 28px;
@@ -475,9 +475,7 @@ padding: 5px 0 5px 15px;
 .header_top_menu .header_top_menu_right.sale_categories li a {
 font-weight: bold;
 }
-.header_top_menu .header_top_menu_right.sale_categories {}
-.header_top_menu .header_top_menu_right.sale_categories li {}
-.header_top_menu .header_top_menu_right.sale_categories li.new_prods_cat {}
+
 .header_top_menu .header_top_menu_right.sale_categories li .sale_cat_cnt {
 display: inline-block;
 width: 22px;
@@ -672,7 +670,6 @@ display: block;
 font-size: 14px;
 cursor: pointer;
 }
-header .header_product_search {}
 header .header_product_search .header_product_search_form {
 overflow: hidden;
 }
@@ -825,11 +822,11 @@ text-shadow: none;
 top: 0;
 width: 100%;
 z-index: 1;
-font-family: sans-serif;
+font-family: 'Roboto';
 }
 .shopping_cart_info_wrp #shpcrtgc, .shopping_cart_info_wrp #shpcrtca {
 display: inline-block;
-font-family: sans-serif;
+font-family: 'Roboto';
 }
 .header_categories_wrp .header_menu table tr td.tv_link_root {
 padding: 0;
@@ -929,7 +926,7 @@ text-align: left;
 top: 0;
 visibility: hidden;
 width: 100%;
-font-family: sans-serif;
+font-family: 'Roboto';
 box-shadow: 1px 10px 10px 10px rgba(133, 128, 128, 0.7);
 }
 .header_categories_wrp .header_menu table tr td .tv_subcategories_wrp .tv_subcategories .loading {
@@ -1249,7 +1246,7 @@ font-weight: bold;
 margin: 0 0 10px;
 text-align: center;
 text-transform: uppercase;
-font-family: sans-serif;
+font-family: 'Roboto';
 }
 .rootgroups_wrp .root_group {
 background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
@@ -1272,7 +1269,7 @@ font-weight: bold;
 margin: 0 0 10px;
 text-align: center;
 text-transform: uppercase;
-font-family: sans-serif;
+font-family: 'Roboto';
 }
 .rootgroups_wrp .root_group .root_group_cats {}
 .rootgroups_wrp .root_group .root_group_cats a {
@@ -1297,11 +1294,14 @@ margin: 0 0 10px;
 text-decoration: none;
 }
 .cat_subcategories .cat_subcat_name:hover {
-text-decoration: underline;
+
 }
 .cat_subcategories .subsubcat_items_wrp {
 margin: 0 0 15px;
 font-size: 0;
+}
+.cat_item_name:hover {
+    color: red;
 }
 .cat_subcategories .subsubcat_item {
 display: inline-block;
@@ -1336,6 +1336,20 @@ height: auto;
 .cat_subcategories .subsubcat_item:hover {
     box-shadow: 0px 12px 17px rgb(0 8 29 / 5%), 0px 5px 22px rgb(0 8 29 / 6%), 0px 7px 8px rgb(0 8 29 / 8%);
     text-decoration: none;
+    color: red;
+
+}
+.products_wrp .product_brief_table .pb_product_name:hover {
+    color: red;
+}
+
+.product_follow_block:hover a.pb_product_name {
+    color:red;
+}
+
+
+.product_brief_table:hover a.pb_product_name {
+    color:red
 }
 .cat_subcategories .subsubcat_item .cat_item_name {
 display: block;
@@ -1400,7 +1414,7 @@ font-weight: bold;
 padding: 3px 0;
 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 text-transform: uppercase;
-font-family: sans-serif;
+font-family: 'Roboto';
 }
 .panels_mini_wrp .panels_tabs .panels_tabs_item.current .panels_tabs_name {
 color: #f80202;
@@ -1549,7 +1563,7 @@ color: darkred;
 .pb_product_table_search .pb_product_table_search_form button>i {
 font-style: normal;
 color: darkred;
-font-family: sans-serif;
+font-family: 'Roboto';
 margin: 0 5px 0 0;
 opacity: 0.5;
 }
@@ -1734,14 +1748,14 @@ font-size: 14px;
 line-height: 24px;
 margin: 0 0 3px;
 text-decoration: none;
-font-family: sans-serif;
+font-family: 'Roboto';
 }
 .product_brief_table .product_code {
 display: block;
 clear: both;
 float: none;
 background-color: transparent;
-font-family: sans-serif;
+font-family: 'Roboto';
 color: gray;
 font-size: 12px;
 font-style: normal;
@@ -1752,7 +1766,7 @@ font-style: normal;
     font-size: 21px;
     font-weight: bold;
     position: relative;
-    font-family: sans-serif;
+    font-family: 'Roboto';
     line-height: 24px;
     font-weight: 600;
     white-space: nowrap;
@@ -2768,7 +2782,7 @@ font-size: 18px;
 .product_brief_block .product_brief_block_rside .prdbrief_name i {
 background: none repeat scroll 0 0 #f3f4f8;
 display: inline-block;
-font-family: sans-serif;
+font-family: 'Roboto';
 font-size: 11px;
 padding: 3px 5px;
 }
@@ -4509,7 +4523,7 @@ font-size: 16px;
 .header_top_menu a {
 font-size: 13px;
 text-decoration: none;
-font-family: sans-serif;
+font-family: 'Roboto';
 }
 .header_top_menu a>i {
 margin: 0 5px 0 0;
@@ -4713,7 +4727,7 @@ outline: none;
 .close:before {
 color: rgba(255, 255, 255, 0.9);
 content: "X";
-font-family: sans-serif;
+font-family: 'Roboto';
 font-size: 14px;
 font-weight: normal;
 text-decoration: none;
@@ -6448,7 +6462,7 @@ margin-left: 60px;
 .content_aux {
     font-size: 22px;
     margin: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto';
     color: #595959;
     font-size: 18px;
     font-style: normal;
@@ -6512,7 +6526,7 @@ img.vendorlogo {
     span.\'info_text {
         color: #ffffff;
         font-weight: bold;
-        font-family: sans-serif;
+        font-family: 'Roboto';
         height: auto;
         padding-top: 5px;
         position: relative;
@@ -6521,7 +6535,7 @@ img.vendorlogo {
     .text-overlay {
         color: white;
         font-weight: bold;
-        font-family: sans-serif;
+        font-family: 'Roboto';
         text-shadow: -5px 3px 19px #0f25df;
     }
 
@@ -7075,12 +7089,12 @@ svg.arrow_more_product {
 a.pb_product_name {
     color: #1a578e;
     font-size: 16px;
-    line-height: 30px;
+    line-height: 22px;
     margin-bottom: 8px;
     transition: color .3s;
 }
 a.pb_product_name:hover {
-    color:#0464ea;
+    color:red;
     text-decoration: none;
 }
 .product_follow_block:hover {
