@@ -14,15 +14,8 @@
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
 	display: block;
 }
-/* a, .a {
-	color: #3b4752;
-	 text-decoration: underline;
-	cursor: pointer;
-} */
-b,
-strong, .b {
-	font-weight: bold;
-}
+
+
 button, html input[type="button"], input[type="reset"], input[type="submit"], .button {
 	background: none repeat scroll 0 0 #333333;
 	border-style: none;
