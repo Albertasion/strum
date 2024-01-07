@@ -190,7 +190,7 @@
     <!-- хлібні крошки -->
         <div class="path">
     <!-- main item crump -->
-   <span> <a href='{"?"|set_query}' class="path_item"><span>{'Internet shop'|t} {'of tools'|t}</span></a></span>{literal} / {/literal}{foreach from=$product_category_path item=_path_itm name=i}
+   <span> <a href='{"?"|set_query}' class="path_item"><span>{'Internet shop'|t} {'of tools'|t}</span></a></span>{literal} > {/literal}{foreach from=$product_category_path item=_path_itm name=i}
     {if $_path_itm.categoryID != 1}<span>{if !$_path_itm.redirect}<a href='{"?categoryID=`$_path_itm.categoryID`&category_slug=`$_path_itm.slug`"|set_query_html}'class="{cycle values='block1,block2'} path_item">
     {else}
     <span class="{cycle values='block1,block2'} path_item">
@@ -203,7 +203,7 @@
     {/if}
     </span>
     {if !$smarty.foreach.i.last}
-    {literal} / {/literal}
+    {literal} > {/literal}
     {/if}
     {/if}
     {/foreach}
@@ -227,31 +227,33 @@
 
 
 
- <!-- Таби (опис характеристики відгуки умови доставки) -->
+ <!-- Таби (опис характеристики відгуки умови доставки) це статичне -->
     <div class="pi_tabs_wrp">
         <ul class="tabs">
-            <li rel="charTable" class="current">
+            <li data-tab="1" rel="charTable" class="current active">
                 <span class="tabs_ico tabs_ttx_ico"></span>
                 <span class="tabs_name">{'Specifications'|t}</span>
             </li>
-            <li rel="kupit">
+            <li data-tab="2" rel="kupit">
                 <span class="tabs_ico tabs_desc_ico"></span>
                 <span class="tabs_name">{'str_description'|t}</span>
             </li>
-            <li rel="desc_diss">
+            <li data-tab="3" rel="desc_diss">
                 {if $product_info.discussions_counter}
                     <span class="tabs_ico tabs_disc_ico"><sup>{$product_info.discussions_counter}</span></span>
                 {/if}
                 <span class="tabs_name">{'pgn_product_reviews'|t}</span>
             </li>
-            <li rel="dostavka">
+            <li data-tab="4" rel="usingfor">
                 <span class="tabs_ico tabs_shippping_ico"></span>
-                <span class="tabs_name">{'shipping'|t}</span>
+                <span class="tabs_name">Застосовність</span>
             </li>
         </ul>
     </div>
     <!-- конец pi_tabs_wrp -->
     <!-- -------------------------------------------------- -->
+
+
 
 
     <!-- блок фото плюс короткий опис -->
@@ -929,7 +931,7 @@
 					
 
 
-<div class="model_suitable_for_block">
+<div id='tab-1'class="model_suitable_for_block tab-content active">
     <div class="msf_title"><p>Оригинальная запчасть подходит для следующих инструментов:</p></div>
     <div class="msf_title_sub">Просмотреть деталировку модели &#11015;&#65039;</div>
 

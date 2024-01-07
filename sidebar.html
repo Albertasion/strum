@@ -26,38 +26,21 @@
 				</button>
 				<div class="drop_down_catalog_block">
 					<ul>
-						<!-- <li>ЗАПЧАСТИ</li>
-						<li>ВСЕ ДЛЯ ДОМА И САДА</li>
-						<li>ОБОРУДОВАНИЕ</li>
-						<li>ИНСТРУМЕНТЫ</li>
-					</ul> -->
-
 					{foreach from=$root_cats item=_cat}
-					<li rel="{$_cat.categoryID}"><a href='{"?ukey=category&categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}'>{$_cat.name}</a></li>
+					<li rel="{$_cat.categoryID}"><a href='{"?ukey=category&categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}'>{$_cat.name}</a>
+					<svg viewBox="0 0 24 24" fill="currentColor" class="icon-component MainMenu_arrow__3wrqk"><path d="M9.79461 17.2946C9.40534 16.9053 9.405 16.2743 9.79384 15.8846L13.67 12L9.79384 8.11538C9.405 7.72569 9.40534 7.09466 9.79461 6.70538C10.1842 6.31581 10.8158 6.31581 11.2054 6.70538L16.5 12L11.2054 17.2946C10.8158 17.6842 10.1842 17.6842 9.79461 17.2946Z"></path></svg>
+					</li>
 					
-					<!-- <td class="tv_link_root {if $_cat.categoryID == $categoryID} open {/if} tvlr_{$_cat.categoryID}"
-						rel="{$_cat.categoryID}">
-						{if !$_cat.redirect}<a
-							href='{"?ukey=category&categoryID=`$_cat.categoryID`&category_slug=`$_cat.slug`"|set_query_html}'
-							{else}<span {/if}
-							class="tv_alink {if $_cat.categoryID == $categoryID} open {/if}">
-							<span class="vmenu_ico vmenu_ico_id{$_cat.categoryID}"></span><span
-								class="tv_link_name">{$_cat.name}</span><span class="tv_link_helper"></span>
-							{if !$_cat.redirect}</a>{else}</span>{/if}
-						<div class="tv_subcategories_wrp">
-							<div class="tv_subcategories">
-								<div class="loading"></div>
-							</div>
-						</div>
-					</td> -->
 				{/foreach}
 			</ul>
 			<div class="drop_down_sub_catalog_block">
-				
+			<ul>
+				<li class="float_catalog">Каталог</li>
+			</ul>
 			</div>
 
 		</div>
-				
+		
 			</div>
 
 				
@@ -114,11 +97,59 @@
 				<sup class="shpcrtgc"><span class="shopping_cart_count">{if $shopping_cart_items}{$shopping_cart_items}</span>{else}0{/if}</sup>
 			</button>
 			<div class="drop_down_bloc_cart">
-				<div id="loading">
+				<!-- <div id="loading">
 					<img src="/images/ajax_load.gif" alt="Loading...">
-				  </div>
-				<div class="drop_down__cart_header">Кошик</div>
-				<div class="drop_down__cart_body"></div>
+				  </div> -->
+				<div class="drop_down__cart_header"><h4>Кошик</h4></div>
+				<div class="drop_down__cart_body">
+
+<!-- <div class="drop_down__cart_body_product">
+<div class="drop_down__cart_body_product_img">
+	<img src="/published/publicdata/STRUMENTSTRUM/attachments/SC/products_pictures/2/2/1/ibp-ritar-rtp625-proxima-l-5845_h9b.png">
+</div>
+<div class="drop_down__cart_body_product_content">
+	<a class="drop_down__cart_body_product_link" href="#">
+Apple MacBook Air M1 Chip 13"/256 Silver (MGN93UA/A) 2020
+	</a>
+
+<div class="drop_down__cart_body_product_price_qnt">
+	<span>4356 ₴</span>
+	<span>1 шт</span>
+	<span class="drop_down__cart_body_total">45364 ₴</span>
+</div>
+</div>
+</div> -->
+
+
+
+
+	
+
+
+
+	<div class="drop_down__cart_body_total_block">
+		<div class="drop_down__cart_body_total_incartlink"><a>В кошик</a></div>
+<div class="drop_down__cart_body_total_number">456466₴</div>
+		<div class="drop_down__cart_body_total_button">
+<button>ОФОРМИТИ</button>
+</div>
+	</div>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 			
 			</div>
 			</div>
