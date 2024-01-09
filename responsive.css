@@ -3825,7 +3825,7 @@ display: none;
 
 
 img#img-current_picture {
-	max-width: 370px;
+	max-width: 350px;
 	position: relative;
     top: 0;
 }
@@ -3852,11 +3852,42 @@ img#img-current_picture {
     margin-bottom: 15px;
 }
 .PaymentMethods_block_description {
-    display: flex;
+	display: flex;
     margin-bottom: 5px;
     flex-wrap: wrap;
     font-size: 14px;
     font-weight: 400;
+    flex-direction: column;
+    gap: 1px;
+	
+}
+.quick-buy_button {
+    margin-left: 15px;
+    border: 1px solid rgba(0,0,0,12%);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    color: red;
+    transition: .3s;
+    width: 224px;
+}
+
+
+
+.pi-wholesale-price-block {
+    margin: 10px auto;
+    border: 1px solid hsl(0deg 0 89% / 80%);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 5px rgba(0,8,29,5%), 0 3px 4px rgba(0,8,29,6%), 0 2px 5px rgba(0,8,29,8%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+ 
 }
 
 .line {
@@ -3870,11 +3901,11 @@ img#img-current_picture {
     align-items: center;
 }
 div#kupit {
-    border: 1px solid #f1f0f0;
+	border: 1px solid #f1f0f0;
     box-shadow: 0 2px 2px rgba(0,8,29,5%), 0 0 2px rgba(0,8,29,6%), 0 1px 3px rgba(0,8,29,8%);
     border-radius: 10px;
     margin: 0;
-    padding: 2px 0px 2px 0px;
+    padding: 11px 4px 2px 8px;
     margin-bottom: 20px;
 }
 .name {
@@ -3895,6 +3926,13 @@ input.product_add2cart_handler.button_buy.visible-xs {
     border-bottom: 1px solid #eaeaea;
     font-size: 14px;
     font-weight: 400;
+	display: flex;
+    flex-direction: column;
+}
+.pi_tabs_wrp_floating {
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll;
 }
 .PaymentMethods_block {
     display: flex;

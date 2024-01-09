@@ -262,6 +262,48 @@
 
   <!-- ліва сторона . контейнер с фото -->
     <div class="pi_header_left">
+
+
+
+        <!-- назва для мобилы -->
+        <h1 class="product_name visible-xs">
+            {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}<br> {$product_info.add2cart_counter}
+        </h1>
+
+
+        {if !$product_info.archive}
+        <!-- кнопка наявності підєднується -->
+        <div class="visible-xs">
+        {include file="product_instock_block.html"}
+        {else}
+        <!-- напис аривний товар -->
+            <div class="stock_label archive visible-xs">
+            <i class="fa fa-snowflake-o"></i>
+            {'Archive product'|t}
+            </div>
+        </div>
+        {/if}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {if $all_product_pictures}
             <div class="pi_allimages">
                 {foreach from=$all_product_pictures item=_picture name=frpict}
@@ -376,7 +418,7 @@
 
 
      <!-- назва -->
-  <div class="product_name_block">
+  <div class="product_name_block hidden-xs">
   <h1 class="product_name">
     {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}<br> {$product_info.add2cart_counter}
 </h1>
@@ -390,13 +432,15 @@
   <!-- якщо товар не архивний -->
   {if !$product_info.archive}
 <!-- кнопка наявності підєднується -->
+<div class="hidden-xs">
 {include file="product_instock_block.html"}
 {else}
 <!-- напис аривний товар -->
-    <div class="stock_label archive">
+    <div class="stock_label archive ">
     <i class="fa fa-snowflake-o"></i>
     {'Archive product'|t}
     </div>
+</div>
 {/if}
     <!-- зырочки -->
  <div class="Rating-module" style="height: 16px; cursor: default;"><span class="">
