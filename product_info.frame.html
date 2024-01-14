@@ -260,50 +260,152 @@
 
 <div class="top_product_info_block">
 
+
+<!-- назва для мобилы -->
+<div class="product_name_block visible-xs">
+    <h1 class="product_name">
+      {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}<br> {$product_info.add2cart_counter}
+  </h1>
+  </div>
+  
+  <!-- конец product_name_block назва для мобилы -->
+
+
+
+<!-- блок наявність, зырочки, артикул МОБИЛА!-->
+<div class="Description_statusRating_sku visible-xs">
+    <!-- якщо товар не архивний -->
+    {if !$product_info.archive}
+  <!-- кнопка наявності підєднується -->
+  {include file="product_instock_block.html"}
+  {else}
+  <!-- напис аривний товар -->
+      <div class="stock_label archive">
+      <i class="fa fa-snowflake-o"></i>
+      {'Archive product'|t}
+      </div>
+  {/if}
+
+    
+    <!-- код для замовлення -->
+      
+  <div class="product_code">
+      <div class='code_for_order_block'>
+      <span class="code_for_order_word">{'Code for order'|t}:</span> 
+                  <span class="code_for_order_defination">{$product_info.productID}</span>
+      </div>
+              <!-- код для заміни -->
+              {if $product_info.replacementProducts}
+              
+                  <div class="pi_new_code">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 286.054 286.054" style="enable-background:new 0 0 286.054 286.054;" xml:space="preserve">
+                          <g>
+                              <path style="fill:#E2574C;" d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027   c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236   c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209   S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972   c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723   c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843   C160.878,195.732,152.878,187.723,143.036,187.723z"/>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          <g>
+                          </g>
+                          </svg>
+                      {'New article'|t}:{literal} {/literal}
+                      {foreach from=$product_info.replacementProducts item=$replacementProduct name=_rplFrch}
+                          {if $replacementProduct.productID > 0}
+                              <a href='{"?productID=`$replacementProduct.productID`&product_slug=`$replacementProduct.slug`"|set_query_html}' target="_blank">{$replacementProduct.product_code}</a>
+                          {else}
+                              {$replacementProduct.product_code}
+                          {/if}
+                          {if !$smarty.foreach._rplFrch.last}, {/if}
+                      {/foreach}
+                  </div>
+              {/if}
+  </div> 
+  <!-- конец product_code блок -->
+  
+  
+  
+  </div>
+  <!--конец Description_statusRating_sku МОБИЛА -->
+  <!-- блок наявність, зырочки, артикул -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
   <!-- ліва сторона . контейнер с фото -->
     <div class="pi_header_left">
-
-
-
-        <!-- назва для мобилы -->
-        <h1 class="product_name visible-xs">
-            {$product_info.short_name|escape:'html'}{$product_info.name_ending|escape:'html'}<br> {$product_info.add2cart_counter}
-        </h1>
-
-
-        {if !$product_info.archive}
-        <!-- кнопка наявності підєднується -->
-        <div class="visible-xs">
-        {include file="product_instock_block.html"}
-        {else}
-        <!-- напис аривний товар -->
-            <div class="stock_label archive visible-xs">
-            <i class="fa fa-snowflake-o"></i>
-            {'Archive product'|t}
-            </div>
-        </div>
-        {/if}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         {if $all_product_pictures}
             <div class="pi_allimages">
                 {foreach from=$all_product_pictures item=_picture name=frpict}
@@ -428,19 +530,18 @@
 
 
 <!-- блок наявність, зырочки, артикул -->
+<div class="hidden-xs">
 <div class="Description_statusRating_sku">
   <!-- якщо товар не архивний -->
   {if !$product_info.archive}
 <!-- кнопка наявності підєднується -->
-<div class="hidden-xs">
 {include file="product_instock_block.html"}
 {else}
 <!-- напис аривний товар -->
-    <div class="stock_label archive ">
+    <div class="stock_label archive">
     <i class="fa fa-snowflake-o"></i>
     {'Archive product'|t}
     </div>
-</div>
 {/if}
     <!-- зырочки -->
  <div class="Rating-module" style="height: 16px; cursor: default;"><span class="">
@@ -525,7 +626,7 @@
 </div>
 <!--конец Description_statusRating_sku -->
 <!-- блок наявність, зырочки, артикул -->
-
+</div>
 
 
 
@@ -773,55 +874,97 @@
 
 
 <!-- блок доставка описание -->
-    <div class="delivery_container">                              
+
+    <div class="delivery_container">    
+        
+        
         <div class="delivery_item">
             <div class="delivery_pic_def">
-                <div><img src="/delivery_image/novaposhta.svg"></div>
-                <div>Доставка у вiддiлення "Нова Пошта" </div>
-            </div>
-                <div>За тарифами перевізника <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
+                <img src="/delivery_image/location-sign-svgrepo-com.svg">
+                <div>Самовивіз</div>
+                </div>
+                <div class="delivery_pic_val mobkos">Безкоштовно
+                    <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
                     <path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path>
                     <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
-                  </svg></div>
-                                        
-         </div>
-     <div class="delivery_item">
-        <div class="delivery_pic_def">
-            <div><img src="/delivery_image/ukrposta.svg"></div>
-            <div>Доставка у вiддiлення "Укрпошта" </div>
+                  </svg>
+                </div>
         </div>
-            <div>За тарифами перевізника <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
-                <path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path>
-                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
-              </svg></div>
+        <div class="delivery_item">
+            <div class="delivery_pic_def">
+                <img src="/delivery_image/novaposhta.svg">
+                <div>Доставка у вiддiлення "Нова Пошта" </div>
+                </div>
+                <div class="delivery_pic_val">За тарифами перевізника
+                    <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
+                    <path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path>
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
+                  </svg>
+                </div>
+        </div>
+
+        <div class="delivery_item">
+            <div class="delivery_pic_def">
+                <img src="/delivery_image/ukrposta.svg">
+                <div>Доставка у вiддiлення "Укрпошта" </div>
+                </div>
+                <div class="delivery_pic_val">За тарифами перевізника
+                    <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
+                    <path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path>
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
+                  </svg>
+                </div>
+        </div>
+
+
+      
+
+        <div class="delivery_item">
+            <div class="delivery_pic_def">
+                <img src="/delivery_image/novaposhta.svg">
+                <div>Доставка у поштомат "Нова пошта"</div>
+                </div>
+                <div class="delivery_pic_val">За тарифами перевізника
+                    <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
+                    <path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path>
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
+                  </svg>
+                </div>
+        </div>
+
+     
                                     
-     </div>
-     <div class="delivery_item">
+     <!-- </div> -->
+     <!-- <div class="delivery_item">
         <div class="delivery_pic_def">
             <div><img src="/delivery_image/location-sign-svgrepo-com.svg"></div>
             <div class="tooltip_defination_block_pickup"><h3>САМОВИВІЗ З ОФІСУ</h3>
                 <p> При оформленні замовлення оператор контакт-центру уточнює зручне для вас місце і час приїзду за покупкою. 
-                Доставка замовленого товару до офісу здійснюється безкоштовно. Так як асортимент дуже широкий, ми не можемо його весь розмістити у виставковому залі. Тому бажано погоджувати Ваш візит заздалегідь</p></div>
+                Доставка замовленого товару до офісу здійснюється безкоштовно. Так як асортимент дуже широкий, ми не можемо його весь розмістити у виставковому залі. Тому бажано погоджувати Ваш візит заздалегідь</p>
+            </div>
                 
             <div>Самовивіз з офісу</div>
         </div>
-            <div class="definat_block_pickup">Безкоштовно <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
+            <div class="delivery_pic_val">Безкоштовно <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
                 <path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path>
                 <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
               </svg></div>
                                     
-     </div>
-     <div class="delivery_item">
+     </div> -->
+     <!-- <div class="delivery_item">
         <div class="delivery_pic_def">
             <div><img src="/delivery_image/novaposhta.svg"></div>
+            
             <div>Доставка у поштомат "Нова пошта" </div>
         </div>
-            <div>За тарифами перевізника <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
+            <div class="delivery_pic_val">За тарифами перевізника <svg viewBox="0 0 24 24" fill="grey" class="info_imag"><path d="M13 7L11 7L11 9L13 9L13 7Z"></path>
                 <path d="M13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12L11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16L13 12Z"></path>
                 <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"></path>
               </svg></div>
                                     
-     </div>
+     </div> -->
+
+
     </div>
 
 
@@ -844,6 +987,16 @@
         <div class="PaymentMethods_item">
             <img src="/delivery_image/master-card-logo.svg">
         </div>
+        <div class="PaymentMethods_item privat24">
+            <img src="/delivery_image/privat24.svg">
+        </div>
+        <div class="PaymentMethods_item novapay">
+            <img src="/delivery_image/novapay-new.svg">
+        </div>
+        <div class="PaymentMethods_item mono">
+            <img src="/delivery_image/Monobank_logo.svg">
+        </div>
+        
     </div>
 
     <div class="PaymentMethods_block_description">

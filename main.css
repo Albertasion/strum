@@ -3403,7 +3403,7 @@ content: "";
 .pi_tabs_wrp {
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 0px 0px rgba(0,8,29,5%), 0 0 0px rgba(0,8,29,6%), 0 0px 5px rgba(0,8,29,8%);
+    box-shadow: 0 0 0 rgba(0,8,29,5%), 0 0 0 rgba(0,8,29,6%), 0 0 4px rgba(0,8,29,8%);  
     border-radius: 10px 10px 0 0;
     padding: 5px 5px 5px 5px;
     margin-top: 10px;
@@ -6617,7 +6617,7 @@ img.vendorlogo {
         background-color: rgba(23,60,97,6%);
     }
     .top_product_info_block {
-    box-shadow: 0px 2px 2px rgba(0,8,29,5%), 0px 0px 2px rgba(0,8,29,6%), 0px 1px 3px rgba(0,8,29,8%);
+    box-shadow: 0 1px 2px rgba(0,8,29,5%), 0 0 2px rgba(0,8,29,6%), 0 1px 1px rgba(0,8,29,8%);
     border-radius: 0 0 10px 10px;
     margin: 0;
     padding: 10px 20px 20px 20px;
@@ -7300,11 +7300,17 @@ button.add-favorire_block_button:focus {
     opacity: 91%;
     transition: .3s;
 }
-
+.PaymentMethods_item.novapay img {
+    padding: 6px 5px;
+}
+.PaymentMethods_item.mono img {
+    padding: 6px 9px;
+}
 
 svg.info_imag {
     height: 20px;
     position: relative;
+    padding-left: 5px;
 
 }
 .delivery_pic_def img {
