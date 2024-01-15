@@ -7317,17 +7317,32 @@ svg.info_imag {
     margin-right: 5px;
     height: 25px;
 }
-.tooltip_defination_block_pickup {
+.tooltip_defination_block_pickup, .tooltip_defination_block_nova, .tooltip_defination_block_ukrposhta, .tooltip_defination_block_postomat {
     position: absolute;
     background: white;
     right: 140px;
     width: 370px;
-    opacity: 0;
+    display: none;
     box-shadow:0px 12px 17px rgba(0,8,29,5%),0px 5px 22px rgba(0,8,29,6%),0px 7px 8px rgba(0,8,29,8%);
     border-radius: 10px;
   z-index: 999999;
   padding: 15px;
 }
+.delivery_pic_val.mobkos:hover .tooltip_defination_block_pickup {
+    display: block;
+}
+.delivery_pic_val.novaposhta:hover .tooltip_defination_block_nova {
+    display: block;
+}
+
+.delivery_pic_val.ukrposhta:hover .tooltip_defination_block_ukrposhta {
+    display: block;
+}
+
+.delivery_pic_val.postomat:hover .tooltip_defination_block_postomat {
+    display: block;
+}
+
 img#img-current_picture {
     max-width: 600px;
     height: max-content;
@@ -7480,7 +7495,7 @@ a.drop_down__cart_body_product_link {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 3px 4px rgba(0,8,29,5%), 0px 2px 4px rgba(0,8,29,6%), 0px 1px 5px rgba(0,8,29,8%);
-    display: block;
+    display: none;
 
 }
 svg.icon-component.MainMenu_arrow__3wrqk {
@@ -7583,6 +7598,7 @@ span.rating_text_value {
     background: #fff;
     box-shadow: 0px 2px 2px rgba(0,8,29,5%), 0px 0px 2px rgba(0,8,29,6%), 0px 1px 3px rgba(0,8,29,8%);
     border-radius: 0 0 10px 0;
+    display: none;
 }
 span.pi_price_save_percent {
     color: white;
