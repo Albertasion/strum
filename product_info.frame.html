@@ -230,21 +230,21 @@
  <!-- Таби (опис характеристики відгуки умови доставки) це статичне -->
     <div class="pi_tabs_wrp">
         <ul class="tabs">
-            <li data-tab="1" rel="charTable" class="current active">
+            <li data-tab="1" rel="charTable" class="tablinks current active">
                 <span class="tabs_ico tabs_ttx_ico"></span>
-                <span class="tabs_name">{'Specifications'|t}</span>
+                <span class="tabs_name">Все про товар</span>
             </li>
-            <li data-tab="2" rel="kupit">
+            <li data-tab="kupit" rel="kupit" class="tablinks">
                 <span class="tabs_ico tabs_desc_ico"></span>
-                <span class="tabs_name">{'str_description'|t}</span>
+                <span class="tabs_name">Характеристики</span>
             </li>
-            <li data-tab="3" rel="desc_diss">
+            <li data-tab="desc_diss" rel="desc_diss" class="tablinks">
                 {if $product_info.discussions_counter}
                     <span class="tabs_ico tabs_disc_ico"><sup>{$product_info.discussions_counter}</span></span>
                 {/if}
                 <span class="tabs_name">{'pgn_product_reviews'|t}</span>
             </li>
-            <li data-tab="4" rel="usingfor">
+            <li data-tab="4" rel="usingfor" class="tablinks">
                 <span class="tabs_ico tabs_shippping_ico"></span>
                 <span class="tabs_name">Застосовність</span>
             </li>
@@ -1129,11 +1129,11 @@
 
 
 
-<div id="kupit" class="box">
-    <div id="section1">
+<div id="kupit" class="tabcontent box">
+
     {$product_info.description|replace:'</h1>':'</h2>'|replace:'<h1':'<h2'|replace:' id="kupit"':''}
 </div>
-</div>
+
 
 
 <!-- список деталювань і до чого підходить запчастина -->
@@ -1265,7 +1265,7 @@
 
 
 <!-- Відгуки -->
-<div id="desc_diss" class="box">
+<div id="desc_diss" class="tabcontent box">
     <div class="h2"><span class = "diss_word">{'pgn_product_reviews'|translate} </span><span class = "name_product_discuss">{$product_info.short_name|escape:'html'}</span></div>
     {if $product_info.product_last_reviews_count > 0}
     {foreach from=$product_info.product_last_reviews item=_review}

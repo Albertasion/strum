@@ -22173,26 +22173,76 @@ $(function () {
     $(".pseudo_link").click(function () {
         window.location = $(this).find("a").attr("href");
     });
-    $("ul.tabs").delegate("li:not(.current)", "click", function () {
-        $(this)
-            .addClass("current")
-            .siblings()
-            .removeClass("current")
-            .parents("div.page_body_wrp")
-            .find("div.box, #kupit, #charTable")
-            .hide();
-        $("#" + $(this).attr("rel")).show();
-    });
-    if (window.location.hash == "#desc_diss") {
-        $("ul.tabs li[rel=desc_diss]")
-            .addClass("current")
-            .siblings()
-            .removeClass("current")
-            .parents("div.page_body_wrp")
-            .find("div.box, #kupit, #charTable")
-            .hide();
-        $("#desc_diss").show();
-    }
+
+
+
+
+// при выборе нужно поставить display:none у .pi_header_left
+
+
+
+
+
+
+// рабочий табы
+    var tabLinks = document.querySelectorAll(".tablinks");
+    var tabContent = document.querySelectorAll(".tabcontent");
+
+    function openTabs(el) {
+    var btnTarget = el.currentTarget;
+    console.log(btnTarget);
+   var attr_tab = btnTarget.dataset.tab;
+   console.log(attr_tab);
+        //удаляем класс active зу усіх вкладок
+        tabLinks.forEach(function(el) {
+            el.classList.remove("active");
+         });
+         tabContent.forEach(function(el) {
+            el.classList.remove("active");
+         });
+
+         document.querySelector("#" + attr_tab).classList.add("active");
+   
+         btnTarget.classList.add("active");
+    
+        };
+
+
+
+    
+    tabLinks.forEach(function(el) {
+        el.addEventListener("click", openTabs);
+     });
+
+
+
+
+
+
+
+
+
+    // $("ul.tabs").delegate("li:not(.current)", "click", function () {
+    //     $(this)
+    //         .addClass("current")
+    //         .siblings()
+    //         .removeClass("current")
+    //         .parents("div.page_body_wrp")
+    //         .find("div.box, #kupit, #charTable")
+    //         .hide();
+    //     $("#" + $(this).attr("rel")).show();
+    // });
+
+    // if (window.location.hash == "#desc_diss") {
+    //     $("ul.tabs li[rel=desc_diss]")
+    //         .addClass("current")
+    //         .siblings()
+    //         .removeClass("current")
+    //         .parents("div.page_body_wrp")
+    //         .find("div.box, #kupit, #charTable")
+    //         .hide();
+    //     $("#desc_diss").show();
+    // }
 
     $(".clicktoggler").click(function () {
         $(this).toggleClass("clicktoggler-on");
