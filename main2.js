@@ -22203,6 +22203,7 @@ $(function () {
          });
 
          document.querySelector("#" + attr_tab).classList.add("active");
+         document.querySelector('.pi_header_left').style.display = 'none';
    
          btnTarget.classList.add("active");
     
