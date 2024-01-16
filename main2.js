@@ -22197,6 +22197,7 @@ $(function () {
         tabLinks.forEach(function(el) {
             el.classList.remove("active");
          });
+          //удаляем класс active зу усіх контентыв що мають класс tabcontent
          tabContent.forEach(function(el) {
             el.classList.remove("active");
          });
