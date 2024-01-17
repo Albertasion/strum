@@ -3427,7 +3427,7 @@ content: "";
        text-transform: uppercase;
        white-space: nowrap;
 }
-.pi_tabs_wrp .tabs li.current {
+.pi_tabs_wrp .tabs li.active {
     color: red;
     font-weight: 500;
     border-bottom: 2px solid red;
@@ -6816,9 +6816,8 @@ div#desc_diss {
     border-radius: 10px;
     margin: 0;
     padding: 10px 20px 40px 20px;
-    margin-bottom: 40px;
-    height: 116px;
-    overflow: hidden;
+    margin-bottom: 40px;  
+    display: none;
 }
 form.discussion_form button {
     color: #fa0000;

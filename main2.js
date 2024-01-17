@@ -22190,9 +22190,9 @@ $(function () {
 
     function openTabs(el) {
     var btnTarget = el.currentTarget;
-    console.log(btnTarget);
+
    var attr_tab = btnTarget.dataset.tab;
-   console.log(attr_tab);
+
         //удаляем класс active зу усіх вкладок
         tabLinks.forEach(function(el) {
             el.classList.remove("active");
@@ -22202,11 +22202,47 @@ $(function () {
             el.classList.remove("active");
          });
 
-         document.querySelector("#" + attr_tab).classList.add("active");
-         document.querySelector('.pi_header_left').style.display = 'none';
-   
+        //  document.querySelector("#" + attr_tab).classList.toggle("active");
          btnTarget.classList.add("active");
-    
+
+
+
+var relValue = btnTarget.getAttribute('rel');
+console.log(relValue);
+
+if (relValue==='kupit') {
+    document.querySelector('.pi_header_left').style.display = 'none';
+    document.querySelector('#desc_diss').style.display = 'none';
+    document.querySelector('#kupit').style.display = 'block';
+    document.querySelector('.top_product_info_block ').style.display = 'none';
+}
+if (relValue==='charTable') {   
+    document.querySelector('#kupit').style.display = 'block';
+    document.querySelector('.pi_header_left').style.display = 'flex';
+    document.querySelector('#tab-1').style.display = 'block';
+    document.querySelector('.top_product_info_block ').style.display = 'block';
+}
+if (relValue==='desc_diss') {
+    document.querySelector('#desc_diss').style.display = 'block';
+    document.querySelector('#tab-1').style.display = 'none';
+    document.querySelector('.pi_header_left').style.display = 'none';
+    document.querySelector('#kupit').style.display = 'none';
+    document.querySelector('.top_product_info_block ').style.display = 'none';
+
+}
+if (relValue==='usingfor') {
+    document.querySelector('#desc_diss').style.display = 'none';
+    document.querySelector('#tab-1').style.display = 'block';
+    document.querySelector('.pi_header_left').style.display = 'none';
+    document.querySelector('#kupit').style.display = 'none';
+    document.querySelector('.top_product_info_block ').style.display = 'none';
+
+}
+
+
+     
+         
+         
         };
 
 
