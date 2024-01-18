@@ -8,23 +8,23 @@
 
         <div class="pi_tabs_wrp_floating">
             <ul class="tabs_floating">
-                <li rel="charTable" class="current">
+                <li data-tab="charTable_float" rel="charTable_float" class="tablinks_float">
                     <span class="tabs_ico tabs_ttx_ico"></span>
-                    <span class="tabs_name">{'Specifications'|t}</span>
+                    <span class="tabs_name">ВСЕ ПРО ТОВАР</span>
                 </li>
-                <li rel="kupit">
+                <li data-tab="kupit_float" rel="kupit_float" class="tablinks_float">
                     <span class="tabs_ico tabs_desc_ico"></span>
-                    <span class="tabs_name">{'str_description'|t}</span>
+                    <span class="tabs_name">ХАРАКТЕРИСТИКИ</span>
                 </li>
-                <li rel="desc_diss">
+                <li data-tab="desc_diss_float" rel="desc_diss_float" class="tablinks_float">
                     {if $product_info.discussions_counter}
                         <span class="tabs_ico tabs_disc_ico"><sup>{$product_info.discussions_counter}</span></span>
                     {/if}
                     <span class="tabs_name">{'pgn_product_reviews'|t}</span>
                 </li>
-                <li rel="dostavka">
+                <li data-tab="usingfor_float" rel="usingfor_float" class="tablinks">
                     <span class="tabs_ico tabs_shippping_ico"></span>
-                    <span class="tabs_name">{'shipping'|t}</span>
+                    <span class="tabs_name">Застосовність</span>
                 </li>
             </ul>
 
@@ -230,7 +230,7 @@
  <!-- Таби (опис характеристики відгуки умови доставки) це статичне -->
     <div class="pi_tabs_wrp">
         <ul class="tabs">
-            <li data-tab="charTable" rel="charTable" class="tablinks">
+            <li data-tab="charTable" rel="charTable" class="tablinks active">
                 <span class="tabs_ico tabs_ttx_ico"></span>
                 <span class="tabs_name">Все про товар</span>
             </li>

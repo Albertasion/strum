@@ -22219,12 +22219,16 @@ if (relValue==='kupit') {
 if (relValue==='charTable') {   
     document.querySelector('#kupit').style.display = 'block';
     document.querySelector('.pi_header_left').style.display = 'flex';
+    if (document.querySelector('#tab-1')) {
     document.querySelector('#tab-1').style.display = 'block';
+    }
     document.querySelector('.top_product_info_block ').style.display = 'block';
 }
 if (relValue==='desc_diss') {
     document.querySelector('#desc_diss').style.display = 'block';
+    if (document.querySelector('#tab-1')) {
     document.querySelector('#tab-1').style.display = 'none';
+}
     document.querySelector('.pi_header_left').style.display = 'none';
     document.querySelector('#kupit').style.display = 'none';
     document.querySelector('.top_product_info_block ').style.display = 'none';
@@ -22232,7 +22236,9 @@ if (relValue==='desc_diss') {
 }
 if (relValue==='usingfor') {
     document.querySelector('#desc_diss').style.display = 'none';
+    if (document.querySelector('#tab-1')) {
     document.querySelector('#tab-1').style.display = 'block';
+    }
     document.querySelector('.pi_header_left').style.display = 'none';
     document.querySelector('#kupit').style.display = 'none';
     document.querySelector('.top_product_info_block ').style.display = 'none';
@@ -22251,6 +22257,131 @@ if (relValue==='usingfor') {
     tabLinks.forEach(function(el) {
         el.addEventListener("click", openTabs);
      });
+
+
+
+
+
+
+
+///рабочий плавающий таб 
+var tabLinksFloat = document.querySelectorAll(".tablinks_float");
+// var tabContent = document.querySelectorAll(".tabcontent");
+
+function openTabs_float(el) {
+var btnTarget_float = el.currentTarget;
+
+// var attr_tab = btnTarget.dataset.tab;
+
+    //удаляем класс active зу усіх вкладок
+    tabLinksFloat.forEach(function(el) {
+        el.classList.remove("active");
+     });
+      //удаляем класс active зу усіх контентыв що мають класс tabcontent
+    //  tabContent.forEach(function(el) {
+    //     el.classList.remove("active");
+    //  });
+
+    //  document.querySelector("#" + attr_tab).classList.toggle("active");
+     btnTarget_float.classList.add("active");
+
+
+
+var relValue_float = btnTarget_float.getAttribute('rel');
+console.log(relValue_float);
+
+if (relValue_float==='kupit_float') {
+document.querySelector('.pi_header_left').style.display = 'none';
+document.body.scrollTop = 0; // Для поддержки в старых браузерах
+    document.documentElement.scrollTop = 0; // Для современных браузеров
+document.querySelector('#desc_diss').style.display = 'none';
+document.querySelector('#kupit').style.display = 'block';
+document.querySelector('.top_product_info_block ').style.display = 'none';
+}
+if (relValue_float==='charTable_float') {   
+    document.body.scrollTop = 0; // Для поддержки в старых браузерах
+    document.documentElement.scrollTop = 0; // Для современных браузеров
+document.querySelector('#kupit').style.display = 'block';
+document.querySelector('.pi_header_left').style.display = 'flex';
+if (document.querySelector('#tab-1')) {
+document.querySelector('#tab-1').style.display = 'block';
+}
+document.querySelector('.top_product_info_block ').style.display = 'block';
+}
+if (relValue_float==='desc_diss_float') {
+    document.body.scrollTop = 0; // Для поддержки в старых браузерах
+    document.documentElement.scrollTop = 0; // Для современных браузеров
+document.querySelector('#desc_diss').style.display = 'block';
+if (document.querySelector('#tab-1')) {
+document.querySelector('#tab-1').style.display = 'none';
+}
+document.querySelector('.pi_header_left').style.display = 'none';
+document.querySelector('#kupit').style.display = 'none';
+document.querySelector('.top_product_info_block ').style.display = 'none';
+
+}
+if (relValue_float==='usingfor_float') {
+    document.body.scrollTop = 0; // Для поддержки в старых браузерах
+    document.documentElement.scrollTop = 0; // Для современных браузеров
+document.querySelector('#desc_diss').style.display = 'none';
+if (document.querySelector('#tab-1')) {
+document.querySelector('#tab-1').style.display = 'block';
+}
+document.querySelector('.pi_header_left').style.display = 'none';
+document.querySelector('#kupit').style.display = 'none';
+document.querySelector('.top_product_info_block ').style.display = 'none';
+
+}
+
+
+ 
+     
+     
+    };
+
+
+
+
+    tabLinksFloat.forEach(function(el) {
+    el.addEventListener("click", openTabs_float);
+ });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
